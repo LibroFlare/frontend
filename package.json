@@ -7,10 +7,29 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --check .",
+    "prettier:fix": "prettier --write --list-different ."
   },
   "dependencies": {
+    "@nuxt/icon": "^1.4.5",
+    "@nuxt/image": "^1.7.0",
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "@nuxtjs/i18n": "^8.3.3",
+    "@pinia/nuxt": "^0.5.3",
+    "@vueuse/core": "^10.11.1",
+    "@vueuse/nuxt": "^10.11.1",
     "nuxt": "^3.12.4",
+    "pinia": "^2.2.1",
     "vue": "latest"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^0.5.0",
+    "@nuxtjs/tailwindcss": "^6.12.1",
+    "eslint": "^9.9.0",
+    "prettier": "^3.3.3",
+    "sass": "^1.77.8"
   }
 }

@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+@layer utilities {
+  .shdw {
+    box-shadow:
+      inset 0 0 0.8px 1px hsla(0, 0%, 100%, 0.1),
+      0 0 0 1px hsla(230, 13%, 9%, 0.075),
+      0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),
+      0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),
+      0 3.5px 6px hsla(230, 13%, 9%, 0.09);
+  }
+}
+
+/* --- ESSENTIALS --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+html {
+  background: #121316;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+#__nuxt {
+  overflow-y: hidden;
+}
+
+html,
+body,
+#__nuxt,
+#app {
+  overflow-x: hidden;
+  // height: -webkit-fill-available;
+}
+
+// ! had to comment them so '#' links works
+// #app {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// main {
+//   flex-grow: 1;
+// }
+
+label,
+a,
+p,
+b,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+h1 {
+  font-weight: 800;
+}
+
+h2 {
+  font-weight: 700;
+}
+
+h3 {
+  font-weight: 700;
+}
+
+h4 {
+  font-weight: 600;
+}
+
+sub,
+sup {
+  bottom: auto;
+  line-height: normal;
+  font-size: smaller;
+}
+
+/* MOBILE ON TAP HIGHLIGHT */
+*:active,
+*:hover,
+*:focus {
+  -webkit-tap-highlight-color: #00000066;
+}
+
+img {
+  user-select: none;
+}
