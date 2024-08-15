@@ -1,75 +1,54 @@
-# Nuxt 3 Minimal Starter
+<h1 align="center">
+  <a href="https://libroflare.germondai.com" target="_blank">
+    <img align="center" src="https://skillicons.dev/icons?i=nuxt,vue,vite,nodejs,tailwind,ts" /><br/><br/>
+    <span>LibroFlare</span>
+  </a>
+</h1>
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+### **Welcome** to <a href="https://libroflare.germondai.com" target="_blank">**LibroFlare**</a>! 👋
 
-## Setup
+An **Innovative Modern Library** with **Books**, **Audiobooks**, **Comicses** and **Manga**!
 
-Make sure to install the dependencies:
+## 🛠️ Installation Instructions
+
+Requirements
+
+- 📦 Node Package Manager (<a href="https://pnpm.io/" target="_blank">pnpm</a> - recommended)
+
+**Install and run as dev**
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
+**Build project**
 
 ```bash
-# npm
-npm run build
+# for static deployment
+pnpm generate
 
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+# for server deployment
+pnpm build
 ```
 
-Locally preview production build:
+## 🧹 Linting
+
+This project utilizes Prettier and ESLint for code formatting and style consistency
 
 ```bash
-# npm
-npm run preview
+# Check for linting errors and warnings
+pnpm lint
 
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+# Automatically fix linting errors and warnings
+pnpm lint:fix
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
+
+<p align="center">
+    <span>Made with ❤️ by</span>
+    <a href="https://github.com/germondai" target="_blank">@germondai</a>
+    <span> & </span>
+    <a href="https://github.com/bigjohnn1" target="_blank">@bigjohnn1</a>
+</p>
