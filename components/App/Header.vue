@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div v-if="menuOpen" class="sm:hidden bg-transparent bg-opacity-95 py-4 px-6 space-y-4">
+    <div v-if="menuOpen" class="sm:hidden bg-transparent bg-opacity-95 py-4 px-6 space-y-4 flex-col grid-cols-subgrid">
       <a href="#" class="block hover:text-gray-300 transition-transform transform hover:scale-110">
         My Library
       </a>
@@ -65,7 +65,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
 
 const menuOpen = ref(false);
 

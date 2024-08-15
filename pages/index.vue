@@ -8,10 +8,12 @@
 
     <AppHeader />
     <AppFooter />
+    <ButtonBackToTop />
   </main>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+</script>
 
 <style scoped>
 @keyframes floating {
@@ -37,6 +39,6 @@
 }
 
 .animate-background {
-  animation: background 10s linear infinite;
+  animation: all 10s linear infinite;
 }
 </style>
