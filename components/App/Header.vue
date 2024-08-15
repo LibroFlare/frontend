@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div v-if="menuOpen" class="sm:hidden bg-gray-800 bg-opacity-95 py-4 px-6 space-y-4">
+    <div v-if="menuOpen" class="sm:hidden bg-transparent bg-opacity-95 py-4 px-6 space-y-4">
       <a href="#" class="block hover:text-gray-300 transition-transform transform hover:scale-110">
         My Library
       </a>
