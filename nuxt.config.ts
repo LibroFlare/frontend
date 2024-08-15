@@ -43,6 +43,10 @@ export default defineNuxtConfig({
     },
   },
 
+  eslint: {
+    config: { typescript: true },
+  },
+
   css: ['~/assets/scss/style.scss'],
   tailwindcss: {
     exposeConfig: true,
