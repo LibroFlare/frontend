@@ -1,1 +1,11 @@
-{}
+{
+    "global": {
+        "name": "LibroFlare",
+        "pages": {
+            "library": "My Library",
+            "wishlist": "Wishlist",
+            "account": "My Account",
+            "reading": "Continue Reading"
+        }
+    }
+}
