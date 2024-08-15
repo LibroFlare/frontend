@@ -31,6 +31,10 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
   ],
 
+  eslint: {
+    config: { typescript: true },
+  },
+
   pinia: { storesDirs: ['./stores/**'] },
   imports: { dirs: ['./stores'] },
 
@@ -41,10 +45,6 @@ export default defineNuxtConfig({
         wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
       },
     },
-  },
-
-  eslint: {
-    config: { typescript: true },
   },
 
   css: ['~/assets/scss/style.scss'],

@@ -16,7 +16,7 @@
             href="/"
             class="text-2xl font-bold hover:text-gray-300 transition-colors"
           >
-            LibroFlare
+            {{ $t('global.name') }}
           </NuxtLink>
         </li>
         <li

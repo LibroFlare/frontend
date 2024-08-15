@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <VueFrag>
     <div class="fixed inset-0 z-0 anim-bg pointer-events-none">
       <div
         class="absolute top-1/4 left-1/3 bg-gray-600 opacity-30 blur-xl w-36 h-52 transform anim-float"
@@ -16,7 +16,7 @@
     <AppHeader />
     <slot />
     <AppFooter />
-  </div>
+  </VueFrag>
 </template>
 
 <script lang="ts" setup></script>
