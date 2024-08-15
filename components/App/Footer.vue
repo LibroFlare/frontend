@@ -1,6 +1,6 @@
 <template>
   <footer
-    class="bg-gray-900 text-white py-8 z-10 absolute bottom-0 w-8/12 bg-transparent"
+    class="bg-gray-900 text-white py-8 z-10 absolute bottom-0 w-full bg-transparent"
   >
     <div
       class="container mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 text-center sm:text-left"
@@ -39,9 +39,11 @@
           Subscribe
         </button>
       </div>
-    </div>
-    <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
-      &copy; 2024 LibroFlare. All rights reserved.
+      <div
+        class="col-span-3 border-t border-gray-700 mt-8 pt-4 text-center text-sm"
+      >
+        &copy; 2024 LibroFlare. All rights reserved.
+      </div>
     </div>
   </footer>
 </template>
