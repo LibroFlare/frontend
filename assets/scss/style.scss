@@ -1,3 +1,5 @@
+@use '@/assets/scss/_animations.scss' as *;
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,7 +27,7 @@
 }
 
 html {
-  background: #121316;
+  @apply bg-gray-900;
   color: #ffffff;
   margin: 0;
   padding: 0;
