@@ -1,7 +1,7 @@
 <template>
   <div class="relative my-4 max-w-[25rem]">
     <div
-      class="relative w-full rounded-lg bg-dropdown-background hover:bg-dropdown-hoverBackground py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none tabbable cursor-pointer"
+      class="relative w-full rounded-lg bg-gray-800 hover:bg-dropdown-hoverBackground py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none tabbable cursor-pointer"
       @click="toggleDropdown"
     >
       <span class="flex gap-4 items-center truncate">
@@ -15,12 +15,12 @@
       <span
         class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2"
       >
-        >
+        <Icon name="ph:caret-up-down-fill" class="size-6" />
       </span>
     </div>
     <div
       v-if="isOpen"
-      class="absolute left-0 right-0 top-10 z-[1] mt-4 max-h-60 overflow-auto rounded-md bg-dropdown-background py-1 text-white shadow-lg ring-1 ring-black ring-opacity-5 scrollbar-thin scrollbar-track-background-secondary scrollbar-thumb-type-secondary focus:outline-none"
+      class="absolute left-0 right-0 top-10 z-[1] mt-4 max-h-60 overflow-auto rounded-md bg-gray-800 py-1 text-white shadow-lg ring-1 ring-black ring-opacity-5 scrollbar-thin scrollbar-track-background-secondary scrollbar-thumb-type-secondary focus:outline-none"
     >
       <div
         v-for="opt in options"

@@ -11,7 +11,7 @@
           LibroFlare is your own space to get lost in thousands of books, manga,
           comics and other reading materials.
         </p>
-        <LangSwitcher class="bg-gray-900" />
+        <LangSwitcher />
       </div>
       <div>
         <h3 class="text-lg font-semibold mb-4">Important links</h3>
