@@ -7,5 +7,35 @@
             "account": "Účet",
             "reading": "Pokračovat ve čtení"
         }
+    },
+    "home": {
+        "search": {
+            "allResults": "To je vše co máme!",
+            "failed": "Nepodařilo se najít média, zkuste to znovu!",
+            "loading": "Načítání...",
+            "noResults": "Nemohli jsme nic najít!",
+            "placeholder": "Co si přejete číst? Knihu, komiks nebo snad mangu?",
+            "sectionTitle": "Výsledky vyhledávání"
+        },
+        "titles": {
+            "day": {
+                "default": "Co byste si dnes odpoledne chtěli přečíst?",
+                "extra": [
+                    "..."
+                ]
+            },
+            "morning": {
+                "default": "Co byste si dnes ráno chtěli přečíst?",
+                "extra": [
+                    "..."
+                ]
+            },
+            "night": {
+                "default": "Co byste si dnes večer chtěli přečíst?",
+                "extra": [
+                    "..."
+                ]
+            }
+        }
     }
 }

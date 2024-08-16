@@ -7,5 +7,35 @@
             "account": "My Account",
             "reading": "Continue Reading"
         }
+    },
+    "search": {
+        "allResults": "",
+        "failed": "",
+        "loading": "",
+        "noResults": "",
+        "placeholder": "",
+        "sectionTitle": ""
+    },
+    "home": {
+        "titles": {
+            "day": {
+                "default": "",
+                "extra": [
+                    "..."
+                ]
+            },
+            "morning": {
+                "default": "",
+                "extra": [
+                    "..."
+                ]
+            },
+            "night": {
+                "default": "",
+                "extra": [
+                    "..."
+                ]
+            }
+        }
     }
 }
