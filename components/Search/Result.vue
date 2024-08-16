@@ -1,7 +1,7 @@
 <template>
   <VueFrag>
     <p v-if="!search">Search some media first.</p>
-    <p v-else-if="typing || pending">hledám ...</p>
+    <p v-else-if="typing || pending">Searching ...</p>
     <div
       v-else-if="media && media.length > 0"
       class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"
