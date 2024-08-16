@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center h-[70vh] px-4">
-    <form action="" method="post" class="relative w-full max-w-lg">
+    <div class="relative w-full max-w-lg">
       <input
         id="search"
         ref="searchInput"
@@ -10,7 +10,6 @@
         placeholder="Search for books, comics, manga..."
         required
         class="w-full py-3 pl-10 pr-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 duration-300 placeholder-gray-400"
-        @focus="isFocused = true"
         @blur="onBlur"
       />
       <label
@@ -22,23 +21,35 @@
           class="text-gray-400 size-5 transition-transform duration-300 hover:scale-110"
         />
       </label>
-    </form>
-    <div class="flex gap-2">
-      <b> Hledaný výraz:</b>
-      <p>{{ search }}</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+const { setSearch, setTyping } = useSearchStore()
 const route = useRoute()
 const router = useRouter()
 
 const slug = ref<string>((route.params.slug as string) || '')
-const search = ref<string>(slug.value)
-const searchInput = ref<HTMLInputElement>()
-const isFocused = ref<boolean>(false)
 
+const searchInput = ref<HTMLInputElement>()
+const search = ref<string>(slug.value)
+if (search.value) setSearch(search.value)
+
+// watch typing start
+watch(search, () => setTyping(true))
+
+// set search to store
+debouncedWatch(
+  search,
+  () => {
+    setSearch(search.value)
+    setTyping(false)
+  },
+  { debounce: 1000 },
+)
+
+// (unnecessarry) keep slug up to date with search
 watch(
   () => route.params.slug,
   (newSlug) => {
@@ -47,19 +58,14 @@ watch(
   },
 )
 
-function onBlur() {
-  isFocused.value = false
-  nextTick(() => {
-    if (search.value.length === 0) return navigateTo('/')
-    router.replace({
-      path: `/browse/${encodeURIComponent(search.value)}`,
-    })
+// replace route on blur
+const onBlur = () => {
+  if (search.value.length === 0) return navigateTo('/')
+
+  router.replace({
+    path: `/browse/${encodeURIComponent(search.value)}`,
   })
 }
-
-watch(isFocused, (focused) => {
-  if (focused) nextTick(() => searchInput.value?.focus())
-})
 </script>
 
 <style scoped></style>
