@@ -1,18 +1,9 @@
 <template>
   <VueFrag>
-    <MediaCard
-      :meta="{
-        id: 1,
-        author: 'asdasda',
-        title: 'asdad',
-        image: 'asdasd',
-        type: 'book',
-        year: 2024,
-      }"
-    />
+    <SearchResult />
   </VueFrag>
 </template>
 
 <script lang="ts" setup></script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

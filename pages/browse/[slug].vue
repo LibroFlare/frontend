@@ -1,12 +1,9 @@
 <template>
   <VueFrag>
-    <p v-if="typing">hledám ...</p>
-    <p v-else>Hledaný výraz: {{ search }}</p>
+    <SearchResult />
   </VueFrag>
 </template>
 
-<script lang="ts" setup>
-const { search, typing } = toRefs(useSearchStore())
-</script>
+<script lang="ts" setup></script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped></style>

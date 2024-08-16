@@ -20,7 +20,7 @@ interface Search {
 }
 
 export const searchMedia = async (query: string) => {
-  const { data, status } = await useFetch<Search>('/search.json', {
+  const { data } = await useFetch<Search>('/search.json', {
     baseURL: url,
     query: {
       q: query,
@@ -29,19 +29,16 @@ export const searchMedia = async (query: string) => {
     },
   })
 
-  return {
-    status: status.value,
-    data: data.value?.docs.map((media) => {
-      return {
-        id: 1,
-        author: media.author_name[0],
-        title: media.title,
-        type: 'book',
-        year: media.first_publish_year,
-        image: getCoverUrl(media.cover_i),
-      } as MediaMeta
-    }),
-  }
+  return data.value?.docs.map((media) => {
+    return {
+      id: 1,
+      author: media.author_name[0],
+      title: media.title,
+      type: 'book',
+      year: media.first_publish_year,
+      image: getCoverUrl(media.cover_i),
+    } as MediaMeta
+  })
 }
 
 const getCoverUrl = (id: number, size: 'S' | 'M' | 'L' = 'M') => {
