@@ -14,3 +14,9 @@ export interface MediaMeta {
   images?: string
   description?: string
 }
+
+export interface OptionItem {
+  id: string
+  name: string
+  icon?: string
+}
