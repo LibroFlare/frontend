@@ -1,5 +1,5 @@
 <template>
-  <div class="container -8 px-4">
+  <div class="cont -8 px-4">
     <div class="flex flex-col lg:flex-row items-start gap-8">
       <NuxtImg
         :src="cover"

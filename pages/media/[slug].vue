@@ -11,7 +11,9 @@ import { searchMedia } from '~/providers/openlibrary'
 const route = useRoute()
 const { slug } = route.params as { slug: string }
 
-const media = (await searchMedia(slug, 1))[0]
+const media = ref()
+const data = await searchMedia(slug, 1)
+media.value = data && data.length > 0 ? data[0] : null
 </script>
 
 <style lang="scss" scoped></style>

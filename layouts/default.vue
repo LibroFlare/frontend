@@ -14,13 +14,7 @@
 
     <ButtonBackToTop />
     <AppHeader />
-    <main
-      class="container mx-auto relative w-full flex flex-col items-center gap-8 pt-20"
-    >
-      <section id="welcome">
-        <h1>Welcome to {{ $t('global.name') }}</h1>
-        <SearchBar class="w-full" />
-      </section>
+    <main class="cont relative w-full flex flex-col items-center gap-8 pt-20">
       <slot />
     </main>
     <AppFooter />

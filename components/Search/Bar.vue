@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center px-4">
-    <div class="relative w-full max-w-lg">
+    <div class="relative w-full">
       <input
         id="search"
         ref="searchInput"

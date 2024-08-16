@@ -1,6 +1,6 @@
 <template>
   <VueFrag>
-    <SearchResult />
+    <SearchSection />
   </VueFrag>
 </template>
 

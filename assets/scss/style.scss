@@ -118,3 +118,25 @@ sup {
 img {
   user-select: none;
 }
+
+/* --- Additional styles --- */
+.cont {
+  @apply relative lg:w-4/5 md:w-11/12 xs:w-[95%] w-[98%] mx-auto;
+  @apply lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl;
+
+  &.cont-2 {
+    @apply flex max-md:flex-col items-center justify-between md:gap-8 gap-16;
+
+    p a {
+      @apply font-bold underline text-primary-200 hover:text-primary-100 transition-colors;
+    }
+
+    >.cont-2-1 {
+      @apply md:w-3/5 w-full flex flex-col md:items-start items-center max-md:text-center max-md:px-2;
+    }
+
+    >.cont-2-2 {
+      @apply md:w-2/5 w-full flex items-center justify-center;
+    }
+  }
+}

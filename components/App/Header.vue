@@ -2,7 +2,7 @@
   <header
     class="fixed top-0 w-full py-4 text-white backdrop-blur-md shadow-lg z-50"
   >
-    <nav class="container mx-auto flex items-center justify-between px-6">
+    <nav class="cont flex items-center justify-between px-6">
       <ul class="flex-1 flex justify-around items-center gap-4 relative">
         <li
           v-for="(link, key) in links.slice(0, links.length / 2)"
