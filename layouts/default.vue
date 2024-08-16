@@ -14,12 +14,14 @@
 
     <ButtonBackToTop />
     <AppHeader />
+    <SearchBar />
     <slot />
     <AppFooter />
   </VueFrag>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+</script>
 
 <style lang="scss">
 .anim-float {
