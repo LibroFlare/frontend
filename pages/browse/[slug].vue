@@ -1,7 +1,7 @@
 <template>
   <VueFrag>
-    <p v-if="typing">hledám ...</p>
-    <p v-else>Hledaný výraz: {{ search }}</p>
+    <p v-if="typing">Searching ...</p>
+    <p v-else>Found results: {{ search }}</p>
   </VueFrag>
 </template>
 

@@ -11,12 +11,16 @@
         >
           <MenuLink :link="link" :scale="true" />
         </li>
-        <li>
+        <li class="relative flex justify-center items-center">
           <NuxtLink
             href="/"
             class="text-2xl font-bold hover:text-gray-300 transition-colors"
           >
-            {{ $t('global.name') }}
+            <img
+              src="/img/logo.png"
+              alt="Site Logo"
+              class="h-20 w-auto -bottom-4 transform hover:scale-110 transition-transform duration-300 z-10"
+            />
           </NuxtLink>
         </li>
         <li
@@ -75,4 +79,5 @@ const links: MenuLink[] = [
 ]
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
