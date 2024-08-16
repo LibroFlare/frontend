@@ -1,13 +1,15 @@
 <template>
   <VueFrag>
-    <MediaCard
+    <MediaInfo
       :meta="{
         id: 1,
         author: 'asdasda',
         title: 'asdad',
-        image: 'asdasd',
-        type: 'book',
+        mainImage: 'asdasd',
+        images: 'asdasd',
+        type: 'audiobook',
         year: 2024,
+        description: 'aaa'
       }"
     />
   </VueFrag>

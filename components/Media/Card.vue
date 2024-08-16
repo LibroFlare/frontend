@@ -4,7 +4,7 @@
   >
     <NuxtLink :to="`/book/${id}`" class="flex items-center gap-4">
       <img
-        :src="image"
+        :src="mainImage"
         alt="Book cover"
         class="w-16 h-24 object-cover rounded-md"
       />
@@ -22,7 +22,7 @@
 import type { MediaMeta } from '~/types';
 
 const props = defineProps<{ meta: MediaMeta }>();
-const {author, image, title, type, year, id} = props.meta
+const {author, mainImage, title, type, year, id} = props.meta
 
 </script>
 

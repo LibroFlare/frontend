@@ -9,5 +9,7 @@ export interface MediaMeta {
   author: string
   type: "book" | "audiobook" | "comics" | "manga"
   year: number
-  image: string
+  mainImage: string
+  images: string
+  description: string
 }
