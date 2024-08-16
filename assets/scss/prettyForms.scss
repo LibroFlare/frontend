@@ -1,0 +1,172 @@
+/* --- PRETTY FORMS by @germondai --- */
+.form {
+    @apply relative flex;
+
+    .form-title {
+        @apply flex items-center justify-center text-center;
+    }
+
+    .form-btn {
+        @apply flex items-center justify-center px-4 py-2 rounded-lg shdw;
+    }
+
+    .multi:has(.field) {
+        @apply flex flex-col items-center p-0.5 rounded-lg text-center shdw;
+    }
+
+    .field {
+        @apply relative w-full flex items-center gap-2;
+
+        &:has(input[type='checkbox']),
+        &:has(input[type='radio']) {
+            @apply flex items-center justify-around gap-2;
+
+            .box {
+                @apply flex flex-col items-center justify-center;
+            }
+
+            label {
+                @apply relative order-first w-auto transform-none pointer-events-auto;
+            }
+
+            &:not(:has(.box)) label {
+                @apply opacity-100 text-base;
+            }
+        }
+
+        &:has(textarea),
+        &:has(select) {
+            @apply mb-0;
+
+            textarea,
+            select {
+
+                &:focus~label,
+                &:not(:placeholder-shown)~label {
+                    @apply top-3;
+                }
+            }
+
+            label {
+                @apply top-[22px];
+            }
+        }
+
+        label {
+            transition:
+                font-size 0.3s,
+                top 0.3s;
+            @apply absolute top-1/2 -translate-y-[50%] left-4 pr-2.5 w-[calc(100%-0.5rem)] inline-block truncate leading-none pointer-events-none;
+        }
+
+        &.large {
+
+            input:not([type='submit']),
+            select,
+            textarea {
+                @apply min-h-12;
+            }
+        }
+    }
+
+    input,
+    textarea,
+    select {
+        @apply m-px;
+
+        &:not([type='submit']) {
+            transition: padding-top 0.3s;
+            @apply relative w-full min-h-11 p-4 px-2 pb-0.5 rounded-lg;
+        }
+
+        &:not([type='submit']):not([type='radio']):not([type='checkbox']) {
+            @apply shdw;
+
+            &:focus {
+                @apply outline-[0.5px] outline outline-black;
+
+                @media (prefers-color-scheme: dark) {
+                    @apply outline-white;
+                }
+            }
+        }
+
+        &:is([type='file']) {
+            @apply cursor-pointer leading-loose pr-44;
+
+            &::-webkit-file-upload-button,
+            &::file-selector-button {
+                @apply absolute w-40 h-full left-full top-1/2 p-2 -translate-y-[50%] -translate-x-[100%] outline-none border-none cursor-pointer;
+            }
+
+            // hover has to be splitted and put only on webkit version otherwise it doesn't work
+            &::-webkit-file-upload-button:hover {
+                @apply opacity-90 backdrop-blur;
+            }
+
+            &:is(.btn-hide) {
+                @apply pr-2;
+
+                &::-webkit-file-upload-button,
+                &::file-selector-button {
+                    @apply hidden invisible appearance-none pointer-events-none;
+                }
+            }
+        }
+
+        &:required~label {
+            @apply flex items-center before:content-['*'] before:text-red-600 before:ml-1 before:mt-0.5 before:order-2 before:text-xl before:leading-none;
+        }
+
+        &::placeholder {
+            @apply text-transparent opacity-0;
+        }
+
+        &:focus~label,
+        &:not(:placeholder-shown)~label {
+            @apply text-xs top-1/4 left-2 opacity-60;
+        }
+
+        // ? icon/emoji/text at end of input
+        //&.input-icon { @apply pr-12; &::before { @apply absolute top-1/2 right-4 -translate-y-[50%] text-3xl; } }
+
+        // ? accent color
+        // &:is([type='radio']), &:is([type='checkbox']) { accent-color: default; }
+    }
+
+    input,
+    button {
+        &[type='number'] {
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                appearance: none;
+            }
+        }
+
+        &[type='checkbox'],
+        &[type='radio'] {
+            @apply min-w-8 w-8 aspect-square outline-none;
+        }
+    }
+
+    textarea {
+        @apply resize-y pt-[18px] h-[164px] max-h-[40vh] max-xl:max-h-[30vh];
+    }
+
+    span[role='alert'] {
+        @apply text-red-600;
+    }
+
+    &.form-overflow {
+
+        input,
+        button,
+        select,
+        textarea,
+        .multi,
+        .field {
+            @apply overflow-hidden;
+        }
+    }
+}
