@@ -1,9 +1,7 @@
 <template>
   <VueFrag>
     {{ search }}
-    <p v-if="!search">
-      tady pak budou třeba bookmarks atd. když uživatel nebude zrovna nic hledat
-    </p>
+    <p v-if="!search">`(-:-_-:-)~ &nbsp; \{˘°°˘}˛</p>
     <p v-else-if="typing || pending">{{ $t('home.search.loading') }}</p>
     <template v-else-if="media && media.length > 0">
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
