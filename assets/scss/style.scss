@@ -1,3 +1,4 @@
+@use '@/assets/scss/_variables.scss' as *;
 @use '@/assets/scss/_animations.scss' as *;
 @use '@/assets/scss/prettyForms.scss' as *;
 
@@ -28,8 +29,8 @@
 }
 
 html {
-  @apply bg-gray-900;
-  color: #ffffff;
+  background: $base-background;
+  color: $text-color;
   margin: 0;
   padding: 0;
 }
@@ -44,18 +45,17 @@ body,
 #__nuxt,
 #app {
   overflow-x: hidden;
-  // height: -webkit-fill-available;
+  height: -webkit-fill-available;
 }
 
-// ! had to comment them so '#' links works
-// #app {
-//   display: flex;
-//   flex-direction: column;
-// }
+#__nuxt,
+#app {
+  @apply flex flex-col min-h-screen
+}
 
-// main {
-//   flex-grow: 1;
-// }
+main {
+  @apply flex-grow;
+}
 
 label,
 a,
@@ -67,23 +67,39 @@ h3,
 h4,
 h5 {
   text-decoration: none;
-  color: #ffffff;
+  color: $text-color;
 }
 
 h1 {
+  font-size: $fontSize-h1;
   font-weight: 800;
 }
 
 h2 {
+  font-size: $fontSize-h2;
   font-weight: 700;
 }
 
 h3 {
+  font-size: $fontSize-h3;
   font-weight: 700;
 }
 
 h4 {
+  font-size: $fontSize-h4;
   font-weight: 600;
+}
+
+b {
+  font-size: $fontSize-b;
+}
+
+p {
+  font-size: $fontSize-p;
+}
+
+a {
+  font-size: $fontSize-a;
 }
 
 sub,
