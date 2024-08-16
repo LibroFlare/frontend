@@ -1,0 +1,11 @@
+{
+    "global": {
+        "name": "LibroFlare",
+        "pages": {
+            "library": "Knihovna",
+            "wishlist": "Seznam přání",
+            "account": "Účet",
+            "reading": "Pokračovat ve čtení"
+        }
+    }
+}

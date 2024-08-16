@@ -94,9 +94,16 @@ export default defineNuxtConfig({
       {
         icon: 'twemoji:flag-united-kingdom',
         code: 'en',
-        iso: 'en',
+        language: 'en',
         name: 'English',
         files: ['en.json', 'common.json'],
+      },
+      {
+        icon: 'twemoji:flag-czechia',
+        code: 'cs',
+        language: 'cs',
+        name: 'Czech',
+        files: ['cs.json', 'en.json', 'common.json'],
       },
     ],
     defaultLocale: 'en',
