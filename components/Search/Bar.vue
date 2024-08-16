@@ -38,12 +38,16 @@ const search = ref<string>(slug.value)
 if (search.value) setSearch(search.value)
 
 // watch typing
-watch(search, () => {
-  if (search.value.length > 0) return setTyping(true)
+watch(
+  search,
+  () => {
+    if (search.value.length > 0) return setTyping(true)
 
-  setSearch('')
-  setTyping(false)
-})
+    setSearch('')
+    setTyping(false)
+  },
+  { immediate: true },
+)
 
 // set search to store
 debouncedWatch(
@@ -53,15 +57,6 @@ debouncedWatch(
     setTyping(false)
   },
   { debounce: 1000 },
-)
-
-// (unnecessarry) keep slug up to date with search
-watch(
-  () => route.params.slug,
-  (newSlug) => {
-    slug.value = newSlug as string
-    search.value = slug.value
-  },
 )
 
 // replace route on blur
