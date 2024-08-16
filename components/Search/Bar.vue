@@ -27,6 +27,7 @@
 
 <script setup lang="ts">
 const { setSearch, setTyping } = useSearchStore()
+const { search: storedSearch } = toRefs(useSearchStore())
 const route = useRoute()
 const router = useRouter()
 
@@ -36,14 +37,19 @@ const searchInput = ref<HTMLInputElement>()
 const search = ref<string>(slug.value)
 if (search.value) setSearch(search.value)
 
-// watch typing start
-watch(search, () => setTyping(true))
+// watch typing
+watch(search, () => {
+  if (search.value.length > 0) return setTyping(true)
+
+  setSearch('')
+  setTyping(false)
+})
 
 // set search to store
 debouncedWatch(
   search,
   () => {
-    setSearch(search.value)
+    if (search.value !== storedSearch.value) setSearch(search.value)
     setTyping(false)
   },
   { debounce: 1000 },
