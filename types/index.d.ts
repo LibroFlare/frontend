@@ -3,3 +3,11 @@ export interface MenuLink {
   href: string
   icon?: string
 }
+export interface MediaMeta {
+  id: number
+  title: string
+  author: string
+  type: "book" | "audiobook" | "comics" | "manga"
+  year: number
+  image: string
+}
