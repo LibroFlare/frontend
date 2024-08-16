@@ -1,7 +1,7 @@
 <template>
   <div class="relative my-4 max-w-[25rem]">
     <div
-      class="relative w-full rounded-lg bg-gray-800 hover:bg-dropdown-hoverBackground py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none tabbable cursor-pointer"
+      class="relative w-full rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none tabbable cursor-pointer"
       @click="toggleDropdown"
     >
       <span class="flex gap-4 items-center truncate">
@@ -20,14 +20,14 @@
     </div>
     <div
       v-if="isOpen"
-      class="absolute left-0 right-0 top-10 z-[1] mt-4 max-h-60 overflow-auto rounded-md bg-gray-800 py-1 text-white shadow-lg ring-1 ring-black ring-opacity-5 scrollbar-thin scrollbar-track-background-secondary scrollbar-thumb-type-secondary focus:outline-none"
+      class="absolute left-0 right-0 top-10 z-[1] mt-4 max-h-60 overflow-auto rounded-md bg-gray-800 text-white shadow-lg ring-1 ring-black ring-opacity-5 scrollbar-thin scrollbar-track-background-secondary scrollbar-thumb-type-secondary focus:outline-none"
     >
       <div
         v-for="opt in options"
         :key="opt.id"
         :class="{
-          'cursor-pointer flex gap-4 items-center relative select-none py-3 pl-4 pr-4': true,
-          'bg-background-secondaryHover text-type-link': isActive(opt),
+          'cursor-pointer flex gap-4 items-center relative select-none py-3 px-4 hover:bg-gray-700': true,
+          'bg-gray-700/40 text-type-link': isActive(opt),
           'text-white': !isActive(opt),
         }"
         @click="selectOption(opt)"
@@ -62,7 +62,7 @@ const selectOption = (option: OptionItem) => {
   isOpen.value = false
 }
 
-const isActive = (option: OptionItem) => option === props.selectedItem
+const isActive = (option: OptionItem) => option.id === props.selectedItem.id
 </script>
 
 <style lang="scss" scoped></style>
