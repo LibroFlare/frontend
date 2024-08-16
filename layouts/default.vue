@@ -14,14 +14,20 @@
 
     <ButtonBackToTop />
     <AppHeader />
-    <SearchBar />
-    <slot />
+    <main
+      class="container mx-auto relative w-full flex flex-col items-center gap-8 pt-20 overflow-hidden"
+    >
+      <section id="welcome">
+        <h1>Welcome to {{ $t('global.name') }}</h1>
+        <SearchBar class="w-full" />
+      </section>
+      <slot />
+    </main>
     <AppFooter />
   </VueFrag>
 </template>
 
-<script lang="ts" setup>
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss">
 .anim-float {

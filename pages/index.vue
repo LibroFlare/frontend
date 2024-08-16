@@ -1,5 +1,5 @@
 <template>
-  <main class="relative w-full grid place-items-center overflow-hidden">
+  <VueFrag>
     <MediaCard
       :meta="{
         id: 1,
@@ -10,7 +10,7 @@
         year: 2024,
       }"
     />
-  </main>
+  </VueFrag>
 </template>
 
 <script lang="ts" setup></script>

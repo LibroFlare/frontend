@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center justify-center h-[70vh] px-4">
+  <div class="flex flex-col items-center justify-center px-4">
     <div class="relative w-full max-w-lg">
       <input
         id="search"
@@ -14,7 +14,7 @@
       />
       <label
         for="search"
-        class="absolute left-3 top-1/2 transform -translate-y-1/2"
+        class="absolute left-3 top-1/2 -translate-y-1/2 flex items-center justify-center"
       >
         <Icon
           name="feather:search"

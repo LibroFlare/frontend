@@ -1,8 +1,8 @@
 <template>
-  <main class="w-full grid place-items-center">
+  <VueFrag>
     <p v-if="typing">hledám ...</p>
     <p v-else>Hledaný výraz: {{ search }}</p>
-  </main>
+  </VueFrag>
 </template>
 
 <script lang="ts" setup>
