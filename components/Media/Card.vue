@@ -2,7 +2,7 @@
   <div
     class="bg-gray-800 rounded-lg shadow-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer"
   >
-    <NuxtLink class="flex items-center gap-4">
+    <NuxtLink :href="slug" class="flex items-center gap-4">
       <NuxtImg
         :src="cover"
         alt="Book cover"
@@ -22,7 +22,7 @@
 import type { MediaMeta } from '~/types'
 
 const props = defineProps<{ meta: MediaMeta }>()
-const { author, cover, title, type, year } = props.meta
+const { slug, author, cover, title, type, year } = props.meta
 </script>
 
 <style scoped></style>

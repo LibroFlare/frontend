@@ -37,7 +37,7 @@
 import type { MediaMeta } from '~/types'
 
 const props = defineProps<{ meta: MediaMeta }>()
-const { author, cover, title, type, year, id, description } = props.meta
+const { author, cover, title, type, year, description } = props.meta
 </script>
 
 <style scoped></style>

@@ -3,6 +3,7 @@ import type { MediaMeta } from '~/types'
 const url = 'https://openlibrary.org'
 
 interface Doc {
+  key: string
   author_name: string[]
   title: string
   first_publish_year: number
@@ -19,28 +20,34 @@ interface Search {
   offset?: number
 }
 
-export const searchMedia = async (query: string) => {
+const getCoverUrl = (id: number, size: 'S' | 'M' | 'L' = 'M') => {
+  return `https://covers.openlibrary.org/b/id/${id}-${size}.jpg`
+}
+
+export const searchMedia = async (query: string, limit: number = 20) => {
   const { data } = await useFetch<Search>('/search.json', {
     baseURL: url,
     query: {
       q: query,
-      fields: 'title,author_name,first_publish_year,cover_i',
-      limit: 10,
+      fields: 'key,title,author_name,first_publish_year,cover_i',
+      limit,
     },
   })
 
   return data.value?.docs.map((media) => {
+    const id = media.key.includes('/works/')
+      ? media.key.replace('/works/', '')
+      : media.key
+    const title = media.title
+
     return {
-      id: 1,
+      id,
+      title,
+      slug: `/media/${id}-${title}`,
       author: media.author_name[0],
-      title: media.title,
       type: 'book',
       year: media.first_publish_year,
       cover: getCoverUrl(media.cover_i),
     } as MediaMeta
   })
-}
-
-const getCoverUrl = (id: number, size: 'S' | 'M' | 'L' = 'M') => {
-  return `https://covers.openlibrary.org/b/id/${id}-${size}.jpg`
 }

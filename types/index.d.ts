@@ -4,7 +4,8 @@ export interface MenuLink {
   icon?: string
 }
 export interface MediaMeta {
-  id: number
+  id: string
+  slug: string
   title: string
   author: string
   type: 'book' | 'audiobook' | 'comics' | 'manga'
