@@ -36,7 +36,7 @@ export const searchMedia = async (query: string) => {
       title: media.title,
       type: 'book',
       year: media.first_publish_year,
-      image: getCoverUrl(media.cover_i),
+      cover: getCoverUrl(media.cover_i),
     } as MediaMeta
   })
 }

@@ -11,12 +11,16 @@
         >
           <MenuLink :link="link" :scale="true" />
         </li>
-        <li>
+        <li class="relative flex justify-center items-center">
           <NuxtLink
             href="/"
             class="text-2xl font-bold hover:text-gray-300 transition-colors"
           >
-            {{ $t('global.name') }}
+            <NuxtImg
+              src="/logo.png"
+              alt="Site Logo"
+              class="h-8 w-auto -bottom-4 transform scale-125 hover:scale-150 transition-transform duration-300 z-10"
+            />
           </NuxtLink>
         </li>
         <li

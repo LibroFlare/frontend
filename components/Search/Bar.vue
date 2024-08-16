@@ -1,7 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center px-4">
     <div class="relative w-full max-w-lg">
-      {{ search }}
       <input
         id="search"
         ref="searchInput"

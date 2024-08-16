@@ -3,8 +3,8 @@
     class="bg-gray-800 rounded-lg shadow-lg p-4 hover:bg-gray-700 transition-all duration-300 cursor-pointer"
   >
     <NuxtLink class="flex items-center gap-4">
-      <img
-        :src="image"
+      <NuxtImg
+        :src="cover"
         alt="Book cover"
         class="w-16 h-24 object-cover rounded-md"
       />
@@ -22,7 +22,7 @@
 import type { MediaMeta } from '~/types'
 
 const props = defineProps<{ meta: MediaMeta }>()
-const { author, image, title, type, year } = props.meta
+const { author, cover, title, type, year } = props.meta
 </script>
 
 <style scoped></style>
