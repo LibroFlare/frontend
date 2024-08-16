@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen px-4">
+  <div class="flex flex-col items-center justify-center h-[70vh] px-4">
     <form action="" method="post" class="relative w-full max-w-lg">
       <input
         id="search"

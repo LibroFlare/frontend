@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full h-screen grid place-items-center"></main>
+  <main class="w-full grid place-items-center">knihy zde</main>
 </template>
 
 <script lang="ts" setup></script>
