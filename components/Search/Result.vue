@@ -1,7 +1,6 @@
 <template>
   <VueFrag>
-    {{ search }}
-    <p v-if="!search">`(-:-_-:-)~ &nbsp; \{˘°°˘}˛</p>
+    <p v-if="!search && !typing">`(-:-_-:-)~ &nbsp; \{˘°°˘}˛</p>
     <p v-else-if="typing || pending">{{ $t('home.search.loading') }}</p>
     <template v-else-if="media && media.length > 0">
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">

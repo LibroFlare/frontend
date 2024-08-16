@@ -11,6 +11,7 @@
         required
         class="w-full py-3 pl-10 pr-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 duration-300 placeholder-gray-400"
         @blur="onBlur"
+        @input="setTyping(true)"
       />
       <label
         for="search"
@@ -41,7 +42,7 @@ if (search.value) setSearch(search.value)
 watch(
   search,
   () => {
-    if (search.value.length > 0) return setTyping(true)
+    if (search.value.length > 0) return
 
     setSearch('')
     setTyping(false)
