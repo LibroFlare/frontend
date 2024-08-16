@@ -1,14 +1,17 @@
 <template>
   <VueFrag>
-    <p v-if="!search">Search some media first.</p>
-    <p v-else-if="typing || pending">Searching ...</p>
-    <div
-      v-else-if="media && media.length > 0"
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"
-    >
-      <MediaCard v-for="(meta, key) in media" :key="key" :meta="meta" />
-    </div>
-    <p v-else>No results found.</p>
+    {{ search }}
+    <p v-if="!search">
+      tady pak budou třeba bookmarks atd. když uživatel nebude zrovna nic hledat
+    </p>
+    <p v-else-if="typing || pending">{{ $t('home.search.loading') }}</p>
+    <template v-else-if="media && media.length > 0">
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+        <MediaCard v-for="(meta, key) in media" :key="key" :meta="meta" />
+      </div>
+      <p>{{ $t('home.search.allResults') }}</p>
+    </template>
+    <p v-else>{{ $t('home.search.noResults') }}</p>
   </VueFrag>
 </template>
 

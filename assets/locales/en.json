@@ -8,30 +8,30 @@
             "reading": "Continue Reading"
         }
     },
-    "search": {
-        "allResults": "",
-        "failed": "",
-        "loading": "",
-        "noResults": "",
-        "placeholder": "",
-        "sectionTitle": ""
-    },
     "home": {
+        "search": {
+            "allResults": "all results",
+            "failed": "fail",
+            "loading": "loading",
+            "noResults": "no results",
+            "placeholder": "search",
+            "sectionTitle": "Search results"
+        },
         "titles": {
             "day": {
-                "default": "",
+                "default": "What would you like to read today?",
                 "extra": [
                     "..."
                 ]
             },
             "morning": {
-                "default": "",
+                "default": "wwyltrtm?",
                 "extra": [
                     "..."
                 ]
             },
             "night": {
-                "default": "",
+                "default": "wwyltrtn?",
                 "extra": [
                     "..."
                 ]
