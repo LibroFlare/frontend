@@ -1,6 +1,7 @@
 <template>
   <VueFrag>
-    <MediaInfo :meta="media" />
+    <p v-if="!media">Media not found</p>
+    <MediaInfo v-else :meta="media" />
   </VueFrag>
 </template>
 
