@@ -16,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
 import type { MediaMeta } from '~/types'
 
 const { t } = useI18n()
@@ -25,7 +24,7 @@ useSeoMeta({ title: computed(() => t('library.pageTitle')) })
 const books: MediaMeta[] = [
   {
     id: '1',
-    slug: '/library/book-1',
+    slug: '',
     title: 'a',
     author: '1',
     cover: '/logo.png',
@@ -34,7 +33,7 @@ const books: MediaMeta[] = [
   },
   {
     id: '1541515',
-    slug: '/library/book-2',
+    slug: '',
     title: 'aa',
     author: '2',
     cover: '/logo.png',
@@ -43,7 +42,7 @@ const books: MediaMeta[] = [
   },
   {
     id: '1',
-    slug: '/library/book-3',
+    slug: '',
     title: 'aavva',
     author: 'aaa',
     cover: '/logo.png',

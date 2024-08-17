@@ -48,13 +48,12 @@
 </template>
 
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
 import type { MenuLink } from '~/types'
 
 const { t } = useI18n()
 
 const footerLinks: MenuLink[] = [
-  { name: 'footer.links.contacts', href: '/contacts' },
-  { name: 'footer.links.faq', href: '/faq' },
+  { name: 'footer.links.contacts', href: '' },
+  { name: 'footer.links.faq', href: '' },
 ]
 </script>
