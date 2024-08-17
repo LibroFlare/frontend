@@ -1,41 +1,58 @@
 {
-    "global": {
-        "name": "LibroFlare",
-        "pages": {
-            "library": "Knihovna",
-            "wishlist": "Seznam přání",
-            "account": "Účet",
-            "reading": "Pokračovat ve čtení"
-        }
-    },
-    "home": {
-        "search": {
-            "allResults": "To je vše co máme!",
-            "failed": "Nepodařilo se najít média, zkuste to znovu!",
-            "loading": "Načítání...",
-            "noResults": "Nemohli jsme nic najít!",
-            "placeholder": "Co si přejete číst? Knihu, komiks nebo snad mangu?",
-            "sectionTitle": "Výsledky vyhledávání"
-        },
-        "titles": {
-            "day": {
-                "default": "Co byste si dnes odpoledne chtěli přečíst?",
-                "extra": [
-                    "..."
-                ]
-            },
-            "morning": {
-                "default": "Co byste si dnes ráno chtěli přečíst?",
-                "extra": [
-                    "..."
-                ]
-            },
-            "night": {
-                "default": "Co byste si dnes večer chtěli přečíst?",
-                "extra": [
-                    "..."
-                ]
-            }
-        }
+  "global": {
+    "name": "LibroFlare",
+    "pages": {
+      "library": "Knihovna",
+      "wishlist": "Seznam přání",
+      "account": "Účet",
+      "reading": "Pokračovat ve čtení"
     }
+  },
+  "home": {
+    "search": {
+      "allResults": "To je vše co máme!",
+      "failed": "Nepodařilo se najít média, zkuste to znovu!",
+      "loading": "Načítání...",
+      "noResults": "Nemohli jsme nic najít!",
+      "placeholder": "Co si přejete číst? Knihu, komiks nebo snad mangu?",
+      "sectionTitle": "Výsledky vyhledávání"
+    },
+    "titles": {
+      "day": {
+        "default": "Co byste si dnes odpoledne chtěli přečíst?",
+        "extra": ["..."]
+      },
+      "morning": {
+        "default": "Co byste si dnes ráno chtěli přečíst?",
+        "extra": ["..."]
+      },
+      "night": {
+        "default": "Co byste si dnes večer chtěli přečíst?",
+        "extra": ["..."]
+      }
+    }
+  },
+  "header": {
+    "links": {
+      "library": "Knihovna",
+      "wishlist": "Seznam přání",
+      "account": "Účet",
+      "reading": "Pokračovat ve čtení"
+    }
+  },
+  "footer": {
+    "description": "LibroFlare je váš prostor, kde se můžete ztratit v tisících knihách, mangách, komiksech a dalších čtecích materiálech.",
+    "importantLinks": "Důležité odkazy",
+    "links": {
+      "contacts": "Kontakt",
+      "faq": "FAQ"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Nenechte si ujít žádné nové knihy. Přihlaste se k odběru našeho newsletteru a zjistěte, jaké nové knihy jsou k prodeji!",
+      "emailPlaceholder": "Váš email",
+      "subscribeButton": "Přihlásit se"
+    },
+    "copyright": "Všechna práva vyhrazena."
+  }
 }

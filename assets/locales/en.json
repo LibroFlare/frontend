@@ -1,41 +1,58 @@
 {
-    "global": {
-        "name": "LibroFlare",
-        "pages": {
-            "library": "My Library",
-            "wishlist": "Wishlist",
-            "account": "My Account",
-            "reading": "Continue Reading"
-        }
-    },
-    "home": {
-        "search": {
-            "allResults": "all results",
-            "failed": "fail",
-            "loading": "loading",
-            "noResults": "no results",
-            "placeholder": "search",
-            "sectionTitle": "Search results"
-        },
-        "titles": {
-            "day": {
-                "default": "What would you like to read today?",
-                "extra": [
-                    "..."
-                ]
-            },
-            "morning": {
-                "default": "wwyltrtm?",
-                "extra": [
-                    "..."
-                ]
-            },
-            "night": {
-                "default": "wwyltrtn?",
-                "extra": [
-                    "..."
-                ]
-            }
-        }
+  "global": {
+    "name": "LibroFlare",
+    "pages": {
+      "library": "My Library",
+      "wishlist": "Wishlist",
+      "account": "My Account",
+      "reading": "Continue Reading"
     }
+  },
+  "home": {
+    "search": {
+      "allResults": "All results",
+      "failed": "Failed to find media, try again!",
+      "loading": "Loading...",
+      "noResults": "No results found!",
+      "placeholder": "What do you wish to read? A book, comic, or manga?",
+      "sectionTitle": "Search Results"
+    },
+    "titles": {
+      "day": {
+        "default": "What would you like to read this afternoon?",
+        "extra": ["..."]
+      },
+      "morning": {
+        "default": "What would you like to read this morning?",
+        "extra": ["..."]
+      },
+      "night": {
+        "default": "What would you like to read this evening?",
+        "extra": ["..."]
+      }
+    }
+  },
+  "header": {
+    "links": {
+      "library": "My Library",
+      "wishlist": "Wishlist",
+      "account": "My Account",
+      "reading": "Continue Reading"
+    }
+  },
+  "footer": {
+    "description": "LibroFlare is your own space to get lost in thousands of books, manga, comics and other reading materials.",
+    "importantLinks": "Important links",
+    "links": {
+      "contacts": "Contacts",
+      "faq": "FAQ"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Don't let any new books fly past you. Subscribe to our newsletter to discover all sorts of new books on sale!",
+      "emailPlaceholder": "Your email",
+      "subscribeButton": "Subscribe"
+    },
+    "copyright": "All rights reserved."
+  }
 }
