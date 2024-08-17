@@ -49,7 +49,7 @@ body,
 
 #__nuxt,
 #app {
-  @apply flex flex-col min-h-screen
+  @apply flex flex-col min-h-screen;
 }
 
 main {
@@ -131,11 +131,11 @@ img {
       @apply font-bold underline text-primary-200 hover:text-primary-100 transition-colors;
     }
 
-    >.cont-2-1 {
+    > .cont-2-1 {
       @apply md:w-3/5 w-full flex flex-col md:items-start items-center max-md:text-center max-md:px-2;
     }
 
-    >.cont-2-2 {
+    > .cont-2-2 {
       @apply md:w-2/5 w-full flex items-center justify-center;
     }
   }

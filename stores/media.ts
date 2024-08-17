@@ -1,4 +1,4 @@
-import { defineStore,  } from 'pinia'
+import { defineStore } from 'pinia'
 import type { MediaMeta } from '~/types'
 
 export const useMediaStore = defineStore('media', () => {
