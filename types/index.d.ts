@@ -3,6 +3,12 @@ export interface MenuLink {
   href: string
   icon?: string
 }
+export interface AccountButtons {
+  username: string
+  email: string
+  password: string
+  image?: string
+}
 export interface MediaMeta {
   id: string
   slug: string
