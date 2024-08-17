@@ -15,7 +15,7 @@ const items: OptionItem[] = locales.value.map(({ code, name, icon }) => {
   return {
     id: code,
     name: name || code,
-    icon: icon,
+    icon,
   }
 })
 
