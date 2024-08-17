@@ -60,7 +60,7 @@ const menuToggle = ref(false)
 const headerLinks = computed<MenuLink[]>(() => [
   {
     name: t('header.links.library'),
-    href: '/user/library',
+    href: '/library',
     icon: 'streamline:interface-content-book-2-library-content-books-book-shelf-stack',
   },
   {

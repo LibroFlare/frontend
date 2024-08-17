@@ -20,6 +20,7 @@ import { useI18n } from 'vue-i18n'
 import type { MediaMeta } from '~/types'
 
 const { t } = useI18n()
+useSeoMeta({ title: computed(() => t('library.pageTitle')) })
 
 const books: MediaMeta[] = [
   {

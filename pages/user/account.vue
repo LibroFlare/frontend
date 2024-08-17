@@ -36,6 +36,7 @@ import { useI18n } from 'vue-i18n'
 import type { AccountButtons } from '~/types'
 
 const { t } = useI18n()
+useSeoMeta({ title: computed(() => t('account.pageTitle')) })
 
 const buttons: AccountButtons = {
   username: 'ahoj',
