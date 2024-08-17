@@ -32,6 +32,16 @@
       }
     }
   },
+  "account": {
+    "pageTitle": "Můj účet",
+    "email": "Email",
+    "password": "Heslo",
+    "username": "Uživatelské jméno",
+    "saveChanges": "Uložit změny"
+  },
+  "library": {
+    "pageTitle": "Moje knihy"
+  },
   "header": {
     "links": {
       "library": "Knihovna",

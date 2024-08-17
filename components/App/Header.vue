@@ -38,7 +38,7 @@ const { t } = useI18n()
 const menuToggle = ref(false)
 
 const headerLinks: MenuLink[] = [
-  { name: 'header.links.library', href: '/library', icon: 'streamline:interface-content-book-2-library-content-books-book-shelf-stack' },
+  { name: 'header.links.library', href: '/user/library', icon: 'streamline:interface-content-book-2-library-content-books-book-shelf-stack' },
   { name: 'header.links.wishlist', href: '/wishlist', icon: 'mdi:book-heart-outline' },
   { name: 'header.links.account', href: '/user/account', icon: 'material-symbols:account-circle-full' },
   { name: 'header.links.reading', href: '/reading', icon: 'mdi:book-open-page-variant-outline' }

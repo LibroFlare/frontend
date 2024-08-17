@@ -32,6 +32,16 @@
       }
     }
   },
+  "account": {
+    "pageTitle": "My Account",
+    "email": "Email",
+    "password": "Password",
+    "username": "Username",
+    "saveChanges": "Save Changes"
+  },
+  "library": {
+    "pageTitle": "My Books"
+  },
   "header": {
     "links": {
       "library": "My Library",
