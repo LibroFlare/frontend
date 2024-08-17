@@ -9,6 +9,7 @@
         type="text"
         :placeholder="$t('home.search.placeholder')"
         required
+        autocomplete="off"
         class="w-full py-3 pl-10 pr-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 duration-300 placeholder-gray-400"
         @blur="onBlur"
         @input="setTyping(true)"
