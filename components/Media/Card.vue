@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :href="slug"
-    class="relative h-fit flex flex-col gap-2 bg-gray-800 rounded-lg shadow-lg p-2 hover:bg-gray-700 transition-all duration-300"
+    class="relative h-fit flex flex-col gap-2 bg-gray-800 rounded-lg shadow-lg p-4 hover:bg-gray-700 transition-all duration-300"
   >
     <div class="absolute top-2 right-2 cursor-pointer" @click.stop="toggle">
       <Icon
