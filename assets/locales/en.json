@@ -3,7 +3,7 @@
     "name": "LibroFlare",
     "pages": {
       "library": "My Library",
-      "wishlist": "Wishlist",
+      "favorites": "Favorites",
       "account": "My Account",
       "reading": "Continue Reading"
     }
@@ -45,7 +45,7 @@
   "header": {
     "links": {
       "library": "My Library",
-      "wishlist": "Wishlist",
+      "favorites": "Favorites",
       "account": "My Account",
       "reading": "Continue Reading"
     }

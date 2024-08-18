@@ -3,7 +3,7 @@
     "name": "LibroFlare",
     "pages": {
       "library": "Knihovna",
-      "wishlist": "Seznam přání",
+      "favorites": "Oblíbené",
       "account": "Účet",
       "reading": "Pokračovat ve čtení"
     }
@@ -45,7 +45,7 @@
   "header": {
     "links": {
       "library": "Knihovna",
-      "wishlist": "Seznam přání",
+      "favorites": "Oblíbené",
       "account": "Účet",
       "reading": "Pokračovat ve čtení"
     }

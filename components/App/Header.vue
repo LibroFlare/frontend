@@ -63,8 +63,8 @@ const headerLinks = computed<MenuLink[]>(() => [
     icon: 'streamline:interface-content-book-2-library-content-books-book-shelf-stack',
   },
   {
-    name: t('header.links.wishlist'),
-    href: '/wishlist',
+    name: t('header.links.favorites'),
+    href: '/favorites',
     icon: 'mdi:book-heart-outline',
   },
   {
