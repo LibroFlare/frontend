@@ -56,9 +56,6 @@ const { t } = useI18n()
 
 const menuToggle = ref(false)
 
-// bookmarks: 'mdi:book-heart-outline',
-// continue reading: 'mdi:book-open-page-variant-outline',
-
 const headerLinks = computed<MenuLink[]>(() => [
   {
     name: t('global.pages.discover'),

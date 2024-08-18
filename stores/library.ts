@@ -19,5 +19,10 @@ export const useLibraryStore = defineStore('library', () => {
   // continue reading ...
   const readings = ref<MediaMeta[]>([])
 
-  return { bookmarks, isBookmarked, toggleBookmark }
+  return {
+    bookmarks,
+    isBookmarked,
+    toggleBookmark,
+    readings,
+  }
 })
