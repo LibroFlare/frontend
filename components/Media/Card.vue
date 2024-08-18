@@ -1,16 +1,20 @@
 <template>
   <NuxtLink
     :href="slug"
-    class="relative h-fit flex flex-col gap-2 bg-gray-800 rounded-lg shadow-lg p-4 hover:bg-gray-700 transition-all duration-300"
+    class="group relative h-fit flex flex-col gap-2 rounded-lg hover:shadow-lg p-4 hover:bg-gray-700/40 transition-all duration-300"
   >
-    <MediaFavoriteButton
+    <MediaBookmarkButton
       :meta="meta"
-      class="absolute top-2 right-2 cursor-pointer"
+      class="absolute top-2 right-2 cursor-pointer z-[1]"
     />
     <div
       class="w-full flex items-center justify-center aspect-[2/3] rounded-md overflow-hidden"
     >
-      <NuxtImg :src="cover" alt="Book cover" class="w-full" />
+      <NuxtImg
+        :src="cover"
+        alt="Book cover"
+        class="min-h-full group-hover:scale-105 transition-transform"
+      />
     </div>
 
     <div class="flex flex-col items-start text-start gap-1">
