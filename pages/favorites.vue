@@ -26,7 +26,7 @@ const { t } = useI18n()
 
 useSeoMeta({ title: computed(() => t('global.pages.favorites')) })
 
-const { favorites } = toRefs(useFavoritesStore())
+const { favorites } = toRefs(useLibraryStore())
 </script>
 
 <style lang="scss" scoped></style>

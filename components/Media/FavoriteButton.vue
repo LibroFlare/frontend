@@ -1,5 +1,5 @@
 <template>
-  <button @click.stop="toggle">
+  <button @click.prevent="toggle">
     <Icon
       :name="isFav ? 'zondicons:bookmark' : 'zondicons:bookmark-outline-add'"
       class="text-2xl transition-colors"
@@ -14,7 +14,7 @@ import type { MediaMeta } from '~/types'
 const { meta } = defineProps<{ meta: MediaMeta }>()
 const emits = defineEmits<{ isFavorite: [boolean] }>()
 
-const { isFavorite, toggleFavorite } = useFavoritesStore()
+const { isFavorite, toggleFavorite } = useLibraryStore()
 
 const isFav = computed(() => isFavorite(meta.id))
 watchEffect(() => emits('isFavorite', isFav.value))

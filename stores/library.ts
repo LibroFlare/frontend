@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia'
 import type { MediaMeta } from '~/types'
 
-export const useFavoritesStore = defineStore('favorites', () => {
+export const useLibraryStore = defineStore('favorites', () => {
+  // favorites
   const favorites = ref<MediaMeta[]>([])
 
   const isFavorite = (id: MediaMeta['id']) =>
@@ -14,6 +15,9 @@ export const useFavoritesStore = defineStore('favorites', () => {
       favorites.value.splice(index, 1)
     } else favorites.value.push(media)
   }
+
+  // continue reading ...
+  const readings = ref<MediaMeta[]>([])
 
   return { favorites, isFavorite, toggleFavorite }
 })

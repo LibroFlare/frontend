@@ -1,55 +1,29 @@
 <template>
-  <div
-    class="min-h-screen bg-transparent text-white flex flex-col items-center py-8"
-  >
-    <div class="w-full max-w-7xl mx-auto px-4">
-      <h1 class="text-4xl font-bold mb-8 text-center">
-        {{ t('library.pageTitle') }}
-      </h1>
-      <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12"
-      >
-        <MediaCard v-for="(book, index) in books" :key="index" :meta="book" />
-      </div>
+  <VueFrag>
+    <h1 class="text-3xl font-bold mb-8">
+      {{ t('global.pages.library') }}
+    </h1>
+    <div
+      v-if="favorites.length === 0"
+      class="w-full flex flex-col items-center gap-4"
+    >
+      <h1>No media found...</h1>
+      <ButtonLink href="/" class="lg:w-1/5">Browse</ButtonLink>
     </div>
-  </div>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+    >
+      <MediaCard v-for="media in favorites" :key="media.id" :meta="media" />
+    </div>
+  </VueFrag>
 </template>
 
-<script setup lang="ts">
-import type { MediaMeta } from '~/types'
-
+<script lang="ts" setup>
 const { t } = useI18n()
-useSeoMeta({ title: computed(() => t('library.pageTitle')) })
 
-const books: MediaMeta[] = [
-  {
-    id: '1',
-    slug: '',
-    title: 'a',
-    author: '1',
-    cover: '/logo.png',
-    type: 'audiobook',
-    year: 2022,
-  },
-  {
-    id: '2',
-    slug: '',
-    title: 'aa',
-    author: '2',
-    cover: '/logo.png',
-    type: 'book',
-    year: 2022,
-  },
-  {
-    id: '3',
-    slug: '',
-    title: 'aavva',
-    author: 'aaa',
-    cover: '/logo.png',
-    type: 'comics',
-    year: 2022,
-  },
-]
+useSeoMeta({ title: computed(() => t('global.pages.library')) })
+
+const { favorites } = toRefs(useLibraryStore())
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped></style>
