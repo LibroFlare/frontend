@@ -2,10 +2,10 @@
   "global": {
     "name": "LibroFlare",
     "pages": {
+      "discover": "Discover",
       "library": "My Library",
-      "favorites": "Favorites",
       "account": "My Account",
-      "reading": "Continue Reading"
+      "settings": "Settings"
     }
   },
   "home": {
@@ -41,14 +41,6 @@
   },
   "library": {
     "pageTitle": "My Books"
-  },
-  "header": {
-    "links": {
-      "library": "My Library",
-      "favorites": "Favorites",
-      "account": "My Account",
-      "reading": "Continue Reading"
-    }
   },
   "footer": {
     "description": "LibroFlare is your own space to get lost in thousands of books, manga, comics and other reading materials.",

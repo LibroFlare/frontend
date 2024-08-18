@@ -42,14 +42,6 @@
   "library": {
     "pageTitle": "Moje knihy"
   },
-  "header": {
-    "links": {
-      "library": "Knihovna",
-      "favorites": "Oblíbené",
-      "account": "Účet",
-      "reading": "Pokračovat ve čtení"
-    }
-  },
   "footer": {
     "description": "LibroFlare je váš prostor, kde se můžete ztratit v tisících knihách, mangách, komiksech a dalších čtecích materiálech.",
     "importantLinks": "Důležité odkazy",

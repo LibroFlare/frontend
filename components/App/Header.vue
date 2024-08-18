@@ -56,26 +56,29 @@ const { t } = useI18n()
 
 const menuToggle = ref(false)
 
+// bookmarks: 'mdi:book-heart-outline',
+// continue reading: 'mdi:book-open-page-variant-outline',
+
 const headerLinks = computed<MenuLink[]>(() => [
   {
-    name: t('header.links.library'),
+    name: t('global.pages.discover'),
+    href: '/discover',
+    icon: 'iconamoon:discover-bold',
+  },
+  {
+    name: t('global.pages.library'),
     href: '/library',
     icon: 'streamline:interface-content-book-2-library-content-books-book-shelf-stack',
   },
   {
-    name: t('header.links.favorites'),
-    href: '/favorites',
-    icon: 'mdi:book-heart-outline',
-  },
-  {
-    name: t('header.links.account'),
+    name: t('global.pages.account'),
     href: '/user/account',
     icon: 'material-symbols:account-circle-full',
   },
   {
-    name: t('header.links.reading'),
-    href: '/reading',
-    icon: 'mdi:book-open-page-variant-outline',
+    name: t('global.pages.settings'),
+    href: '/settings',
+    icon: 'material-symbols:settings',
   },
 ])
 </script>
