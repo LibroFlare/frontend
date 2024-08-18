@@ -3,18 +3,10 @@
     :href="slug"
     class="relative h-fit flex flex-col gap-2 bg-gray-800 rounded-lg shadow-lg p-4 hover:bg-gray-700 transition-all duration-300"
   >
-    <div class="absolute top-2 right-2 cursor-pointer" @click.stop="toggle">
-      <Icon
-        :name="isFav ? 'zondicons:bookmark' : 'zondicons:bookmark-outline-add'"
-        class="text-2xl"
-        :class="
-          isFav
-            ? 'text-yellow-400'
-            : 'text-gray-400 hover:text-yellow-400 transition-all duration-200'
-        "
-      />
-    </div>
-
+    <MediaFavoriteButton
+      :meta="meta"
+      class="absolute top-2 right-2 cursor-pointer"
+    />
     <div
       class="w-full flex items-center justify-center aspect-[2/3] rounded-md overflow-hidden"
     >
@@ -42,11 +34,6 @@ import type { MediaMeta } from '~/types'
 
 const { meta } = defineProps<{ meta: MediaMeta }>()
 const { slug, author, cover, title, type, year } = meta
-
-const { isFavorite, toggleFavorite } = useFavoritesStore()
-
-const isFav = computed(() => isFavorite(meta.id))
-const toggle = () => toggleFavorite(meta)
 </script>
 
 <style scoped></style>
