@@ -1,13 +1,23 @@
 <template>
   <NuxtLink
     :href="slug"
-    class="h-fit flex flex-col gap-2 bg-gray-800 rounded-lg shadow-lg p-2 hover:bg-gray-700 transition-all duration-300"
+    class="relative h-fit flex flex-col gap-2 bg-gray-800 rounded-lg shadow-lg p-2 hover:bg-gray-700 transition-all duration-300"
   >
+    <div class="absolute top-2 right-2">
+      <NuxtLink class="cursor-pointer">
+        <Icon
+          name="zondicons:bookmark-outline-add"
+          class="text-2xl text-gray-400 hover:text-yellow-400 transition-all duration-200"
+        />
+      </NuxtLink>
+    </div>
+
     <div
       class="w-full flex items-center justify-center aspect-[2/3] rounded-md overflow-hidden"
     >
       <NuxtImg :src="cover" alt="Book cover" class="w-full" />
     </div>
+
     <div class="flex flex-col items-start text-start gap-1">
       <b
         class="text-lg font-semibold text-white leading-tight line-clamp-3 text-ellipsis break-words"
