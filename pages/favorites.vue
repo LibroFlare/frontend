@@ -28,9 +28,9 @@
           </b>
           <p class="text-sm text-gray-400">{{ book.author }}</p>
           <p class="flex gap-1.5">
-            <span class="text-xs text-gray-500 capitalize">{{
-              book.type
-            }}</span>
+            <span class="text-xs text-gray-500 capitalize">
+              {{ book.type }}
+            </span>
             <span class="text-xs text-gray-500 capitalize">●</span>
             <span class="text-xs text-gray-500">{{ book.year }}</span>
           </p>
@@ -41,13 +41,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useFavoritesStore } from '~/stores/favorites'
 const { t } = useI18n()
 
 useSeoMeta({ title: computed(() => t('global.pages.favorites')) })
 
-const favoritesStore = useFavoritesStore()
-const favorites = computed(() => favoritesStore.favorites)
+const { favorites } = toRefs(useFavoritesStore())
 </script>
 
 <style lang="scss" scoped></style>
