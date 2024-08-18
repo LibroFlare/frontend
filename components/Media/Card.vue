@@ -23,7 +23,11 @@
       >
         {{ title }}
       </b>
-      <p class="text-sm text-gray-400">{{ author }}</p>
+      <p
+        class="text-sm text-gray-400 leading-tight line-clamp-2 text-ellipsis break-words"
+      >
+        {{ author }}
+      </p>
       <p class="flex gap-1.5">
         <span class="text-xs text-gray-500 capitalize">{{ type }}</span>
         <span class="text-xs text-gray-500 capitalize">●</span>

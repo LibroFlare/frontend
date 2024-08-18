@@ -45,10 +45,12 @@ const formatMedia = (media: Doc[]) => {
       id,
       title,
       slug: `/media/${id}-${title}`,
-      author: media.author_name[0],
+      author: media.author_name?.[0] || 'unknown',
       type: 'book',
       year: media.first_publish_year,
-      cover: getCoverUrl(media.cover_i),
+      cover: media.cover_i
+        ? getCoverUrl(media.cover_i)
+        : '/cover_not_available.webp',
     } as MediaMeta
   })
 }
