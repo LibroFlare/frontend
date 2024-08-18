@@ -1,7 +1,13 @@
 <template>
   <VueFrag>
     <p v-if="!search && !typing">ahojky &nbsp;</p>
-    <p v-else-if="typing || pending">{{ $t('home.search.loading') }}</p>
+    <div
+      v-else-if="typing || pending"
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"
+    >
+      <MediaCardSkeleton v-for="i in 4" :key="i" />
+      <!-- {{ $t('home.search.loading') }} -->
+    </div>
     <template v-else-if="media && media.length > 0">
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
         <MediaCard v-for="(meta, key) in media" :key="key" :meta="meta" />
