@@ -4,7 +4,7 @@
       {{ t('global.pages.library') }}
     </h1>
     <div
-      v-if="favorites.length === 0"
+      v-if="bookmarks.length === 0"
       class="w-full flex flex-col items-center gap-4"
     >
       <h1>No media found...</h1>
@@ -13,7 +13,7 @@
     <div
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
     >
-      <MediaCard v-for="media in favorites" :key="media.id" :meta="media" />
+      <MediaCard v-for="media in bookmarks" :key="media.id" :meta="media" />
     </div>
   </VueFrag>
 </template>
@@ -23,7 +23,7 @@ const { t } = useI18n()
 
 useSeoMeta({ title: computed(() => t('global.pages.library')) })
 
-const { favorites } = toRefs(useLibraryStore())
+const { bookmarks } = toRefs(useLibraryStore())
 </script>
 
 <style lang="scss" scoped></style>

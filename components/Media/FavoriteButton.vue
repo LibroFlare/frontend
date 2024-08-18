@@ -1,9 +1,11 @@
 <template>
   <button @click.prevent="toggle">
     <Icon
-      :name="isFav ? 'zondicons:bookmark' : 'zondicons:bookmark-outline-add'"
+      :name="isMarked ? 'zondicons:bookmark' : 'zondicons:bookmark-outline-add'"
       class="text-2xl transition-colors"
-      :class="isFav ? 'text-yellow-400' : 'text-gray-400 hover:text-yellow-400'"
+      :class="
+        isMarked ? 'text-yellow-400' : 'text-gray-400 hover:text-yellow-400'
+      "
     />
   </button>
 </template>
@@ -12,14 +14,14 @@
 import type { MediaMeta } from '~/types'
 
 const { meta } = defineProps<{ meta: MediaMeta }>()
-const emits = defineEmits<{ isFavorite: [boolean] }>()
+const emits = defineEmits<{ isBookmarked: [boolean] }>()
 
-const { isFavorite, toggleFavorite } = useLibraryStore()
+const { isBookmarked, toggleBookmark } = useLibraryStore()
 
-const isFav = computed(() => isFavorite(meta.id))
-watchEffect(() => emits('isFavorite', isFav.value))
+const isMarked = computed(() => isBookmarked(meta.id))
+watchEffect(() => emits('isBookmarked', isMarked.value))
 
-const toggle = () => toggleFavorite(meta)
+const toggle = () => toggleBookmark(meta)
 </script>
 
 <style lang="scss"></style>
