@@ -3,13 +3,21 @@
     :href="slug"
     class="relative h-fit flex flex-col gap-2 bg-gray-800 rounded-lg shadow-lg p-2 hover:bg-gray-700 transition-all duration-300"
   >
-    <div class="absolute top-2 right-2">
-      <NuxtLink class="cursor-pointer">
-        <Icon
-          name="zondicons:bookmark-outline-add"
-          class="text-2xl text-gray-400 hover:text-yellow-400 transition-all duration-200"
-        />
-      </NuxtLink>
+    <div
+      class="absolute top-2 right-2 cursor-pointer"
+      @click.stop="toggleFavorite"
+    >
+      <Icon
+        :name="
+          isFavorite ? 'zondicons:bookmark' : 'zondicons:bookmark-outline-add'
+        "
+        class="text-2xl"
+        :class="
+          isFavorite
+            ? 'text-yellow-400'
+            : 'text-gray-400 hover:text-yellow-400 transition-all duration-200'
+        "
+      />
     </div>
 
     <div
@@ -35,10 +43,17 @@
 </template>
 
 <script setup lang="ts">
+import { useFavoritesStore } from '~/stores/favorites'
 import type { MediaMeta } from '~/types'
 
 const props = defineProps<{ meta: MediaMeta }>()
 const { slug, author, cover, title, type, year } = props.meta
+
+const favoritesStore = useFavoritesStore()
+const isFavorite = computed(() => favoritesStore.isFavorite(props.meta.id))
+const toggleFavorite = () => {
+  favoritesStore.toggleFavorite(props.meta)
+}
 </script>
 
 <style scoped></style>

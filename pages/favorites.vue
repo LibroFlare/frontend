@@ -7,7 +7,7 @@
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
     >
       <div
-        v-for="book in books"
+        v-for="book in favorites"
         :key="book.id"
         class="relative bg-gray-800 rounded-lg shadow-lg p-4 hover:bg-gray-700 transition-all duration-300"
       >
@@ -17,7 +17,9 @@
 
         <div
           class="w-full flex items-center justify-center aspect-[2/3] rounded-md overflow-hidden mb-4"
-        ></div>
+        >
+          <NuxtImg :src="book.cover" alt="Book cover" class="w-full" />
+        </div>
         <div class="flex flex-col items-start text-start gap-2">
           <b
             class="text-lg font-semibold text-white leading-tight line-clamp-2"
@@ -39,26 +41,13 @@
 </template>
 
 <script lang="ts" setup>
+import { useFavoritesStore } from '~/stores/favorites'
 const { t } = useI18n()
 
 useSeoMeta({ title: computed(() => t('global.pages.favorites')) })
 
-const books = [
-  {
-    id: 1,
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-    type: 'Novel',
-    year: '1925',
-  },
-  {
-    id: 2,
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-    type: 'Novel',
-    year: '1960',
-  },
-]
+const favoritesStore = useFavoritesStore()
+const favorites = computed(() => favoritesStore.favorites)
 </script>
 
 <style lang="scss" scoped></style>
