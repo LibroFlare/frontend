@@ -1,5 +1,5 @@
 <template>
-  <div class="relative my-4 max-w-[25rem]">
+  <div ref="dropdown" class="relative my-4 max-w-[25rem]">
     <div
       class="relative w-full rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors py-3 pl-3 pr-10 text-left text-white shadow-md focus:outline-none tabbable cursor-pointer"
       @click="toggleDropdown"
@@ -63,6 +63,9 @@ const selectOption = (option: OptionItem) => {
 }
 
 const isActive = (option: OptionItem) => option.id === props.selectedItem.id
+
+const dropdown = ref<HTMLElement>()
+onClickOutside(dropdown, () => (isOpen.value = false))
 </script>
 
 <style lang="scss" scoped></style>
