@@ -9,12 +9,13 @@
 <script lang="ts" setup>
 import type { OptionItem } from '~/types'
 
+const { t } = useI18n()
 const { preference } = toRefs(useColorMode())
 
 const items = [
-  { id: 'system', name: 'System' },
-  { id: 'dark', name: 'Dark' },
-  { id: 'light', name: 'Light' },
+  { id: 'system', name: t('settings.themes.system') },
+  { id: 'dark', name: t('settings.themes.dark') },
+  { id: 'light', name: t('settings.themes.light') },
 ]
 
 const findItem = (): OptionItem =>
@@ -25,5 +26,3 @@ const selectedItem = ref<OptionItem>(findItem())
 watch(preference, () => (selectedItem.value = findItem()))
 watch(selectedItem, () => (preference.value = selectedItem.value.id))
 </script>
-
-<style lang="scss"></style>
