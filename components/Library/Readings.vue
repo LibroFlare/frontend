@@ -1,14 +1,16 @@
 <template>
   <div class="w-full flex flex-col items-start gap-4">
     <b class="text-2xl flex items-center justify-center gap-2">
-      <Icon name="mdi:book-open-page-variant-outline" /> Continue reading
+      <Icon name="mdi:book-open-page-variant-outline" />
+      {{ t('home.reading.continue') }}
     </b>
     <MediaGrid v-if="readings.length > 0" :media="readings" />
-    <p v-else>no media yet...</p>
+    <p v-else>{{ t('home.reading.noMedia') }}</p>
   </div>
 </template>
 
 <script lang="ts" setup>
+const { t } = useI18n()
 const { readings } = toRefs(useLibraryStore())
 </script>
 

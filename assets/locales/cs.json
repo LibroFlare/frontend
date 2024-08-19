@@ -3,9 +3,9 @@
     "name": "LibroFlare",
     "pages": {
       "library": "Knihovna",
-      "favorites": "Oblíbené",
+      "settings": "Nastavení",
       "account": "Účet",
-      "reading": "Pokračovat ve čtení"
+      "discover": "Objevujte"
     }
   },
   "home": {
@@ -30,6 +30,11 @@
         "default": "Co byste si dnes večer chtěli přečíst?",
         "extra": ["..."]
       }
+    },
+    "reading": {
+      "bookmarks": "Záložky",
+      "continue": "Pokračovat ve čtení",
+      "noMedia": "Zatím tu nic není..."
     }
   },
   "account": {
@@ -40,7 +45,17 @@
     "saveChanges": "Uložit změny"
   },
   "library": {
-    "pageTitle": "Moje knihy"
+    "pageTitle": "Moje knihy",
+    "discover": "Objevovat nové knihy",
+    "or": "nebo...",
+    "browse": "Vyhledat podle Vaší chuti",
+    "noMedia": "Knihovna je prázdná, ale můžete :"
+  },
+  "settings": {
+    "pageTitle": "Nastavení",
+    "language": "Jazyk",
+    "theme": "Motiv",
+    "providers": "Poskytovatelé"
   },
   "footer": {
     "description": "LibroFlare je váš prostor, kde se můžete ztratit v tisících knihách, mangách, komiksech a dalších čtecích materiálech.",

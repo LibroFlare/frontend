@@ -3,16 +3,14 @@
     <h1>{{ t('global.pages.settings') }}</h1>
     <div class="w-3/5 flex flex-col gap-12">
       <div class="flex flex-col">
-        <b>Language</b>
+        <b>{{ t('settings.language') }}</b>
         <LangSwitcher />
       </div>
       <div class="flex flex-col">
-        <b>Theme</b>
-        ...
+        <b>{{ t('settings.theme') }}</b>
       </div>
       <div class="flex flex-col">
-        <b>Providers</b>
-        ...
+        <b>{{ t('settings.providers') }}</b>
       </div>
     </div>
   </VueFrag>

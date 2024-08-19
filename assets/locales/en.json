@@ -30,6 +30,11 @@
         "default": "What would you like to read this evening?",
         "extra": ["..."]
       }
+    },
+    "reading": {
+      "bookmarks": "Bookmarks",
+      "continue": "Continue reading",
+      "noMedia": "No media yet..."
     }
   },
   "account": {
@@ -40,7 +45,17 @@
     "saveChanges": "Save Changes"
   },
   "library": {
-    "pageTitle": "My Books"
+    "pageTitle": "My Books",
+    "discover": "Discover New Books",
+    "or": "or...",
+    "browse": "Browse Your Taste",
+    "noMedia": "Your library is empty, but you can:"
+  },
+  "settings": {
+    "pageTitle": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "providers": "Providers"
   },
   "footer": {
     "description": "LibroFlare is your own space to get lost in thousands of books, manga, comics and other reading materials.",
