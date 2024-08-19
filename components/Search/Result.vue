@@ -1,6 +1,6 @@
 <template>
   <VueFrag>
-    <div v-if="!search && !typing" class="flex flex-col gap-16 mt-8">
+    <div v-if="!search && !typing" class="w-full flex flex-col gap-16 mt-8">
       <LibraryReadings />
       <LibraryBookmarks />
     </div>
