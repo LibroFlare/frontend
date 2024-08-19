@@ -1,17 +1,15 @@
 <template>
   <VueFrag>
-    <p v-if="!search && !typing">ahojky &nbsp;</p>
-    <div
-      v-else-if="typing || pending"
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"
-    >
-      <MediaCardSkeleton v-for="i in 4" :key="i" />
-      <!-- {{ $t('home.search.loading') }} -->
+    <template v-if="!search && !typing">
+      <LibraryReadings />
+      <LibraryBookmarks />
+    </template>
+    <div v-else-if="typing || pending" class="flex flex-col gap-8">
+      <MediaGrid :skeleton="true" />
+      {{ $t('home.search.loading') }}
     </div>
     <template v-else-if="media && media.length > 0">
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-        <MediaCard v-for="(meta, key) in media" :key="key" :meta="meta" />
-      </div>
+      <MediaGrid :media />
       <p>{{ $t('home.search.allResults') }}</p>
     </template>
     <p v-else>{{ $t('home.search.noResults') }}</p>
