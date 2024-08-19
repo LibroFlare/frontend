@@ -55,7 +55,12 @@
     "pageTitle": "Settings",
     "language": "Language",
     "theme": "Theme",
-    "providers": "Providers"
+    "providers": "Providers",
+    "themes": {
+      "light": "Light mode",
+      "dark": "Dark mode",
+      "system": "Adapt to your system"
+    }
   },
   "footer": {
     "description": "LibroFlare is your own space to get lost in thousands of books, manga, comics and other reading materials.",

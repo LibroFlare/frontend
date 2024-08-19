@@ -55,7 +55,12 @@
     "pageTitle": "Nastavení",
     "language": "Jazyk",
     "theme": "Motiv",
-    "providers": "Poskytovatelé"
+    "providers": "Poskytovatelé",
+    "themes": {
+      "light": "Světlý režim",
+      "dark": "Tmavý režim",
+      "system": "Přizpůsobit systému"
+    }
   },
   "footer": {
     "description": "LibroFlare je váš prostor, kde se můžete ztratit v tisících knihách, mangách, komiksech a dalších čtecích materiálech.",
