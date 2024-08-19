@@ -1,19 +1,17 @@
 <template>
-  <VueFrag>
-    <div v-if="bookmarks.length > 0">
-      <h1
-        class="text-3xl font-bold mb-8 flex items-center gap-2 transition-all duration-300"
-      >
-        <Icon name="material-symbols:menu-book" class="w-6 h-6 text-white" />
+  <div class="cont-inner flex flex-col items-center gap-8">
+    <template v-if="bookmarks.length > 0">
+      <h1 class="flex items-center justify-center gap-4">
+        <Icon name="material-symbols:menu-book" class="size-12 text-white" />
         {{ t('global.pages.library') }}
       </h1>
       <div
-        class="w-3/5 flex flex-col items-center gap-16 transition-all duration-300"
+        class="flex flex-col items-center gap-16 transition-all duration-300"
       >
         <LibraryReadings />
         <LibraryBookmarks />
       </div>
-    </div>
+    </template>
 
     <div v-else class="w-full flex flex-col items-center gap-4 text-center">
       <h1 class="text-xl text-white transition-all duration-300">
@@ -42,7 +40,7 @@
         class="w-10 h-10 text-white transition-all duration-300"
       />
     </div>
-  </VueFrag>
+  </div>
 </template>
 
 <script lang="ts" setup>

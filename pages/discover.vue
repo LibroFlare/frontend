@@ -1,10 +1,10 @@
 <template>
-  <VueFrag>
+  <div class="cont-inner flex flex-col items-center gap-8">
     <h1 class="flex items-center gap-2">
       <Icon name="iconamoon:discover-bold" /> {{ t('global.pages.discover') }}
     </h1>
-    <MediaGrid :media="data" :skeleton="status === 'pending'" class="w-3/5" />
-  </VueFrag>
+    <MediaGrid :media="data" :skeleton="status === 'pending'" />
+  </div>
 </template>
 
 <script lang="ts" setup>

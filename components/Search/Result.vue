@@ -1,9 +1,9 @@
 <template>
   <VueFrag>
-    <template v-if="!search && !typing">
+    <div v-if="!search && !typing" class="flex flex-col gap-16 mt-8">
       <LibraryReadings />
       <LibraryBookmarks />
-    </template>
+    </div>
     <div v-else-if="typing || pending" class="flex flex-col gap-8">
       <MediaGrid :skeleton="true" />
       {{ $t('home.search.loading') }}

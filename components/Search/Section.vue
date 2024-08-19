@@ -1,7 +1,7 @@
 <template>
   <section
     id="welcome"
-    class="flex flex-col items-center gap-8 w-3/5 text-center leading-tight"
+    class="cont-inner flex flex-col items-center gap-8 text-center leading-tight"
   >
     <h1 class="w-3/5">{{ $t('home.titles.day.default') }}</h1>
     <SearchBar class="w-4/5" />

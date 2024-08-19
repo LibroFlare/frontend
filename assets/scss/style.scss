@@ -140,3 +140,8 @@ img {
     }
   }
 }
+
+.cont-inner {
+  @apply relative xl:w-3/5 lg:w-3/4 md:w-5/6 xs:w-[95%] w-[98%] mx-auto;
+  @apply sm:max-w-screen-lg lg:max-w-screen-xl xl:max-w-screen-2xl;
+}

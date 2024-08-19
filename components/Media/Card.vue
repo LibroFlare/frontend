@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :href="slug"
-    class="group relative h-fit flex flex-col gap-2 rounded-lg hover:shadow-lg p-4 hover:bg-gray-700/40 transition-all duration-300"
+    class="group relative h-fit flex flex-col gap-2 rounded-lg hover:shadow-lg p-2 sm:p-4 hover:bg-gray-700/40 transition-all duration-300"
   >
     <MediaBookmarkButton
       :meta="meta"
@@ -19,12 +19,12 @@
 
     <div class="flex flex-col items-start text-start gap-1">
       <b
-        class="text-lg font-semibold text-white leading-tight line-clamp-3 text-ellipsis break-words"
+        class="w-full text-lg font-semibold text-white leading-tight line-clamp-3 text-ellipsis break-words"
       >
         {{ title }}
       </b>
       <p
-        class="text-sm text-gray-400 leading-tight line-clamp-2 text-ellipsis break-words"
+        class="w-full text-sm text-gray-400 leading-tight line-clamp-2 text-ellipsis break-words"
       >
         {{ author }}
       </p>
