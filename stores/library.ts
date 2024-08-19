@@ -11,7 +11,7 @@ export const useLibraryStore = defineStore('library', () => {
   const toggleBookmark = (media: MediaMeta) => {
     const index = bookmarks.value.findIndex((item) => item.id === media.id)
 
-    if (isBookmarked(media.id)) {
+    if (isBookmarked(media.id) && index !== -1) {
       bookmarks.value.splice(index, 1)
     } else bookmarks.value.push(media)
   }
