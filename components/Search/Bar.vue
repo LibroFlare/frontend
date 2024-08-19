@@ -57,6 +57,12 @@ debouncedWatch(
   () => {
     if (search.value !== storedSearch.value) setSearch(search.value)
     setTyping(false)
+
+    // window.history.pushState(
+    //   {},
+    //   '',
+    //   `/browse/${encodeURIComponent(search.value)}`,
+    // )
   },
   { debounce: 1000 },
 )
