@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
     '@pinia/nuxt',
+    '@pinia-plugin-persistedstate/nuxt',
     '@nuxt/eslint',
     '@nuxtjs/i18n',
     '@nuxt/icon',
