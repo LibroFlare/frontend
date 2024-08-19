@@ -1,7 +1,5 @@
 <template>
-  <VueFrag>
-    <SearchSection />
-  </VueFrag>
+  <VueFrag />
 </template>
 
 <script lang="ts" setup>

@@ -17,13 +17,18 @@
     <main
       class="cont relative w-full flex flex-col items-center gap-8 pt-28 pb-8"
     >
+      <SearchSection
+        v-if="['index', 'browse-slug'].includes(route.name?.toString() || '')"
+      />
       <slot />
     </main>
     <AppFooter />
   </VueFrag>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const route = useRoute()
+</script>
 
 <style lang="scss">
 .anim-float {
