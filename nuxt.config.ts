@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/google-fonts',
+    '@nuxtjs/color-mode',
   ],
 
   eslint: {
@@ -45,6 +46,11 @@ export default defineNuxtConfig({
         wght: [100, 200, 300, 400, 500, 600, 700, 800, 900],
       },
     },
+  },
+
+  colorMode: {
+    classSuffix: '',
+    dataValue: 'theme',
   },
 
   css: ['~/assets/scss/style.scss'],
