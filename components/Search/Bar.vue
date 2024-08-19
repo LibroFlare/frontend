@@ -11,7 +11,6 @@
         required
         autocomplete="off"
         class="w-full py-3 pl-10 pr-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 duration-300 placeholder-gray-400"
-        @blur="onBlur"
         @input="setTyping(true)"
       />
       <label
@@ -57,18 +56,18 @@ debouncedWatch(
   () => {
     if (search.value !== storedSearch.value) setSearch(search.value)
     setTyping(false)
+
+    if (search.value.length === 0)
+      return router.replace({
+        path: `/`,
+      })
+
+    router.replace({
+      path: `/browse/${encodeURIComponent(search.value)}`,
+    })
   },
   { debounce: 1000 },
 )
-
-// replace route on blur
-const onBlur = () => {
-  if (search.value.length === 0) return navigateTo('/')
-
-  router.replace({
-    path: `/browse/${encodeURIComponent(search.value)}`,
-  })
-}
 </script>
 
 <style scoped></style>
