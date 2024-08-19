@@ -28,7 +28,7 @@
       </div>
       <Icon
         name="fluent-emoji-high-contrast:thinking-face"
-        class="w-10 h-10 text-white transition-all duration-300"
+        class="w-10 h-10 transition-all duration-300"
       />
     </div>
   </div>
