@@ -1,10 +1,10 @@
 <template>
   <NuxtLink
     :href
-    class="px-8 py-4 rounded-xl border-2 shadow-lg text-center truncate"
+    class="flex items-center gap-2 px-8 py-4 rounded-xl border-2 shadow-lg text-center truncate transition-all"
     :class="{
-      'bg-gray-700': type === 'main',
-      'border-gray-700': type === 'shadow',
+      'bg-gray-700 hover:bg-gray-600': type === 'main',
+      'border-gray-700 hover:bg-gray-700/40': type === 'shadow',
       'border-transparent': type !== 'shadow',
     }"
   >
