@@ -1,11 +1,13 @@
 <template>
-  <footer class="text-white p-8 z-10 relative bottom-0 w-full">
+  <footer
+    class="bg-gray-900 text-white p-8 z-10 relative bottom-0 w-full border-custom"
+  >
     <div
       class="cont grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-16 text-center sm:text-left"
     >
       <div>
         <h3 class="text-lg font-semibold mb-4">LibroFlare</h3>
-        <p class="text-sm text-justify">{{ t('footer.description') }}</p>
+        <p class="text-sm text-justify mb-4">{{ t('footer.description') }}</p>
         <LangSwitcher />
       </div>
       <div>
@@ -14,7 +16,10 @@
         </h3>
         <ul class="flex flex-col gap-2">
           <li v-for="(link, key) in footerLinks" :key="key">
-            <NuxtLink :href="link.href" class="hover:text-gray-300 transition">
+            <NuxtLink
+              :href="link.href"
+              class="hover:text-gray-300 transition-colors duration-200"
+            >
               {{ t(link.name) }}
             </NuxtLink>
           </li>
@@ -39,9 +44,19 @@
         </button>
       </div>
       <div
-        class="col-span-3 border-t border-gray-700 mt-8 pt-4 text-center text-sm"
+        class="col-span-3 border-t mt-8 pt-4 text-center text-sm border-custom"
       >
-        &copy; 2024 LibroFlare. {{ t('footer.copyright') }}
+        <div class="flex justify-center gap-4 mb-4">
+          <a
+            v-for="(social, index) in socialLinks"
+            :key="index"
+            :href="social.href"
+            class="hover:text-gray-300 transition-colors"
+          >
+            <Icon :name="social.icon" />
+          </a>
+        </div>
+        &copy; 2024 {{ t('global.name') }}. {{ t('footer.copyright') }}
       </div>
     </div>
   </footer>
@@ -55,5 +70,10 @@ const { t } = useI18n()
 const footerLinks: MenuLink[] = [
   { name: 'footer.links.contacts', href: '' },
   { name: 'footer.links.faq', href: '' },
+]
+const socialLinks = [
+  { icon: 'hugeicons:instagram', href: '' },
+  { icon: 'hugeicons:new-twitter', href: '' },
+  { icon: 'hugeicons:github', href: '' },
 ]
 </script>

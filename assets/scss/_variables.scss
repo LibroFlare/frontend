@@ -9,12 +9,18 @@ $fontSize-a: 18px;
 :root {
   --base-bg: #111827;
   --base-text: #ffffff;
+  --border-color: #d1d5db;
+  --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
 html.light:root {
   --base-bg: #ffffff;
   --base-text: #000000;
+  --border-color: #374151;
+  --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
 $base-background: var(--base-bg);
 $text-color: var(--base-text);
+$border-color: var(--border-color);
+$shadow-color: var(--shadow-color);
