@@ -6,14 +6,39 @@ $fontSize-b: clamp(16px, 2.5vw, 20px);
 $fontSize-p: clamp(14px, 2vw, 18px);
 $fontSize-a: 18px;
 
-:root {
+:root,
+html.dark:root {
   --base-bg: #111827;
   --base-text: #ffffff;
+
+  --color-primary-50: #f4f7fc;
+  --color-primary-100: #e6eef8;
+  --color-primary-200: #c0d3ee;
+  --color-primary-300: #9ab8e4;
+  --color-primary-400: #6d94d3;
+  --color-primary-500: #4a6ebc;
+  --color-primary-600: #3b5997;
+  --color-primary-700: #2f4779;
+  --color-primary-800: #24375c;
+  --color-primary-900: #1b2a46;
+  --color-primary-950: #101728;
 }
 
 html.light:root {
   --base-bg: #ffffff;
   --base-text: #000000;
+
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #e0f2ff;
+  --color-primary-200: #bae6ff;
+  --color-primary-300: #7dd3fc;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7;
+  --color-primary-700: #0369a1;
+  --color-primary-800: #075985;
+  --color-primary-900: #0c4a6e;
+  --color-primary-950: #0a2c47;
 }
 
 $base-background: var(--base-bg);
