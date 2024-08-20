@@ -2,7 +2,7 @@
   <div class="cont -8 px-4">
     <div class="flex flex-col lg:flex-row items-start gap-8">
       <NuxtImg
-        :src="cover"
+        :src="cover || '/cover_not_found.webp'"
         alt="Book cover"
         class="w-64 h-auto object-cover rounded-lg shadow-lg"
       />

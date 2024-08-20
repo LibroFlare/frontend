@@ -1,7 +1,9 @@
 import type { MediaMeta } from '~/types'
 import { NotFoundError } from '~/utils/errors'
+import { ProviderSources } from '~/utils/providers'
 
 const url = 'https://openlibrary.org'
+const source = ProviderSources.OPENLIBRARY
 
 interface Doc {
   key: string
@@ -49,6 +51,7 @@ const formatMedia = (media: Doc[]) => {
       type: 'book',
       year: media.first_publish_year,
       cover: media.cover_i ? getCoverUrl(media.cover_i) : undefined,
+      source,
     } as MediaMeta
   })
 }

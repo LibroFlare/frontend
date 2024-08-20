@@ -1,15 +1,20 @@
+import type { ProviderSources } from '~/utils/providers'
+
 export interface MenuLink {
   name: string
   href: string
   icon?: string
 }
+
 export interface AccountButtons {
   username: string
   email: string
   password: string
   image?: string
 }
+
 export interface MediaMeta {
+  source: ProviderSources
   id: string
   slug: string
   title: string
