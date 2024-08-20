@@ -23,8 +23,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-
 const mediaTypes = ['book', 'audiobook', 'comics', 'manga'] as const
 
 const selectedType = ref<string>('')
