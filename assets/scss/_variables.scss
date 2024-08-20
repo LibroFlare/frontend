@@ -12,6 +12,7 @@ html.dark:root {
   --base-text: #ffffff;
   --border-color: #d1d5db;
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --button-bg: #ffff;
 
   --color-primary-50: #f4f7fc;
   --color-primary-100: #e6eef8;
@@ -31,6 +32,7 @@ html.light:root {
   --base-text: #000000;
   --border-color: #374151;
   --shadow-color: rgba(0, 0, 0, 0.3);
+  --button-bg: rgba(94, 87, 87, 0.1);
 
   --color-primary-50: #f0f9ff;
   --color-primary-100: #e0f2ff;
@@ -48,4 +50,5 @@ html.light:root {
 $base-background: var(--base-bg);
 $text-color: var(--base-text);
 $border-color: var(--border-color);
+$button-background: var(--button-bg);
 $shadow-color: var(--shadow-color);

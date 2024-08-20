@@ -18,7 +18,6 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, watch } from 'vue'
 import { searchMedia } from '~/providers/openlibrary'
 import { useSearchStore } from '~/stores/search'
 import { useMediaStore } from '~/stores/media'
