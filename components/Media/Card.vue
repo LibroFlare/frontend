@@ -4,6 +4,7 @@
     class="group relative h-fit flex flex-col gap-2 rounded-lg hover:shdw p-2 sm:p-4 hover:bg-gray-700/40 transition-all duration-300"
   >
     <MediaBookmarkButton
+      v-if="!hideBookmark"
       :meta="meta"
       class="absolute top-2 right-2 cursor-pointer z-[1]"
     />
@@ -40,7 +41,7 @@
 <script setup lang="ts">
 import type { MediaMeta } from '~/types'
 
-const { meta } = defineProps<{ meta: MediaMeta }>()
+const { meta } = defineProps<{ meta: MediaMeta; hideBookmark?: boolean }>()
 const { slug, author, cover, title, type, year } = meta
 </script>
 
