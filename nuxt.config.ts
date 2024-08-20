@@ -102,7 +102,7 @@ export default defineNuxtConfig({
         icon: 'twemoji:flag-united-kingdom',
         code: 'en',
         language: 'en',
-        name: 'English - English',
+        name: 'English - UK (United Kingdom)',
         files: ['en.json', 'common.json'],
       },
       {

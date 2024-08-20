@@ -8,7 +8,7 @@
 
     <div class="space-y-6">
       <div
-        v-for="index in 3"
+        v-for="index in 10"
         :key="index"
         class="relative bg-gray-100 dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl"
       >

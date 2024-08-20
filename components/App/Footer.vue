@@ -66,7 +66,7 @@ import type { MenuLink } from '~/types'
 const { t } = useI18n()
 
 const footerLinks: MenuLink[] = [
-  { name: 'footer.links.contacts', href: '' },
+  { name: 'footer.links.contacts', href: '/contacts' },
   { name: 'footer.links.faq', href: '/faq' },
 ]
 const socialLinks = [

@@ -5,7 +5,8 @@
       "discover": "Discover",
       "library": "My Library",
       "account": "My Account",
-      "settings": "Settings"
+      "settings": "Settings",
+      "contacts": "Contacts"
     }
   },
   "faq": {
@@ -105,5 +106,13 @@
       "subscribeButton": "Subscribe"
     },
     "copyright": "All rights reserved."
+  },
+  "contacts": {
+    "pageTitle": "Contact Us",
+    "description": "If you have any questions, suggestions, or need support, please reach out to us through the following channels.",
+    "email": "Email us at",
+    "socialMedia": "Follow us on social media:",
+    "address": "Visit us at",
+    "phone": "Call us at"
   }
 }

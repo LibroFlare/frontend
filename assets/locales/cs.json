@@ -2,10 +2,11 @@
   "global": {
     "name": "LibroFlare",
     "pages": {
+      "discover": "Objevujte",
       "library": "Knihovna",
-      "settings": "Nastavení",
       "account": "Účet",
-      "discover": "Objevujte"
+      "settings": "Nastavení",
+      "contacts": "Kontakt"
     }
   },
   "faq": {
@@ -96,7 +97,7 @@
     "importantLinks": "Důležité odkazy",
     "links": {
       "contacts": "Kontakt",
-      "faq": "FAQ"
+      "faq": "Často kladené otázky"
     },
     "newsletter": {
       "title": "Newsletter",
@@ -105,5 +106,13 @@
       "subscribeButton": "Přihlásit se"
     },
     "copyright": "Všechna práva vyhrazena."
+  },
+  "contacts": {
+    "pageTitle": "Kontaktujte nás",
+    "description": "Pokud máte nějaké otázky, návrhy nebo potřebujete podporu, obraťte se na nás prostřednictvím následujících kanálů.",
+    "email": "Napište nám na",
+    "socialMedia": "Sledujte nás na sociálních sítích:",
+    "address": "Navštivte nás na adrese",
+    "phone": "Zavolejte nám na"
   }
 }
