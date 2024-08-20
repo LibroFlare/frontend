@@ -1,9 +1,7 @@
 import type { MediaMeta } from '~/types'
 import { NotFoundError } from '~/utils/errors'
-import { ProviderSources } from '~/utils/providers'
 
-const url = 'https://openlibrary.org'
-const source = ProviderSources.OPENLIBRARY
+const { id: source, url } = ProvidersData.openlibrary
 
 interface Doc {
   key: string
