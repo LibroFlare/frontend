@@ -20,6 +20,10 @@
   .border-custom {
     border-color: $border-color;
   }
+
+  .shadow-custom {
+    box-shadow: 0 -1px 5px $shadow-color;
+  }
 }
 
 /* --- ESSENTIALS --- */
