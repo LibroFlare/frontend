@@ -8,6 +8,31 @@
       "settings": "Settings"
     }
   },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "sections": [
+      {
+        "question": "Is LibroFlare really free?",
+        "answer": "Yes, LibroFlare offers completely free access to all media in our library."
+      },
+      {
+        "question": "Can I access the library anytime?",
+        "answer": "Yes, our library is available 24/7. You can read whatever and whenever you want!"
+      },
+      {
+        "question": "Do I need to create an account?",
+        "answer": "While you can explore our library completely free and without an account, creating one gives you access to more personalized features."
+      },
+      {
+        "question": "Can I download books for offline reading?",
+        "answer": "Currently, LibroFlare is focused on online reading. We may add offline support in the future."
+      },
+      {
+        "question": "How do I report an issue or request a new book?",
+        "answer": "You can contact us through our support page or via email for any issues or book requests."
+      }
+    ]
+  },
   "home": {
     "search": {
       "allResults": "All results",
@@ -36,6 +61,10 @@
       "continue": "Continue reading",
       "noMedia": "No media yet..."
     }
+  },
+  "book": {
+    "addToLibrary": "Add to library",
+    "startReading": "Start reading"
   },
   "account": {
     "pageTitle": "My Account",

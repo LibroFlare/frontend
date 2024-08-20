@@ -18,11 +18,11 @@
     </div>
 
     <div class="flex flex-col items-start text-start gap-1">
-      <b
-        class="w-full text-lg font-semibold text-white leading-tight line-clamp-3 text-ellipsis break-words"
+      <h3
+        class="w-full text-lg font-semibold leading-tight line-clamp-3 text-ellipsis break-words"
       >
         {{ title }}
-      </b>
+      </h3>
       <p
         class="w-full text-sm text-gray-400 leading-tight line-clamp-2 text-ellipsis break-words"
       >
