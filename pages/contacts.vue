@@ -32,34 +32,7 @@
           </a>
         </p>
       </div>
-      <div
-        class="bg-gray-100 dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-all transform hover:scale-105 hover:shadow-2xl duration-300"
-      >
-        <h2
-          class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300 flex items-center gap-2"
-        >
-          {{ t('contacts.socialMedia') }}
-          <Icon
-            name="mdi:account-group-outline"
-            class="text-gray-600 dark:text-gray-400"
-          />
-        </h2>
-        <div class="flex flex-col gap-2">
-          <a
-            v-for="(social, index) in socialLinks"
-            :key="index"
-            :href="social.href"
-            class="flex items-center text-blue-600 dark:text-blue-400 hover:underline transition-colors duration-300"
-            target="_blank"
-          >
-            <Icon
-              :name="social.icon"
-              class="mr-2 text-xl transition-transform duration-300 hover:scale-125"
-            />
-            {{ social.name }}
-          </a>
-        </div>
-      </div>
+
       <div
         class="bg-gray-100 dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-all transform hover:scale-105 hover:shadow-2xl duration-300"
       >
@@ -94,6 +67,34 @@
             +420 xxxxxxx
           </a>
         </p>
+      </div>
+      <div
+        class="bg-gray-100 dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-all transform hover:scale-105 hover:shadow-2xl duration-300"
+      >
+        <h2
+          class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300 flex items-center gap-2"
+        >
+          {{ t('contacts.socialMedia') }}
+          <Icon
+            name="mdi:account-group-outline"
+            class="text-gray-600 dark:text-gray-400"
+          />
+        </h2>
+        <div class="flex flex-col gap-2">
+          <a
+            v-for="(social, index) in socialLinks"
+            :key="index"
+            :href="social.href"
+            class="flex items-center text-blue-600 dark:text-blue-400 hover:underline transition-colors duration-300"
+            target="_blank"
+          >
+            <Icon
+              :name="social.icon"
+              class="mr-2 text-xl transition-transform duration-300 hover:scale-125"
+            />
+            {{ social.name }}
+          </a>
+        </div>
       </div>
     </div>
   </div>
