@@ -48,9 +48,7 @@ const formatMedia = (media: Doc[]) => {
       author: media.author_name?.[0] || 'unknown',
       type: 'book',
       year: media.first_publish_year,
-      cover: media.cover_i
-        ? getCoverUrl(media.cover_i)
-        : '/cover_not_available.webp',
+      cover: media.cover_i ? getCoverUrl(media.cover_i) : undefined,
     } as MediaMeta
   })
 }

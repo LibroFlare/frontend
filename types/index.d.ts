@@ -15,8 +15,8 @@ export interface MediaMeta {
   title: string
   author: string
   type: 'book' | 'audiobook' | 'comics' | 'manga'
-  year: number
-  cover: string
+  year?: number
+  cover?: string
   images?: string
   description?: string
 }
