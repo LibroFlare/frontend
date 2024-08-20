@@ -1,6 +1,6 @@
 <template>
   <div class="cont-inner text-white flex flex-col items-center py-12">
-    <div class="w-full max-w-4xl rounded-lg shadow-lg p-12">
+    <div class="shdw w-full max-w-4xl rounded-lg p-12">
       <div class="flex items-center gap-6 mb-8">
         <div class="flex-shrink-0">
           <NuxtImg

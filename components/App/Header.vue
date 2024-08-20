@@ -1,7 +1,5 @@
 <template>
-  <header
-    class="fixed top-0 w-full py-4 text-white backdrop-blur-md shadow-lg z-50"
-  >
+  <header class="shdw fixed top-0 w-full py-4 backdrop-blur-md z-50">
     <nav class="cont flex items-center justify-between px-6">
       <ul class="flex-1 flex justify-around items-center gap-4 relative">
         <li

@@ -1,7 +1,7 @@
 <template>
   <NuxtLink
     :href="slug"
-    class="group relative h-fit flex flex-col gap-2 rounded-lg hover:shadow-lg p-2 sm:p-4 hover:bg-gray-700/40 transition-all duration-300"
+    class="group relative h-fit flex flex-col gap-2 rounded-lg hover:shdw p-2 sm:p-4 hover:bg-gray-700/40 transition-all duration-300"
   >
     <MediaBookmarkButton
       :meta="meta"
