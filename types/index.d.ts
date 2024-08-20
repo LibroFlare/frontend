@@ -1,22 +1,27 @@
+import type { ProviderSources } from '~/utils/providers'
+
 export interface MenuLink {
   name: string
   href: string
   icon?: string
 }
+
 export interface AccountButtons {
   username: string
   email: string
   password: string
   image?: string
 }
+
 export interface MediaMeta {
+  source: ProviderSources
   id: string
   slug: string
   title: string
   author: string
   type: 'book' | 'audiobook' | 'comics' | 'manga'
-  year: number
-  cover: string
+  year?: number
+  cover?: string
   images?: string
   description?: string
 }

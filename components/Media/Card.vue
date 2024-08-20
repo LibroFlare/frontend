@@ -12,7 +12,7 @@
       class="w-full flex items-center justify-center aspect-[2/3] rounded-md overflow-hidden"
     >
       <NuxtImg
-        :src="cover"
+        :src="cover || '/cover_not_available.webp'"
         alt="Book cover"
         class="min-h-full group-hover:scale-105 transition-transform"
       />
