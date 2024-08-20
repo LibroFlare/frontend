@@ -9,11 +9,10 @@
           v-for="type in mediaTypes"
           :key="type"
           :class="{
-            'bg-blue-600 text-white': selectedType === type,
-            'bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300':
-              selectedType !== type,
+            'text-black bg-amber-200': selectedType === type,
+            'text-slate-600': selectedType !== type,
           }"
-          class="px-4 py-2 rounded-lg shadow-md transition-all duration-300 hover:bg-blue-500 hover:text-white transform hover:scale-105"
+          class="px-4 py-2 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105"
           @click="setFilter(type)"
         >
           {{ capitalize(type) }}
