@@ -1,9 +1,7 @@
 import type { MediaMeta } from '~/types'
 import { NotFoundError } from '~/utils/errors'
-import { ProviderSources } from '~/utils/providers'
 
-const url = 'https://gutendex.com'
-const source = ProviderSources.GUTENDEX
+const { id: source, url } = ProvidersData.gutendex
 
 type MIMEType = string
 
