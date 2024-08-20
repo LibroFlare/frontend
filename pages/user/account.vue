@@ -1,12 +1,14 @@
 <template>
-  <div class="cont-inner text-white flex flex-col items-center py-12">
-    <div class="w-full max-w-4xl rounded-lg shadow-lg p-12">
+  <div
+    class="cont-inner text-white flex flex-col shadow-custom items-center py-12"
+  >
+    <div class="w-full max-w-4xl rounded-lg p-12">
       <div class="flex items-center gap-6 mb-8">
         <div class="flex-shrink-0">
           <NuxtImg
             src="/logo.png"
             alt="Profile Image"
-            class="w-24 h-24 rounded-full cursor-pointer border-2 border-gray-600"
+            class="w-24 h-24 rounded-full cursor-pointer border-2 border-custom"
           />
         </div>
         <div class="flex flex-col">
@@ -24,7 +26,7 @@
       </div>
       <div class="flex justify-center mt-6">
         <button
-          class="hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+          class="hover:bg-gray-600 bg-black text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
         >
           {{ t('account.saveChanges') }}
         </button>

@@ -2,7 +2,7 @@
   <VueFrag>
     <h1>{{ t('global.pages.settings') }}</h1>
     <div
-      class="cont-inner flex flex-col gap-12 mb-16 px-4 py-8 rounded-lg shadow-lg"
+      class="cont-inner flex flex-col gap-12 mb-16 px-4 py-8 rounded-lg shadow-custom"
     >
       <div class="flex flex-col gap-2">
         <b class="text-lg">{{ t('settings.language') }}</b>

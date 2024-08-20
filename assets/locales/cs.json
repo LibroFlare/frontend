@@ -8,6 +8,31 @@
       "discover": "Objevujte"
     }
   },
+  "faq": {
+    "title": "Často kladené otázky",
+    "sections": [
+      {
+        "question": "Je LibroFlare opravdu zdarma?",
+        "answer": "Ano, LibroFlare nabízí zcela bezplatný přístup ke všem druhům médií v naší knihovně."
+      },
+      {
+        "question": "Mohu mít přístup do knihovny kdykoliv?",
+        "answer": "Ano, naše knihovna je dostupná 24/7. Čtěte cokoliv a kdykoliv chcete!"
+      },
+      {
+        "question": "Musím si vytvořit účet?",
+        "answer": "Naše stránka je plně přístupná a zdarma i bez osobního účtu, avšak při vytvoření účtu získate přístup k personalizovaným funkcím."
+      },
+      {
+        "question": "Mohu si stáhnout knihy pro čtení offline?",
+        "answer": "Momentálně je LibroFlare zaměřeno na online čtení. V budoucnu možná přidáme podporu pro offline režim."
+      },
+      {
+        "question": "Jak nahlásím problém nebo požádám o novou knihu?",
+        "answer": "Můžete nás kontaktovat prostřednictvím naší podpory nebo emailem pro jakékoliv problémy či žádosti o knihy."
+      }
+    ]
+  },
   "home": {
     "search": {
       "allResults": "To je vše co máme!",
@@ -36,6 +61,10 @@
       "continue": "Pokračovat ve čtení",
       "noMedia": "Zatím tu nic není..."
     }
+  },
+  "book": {
+    "addToLibrary": "Přidat do knihovny",
+    "startReading": "Začít číst"
   },
   "account": {
     "pageTitle": "Můj účet",
