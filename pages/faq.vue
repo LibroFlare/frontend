@@ -6,22 +6,25 @@
       Frequently Asked Questions
     </h1>
 
-    <div class="space-y-8">
+    <div class="space-y-6">
       <div
         v-for="index in 3"
         :key="index"
-        class="relative bg-gray-200 dark:bg-gray-800 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105"
+        class="relative bg-gray-100 dark:bg-gray-900 p-6 rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl"
       >
         <div
           v-if="index !== 1"
-          class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-gray-300 to-transparent dark:from-gray-600"
+          class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-300 via-transparent to-gray-300 dark:from-gray-700 dark:via-transparent dark:to-gray-700"
         ></div>
 
         <button
           @click="toggle(index)"
           class="w-full flex justify-between items-center text-left focus:outline-none"
         >
-          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+          <h2
+            class="text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center"
+          >
+            <Icon name="mdi:help-circle-outline" class="mr-2" />
             Question {{ index }}
           </h2>
           <Icon
@@ -64,5 +67,17 @@ const toggle = (index: number) => {
 .slide-fade-leave-to {
   opacity: 0;
   transform: translateY(-10px);
+}
+
+.space-y-6 > *:not(:last-child)::after {
+  content: '';
+  display: block;
+  height: 1px;
+  margin: 1.5rem 0;
+  background: linear-gradient(
+    to right,
+    rgba(107, 114, 128, 0.5),
+    rgba(255, 255, 255, 0)
+  );
 }
 </style>
