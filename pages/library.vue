@@ -1,7 +1,7 @@
 <template>
   <div class="cont-inner flex flex-col items-center gap-8">
     <h1 class="flex items-center justify-center gap-4">
-      <Icon name="material-symbols:menu-book" class="size-12 text-white" />
+      <Icon name="material-symbols:menu-book" class="size-12" />
       {{ t('global.pages.library') }}
     </h1>
     <template v-if="bookmarks.length > 0">

@@ -1,5 +1,6 @@
 <template>
   <VueFrag>
+    <MediaFilter @filter-changed="updateFilter" />
     <div v-if="!search && !typing" class="w-full flex flex-col gap-16 mt-8">
       <LibraryReadings />
       <LibraryBookmarks />
@@ -8,8 +9,8 @@
       <MediaGrid :skeleton="true" />
       {{ $t('home.search.loading') }}
     </div>
-    <template v-else-if="media && media.length > 0">
-      <MediaGrid :media />
+    <template v-else-if="filteredMedia && filteredMedia.length > 0">
+      <MediaGrid :media="filteredMedia" />
       <p>{{ $t('home.search.allResults') }}</p>
     </template>
     <p v-else>{{ $t('home.search.noResults') }}</p>
@@ -17,12 +18,20 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, computed, watch } from 'vue'
 import { searchMedia } from '~/providers/openlibrary'
+import { useSearchStore } from '~/stores/search'
+import { useMediaStore } from '~/stores/media'
 
 const { search, typing } = toRefs(useSearchStore())
 const { media } = toRefs(useMediaStore())
 
 const pending = ref<boolean>(false)
+const selectedFilter = ref<string>('')
+
+const updateFilter = (newFilter: string) => {
+  selectedFilter.value = newFilter
+}
 
 const fetchMedia = async () => {
   if (typing.value || !search.value?.length) return (media.value = [])
@@ -32,8 +41,13 @@ const fetchMedia = async () => {
   pending.value = false
 }
 
+const filteredMedia = computed(() => {
+  if (!selectedFilter.value) {
+    return media.value
+  }
+  return media.value?.filter((item) => item.type === selectedFilter.value) || []
+})
+
 if (!media.value) await fetchMedia()
 watch([search, typing], async () => fetchMedia())
 </script>
-
-<style lang="scss" scoped></style>
