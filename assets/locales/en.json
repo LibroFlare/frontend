@@ -43,6 +43,9 @@
       "placeholder": "What do you wish to read? A book, comic, or manga?",
       "sectionTitle": "Search Results"
     },
+    "filter": {
+      "title": "Filter results"
+    },
     "titles": {
       "day": {
         "default": "What would you like to read this afternoon?",

@@ -43,6 +43,9 @@
       "placeholder": "Co si přejete číst? Knihu, komiks nebo snad mangu?",
       "sectionTitle": "Výsledky vyhledávání"
     },
+    "filter": {
+      "title": "Filtr výsledků"
+    },
     "titles": {
       "day": {
         "default": "Co byste si dnes odpoledne chtěli přečíst?",

@@ -2,7 +2,7 @@
   <div class="max-w-4xl mx-auto p-4">
     <div class="flex items-center justify-between mb-4">
       <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
-        Filtrovat Média
+        {{ t('home.filter.title') }}
       </h2>
       <div class="flex space-x-4">
         <button
@@ -29,6 +29,7 @@ import { ref } from 'vue'
 const mediaTypes = ['book', 'audiobook', 'comics', 'manga'] as const
 
 const selectedType = ref<string>('')
+const { t } = useI18n()
 
 const setFilter = (type: string) => {
   selectedType.value = selectedType.value === type ? '' : type
