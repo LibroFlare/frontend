@@ -24,7 +24,6 @@
       <SearchSection
         v-if="['index', 'browse-slug'].includes(route.name?.toString() || '')"
       />
-      <MediaFilter />
       <slot />
     </main>
     <AppFooter />
