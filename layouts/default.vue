@@ -1,9 +1,20 @@
 <template>
   <VueFrag>
     <div class="fixed inset-0 z-0 anim-bg pointer-events-none">
-      <div
-        class="blflr top-0 -right-[25vw] bg-gradient-to-l from-white to-gray-400"
-      />
+      <template v-if="preference !== 'light'">
+        <div
+          class="blflr top-0 -right-[25vw] bg-gradient-to-l from-primary-800 to-primary-900"
+        />
+        <div
+          class="blflr top-0 -right-[10vw] opacity-35 bg-gradient-to-l from-primary-700 to-primary-900"
+        />
+        <div
+          class="blflr bottom-0 -left-[25vw] bg-gradient-to-l from-primary-900 to-primary-950"
+        />
+        <div
+          class="blflr bottom-0 -left-[10vw] opacity-35 bg-gradient-to-l from-primary-800 to-primary-950"
+        />
+      </template>
       <div
         class="absolute top-1/4 left-1/3 bg-gray-600 opacity-30 blur-xl w-36 h-52 transform anim-float"
       />
@@ -32,6 +43,7 @@
 
 <script lang="ts" setup>
 const route = useRoute()
+const { preference } = toRefs(useColorMode())
 </script>
 
 <style lang="scss">

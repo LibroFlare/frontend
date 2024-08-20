@@ -6,7 +6,6 @@
       <div>
         <h3 class="text-lg font-semibold mb-4">LibroFlare</h3>
         <p class="text-sm text-justify mb-4">{{ t('footer.description') }}</p>
-        <LangSwitcher />
       </div>
       <div>
         <h3 class="text-lg font-semibold mb-4">
