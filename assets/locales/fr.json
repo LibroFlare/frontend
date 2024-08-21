@@ -1,0 +1,121 @@
+{
+  "global": {
+    "name": "LibroFlare",
+    "pages": {
+      "discover": "Découvrir",
+      "library": "Bibliothèque",
+      "account": "Compte",
+      "settings": "Paramètres",
+      "contacts": "Contacts"
+    }
+  },
+  "faq": {
+    "title": "Questions fréquemment posées",
+    "sections": [
+      {
+        "question": "Est-ce que LibroFlare est vraiment gratuit?",
+        "answer": "Oui, LibroFlare offre un accès totalement gratuit à tous les types de médias de notre bibliothèque."
+      },
+      {
+        "question": "Puis-je accéder à la bibliothèque à tout moment?",
+        "answer": "Oui, notre bibliothèque est accessible 24/7. Lisez ce que vous voulez, quand vous voulez!"
+      },
+      {
+        "question": "Dois-je créer un compte?",
+        "answer": "Notre site est totalement accessible gratuitement sans compte, mais en créant un compte, vous aurez accès à des fonctionnalités personnalisées."
+      },
+      {
+        "question": "Puis-je télécharger des livres pour les lire hors ligne?",
+        "answer": "Actuellement, LibroFlare se concentre sur la lecture en ligne. À l'avenir, nous pourrions ajouter une fonctionnalité de lecture hors ligne."
+      },
+      {
+        "question": "Comment signaler un problème ou demander un nouveau livre?",
+        "answer": "Vous pouvez nous contacter via notre support ou par email pour tout problème ou demande de livre."
+      }
+    ]
+  },
+  "home": {
+    "search": {
+      "allResults": "C'est tout ce que nous avons!",
+      "failed": "Impossible de trouver des médias, veuillez réessayer!",
+      "loading": "Chargement...",
+      "noResults": "Nous n'avons rien trouvé!",
+      "placeholder": "Que souhaitez-vous lire? Un livre, une bande dessinée ou un manga?",
+      "sectionTitle": "Résultats de recherche"
+    },
+    "filter": {
+      "title": "Filtrer les résultats"
+    },
+    "titles": {
+      "day": {
+        "default": "Que voulez-vous lire cet après-midi?",
+        "extra": ["..."]
+      },
+      "morning": {
+        "default": "Que voulez-vous lire ce matin?",
+        "extra": ["..."]
+      },
+      "night": {
+        "default": "Que voulez-vous lire ce soir?",
+        "extra": ["..."]
+      }
+    },
+    "reading": {
+      "bookmarks": "Signets",
+      "continue": "Continuer la lecture",
+      "noMedia": "Rien ici pour le moment..."
+    }
+  },
+  "book": {
+    "addToLibrary": "Ajouter à la bibliothèque",
+    "startReading": "Commencer la lecture"
+  },
+  "account": {
+    "pageTitle": "Mon compte",
+    "email": "Email",
+    "password": "Mot de passe",
+    "username": "Nom d'utilisateur",
+    "saveChanges": "Sauvegarder les modifications"
+  },
+  "library": {
+    "pageTitle": "Mes livres",
+    "discover": "Découvrir de nouveaux livres",
+    "or": "ou...",
+    "browse": "Rechercher selon vos envies",
+    "noMedia": "La bibliothèque est vide, mais vous pouvez :"
+  },
+  "settings": {
+    "pageTitle": "Paramètres",
+    "language": "Langue",
+    "theme": "Thème",
+    "providers": "Fournisseurs",
+    "themes": {
+      "light": "Mode clair",
+      "dark": "Mode sombre",
+      "system": "S'adapter au système"
+    }
+  },
+  "footer": {
+    "description": "LibroFlare est votre espace pour vous perdre dans des milliers de livres, mangas, bandes dessinées et autres matériels de lecture.",
+    "importantLinks": "Liens importants",
+    "links": {
+      "contacts": "Contacts",
+      "faq": "Questions fréquemment posées"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Ne manquez pas de nouveaux livres. Inscrivez-vous à notre newsletter et découvrez les nouveaux livres en vente!",
+      "emailPlaceholder": "Votre email",
+      "subscribeButton": "S'inscrire"
+    },
+    "copyright": "Tous droits réservés."
+  },
+  "contacts": {
+    "pageTitle": "Contactez-nous",
+    "description": "Si vous avez des questions, suggestions ou besoin de support, contactez-nous via les canaux suivants.",
+    "email": "Écrivez-nous à",
+    "socialMedia": "Suivez-nous sur les réseaux sociaux:",
+    "address": "Visitez-nous à l'adresse",
+    "phone": "Appelez-nous au"
+  }
+}

@@ -112,6 +112,13 @@ export default defineNuxtConfig({
         name: 'Czech - Čeština',
         files: ['cs.json', 'common.json'],
       },
+      {
+        icon: 'twemoji:flag-france',
+        code: 'fr',
+        language: 'fr',
+        name: 'French - Français',
+        files: ['fr.json', 'common.json'],
+      },
     ],
     defaultLocale: 'en',
     detectBrowserLanguage: {
