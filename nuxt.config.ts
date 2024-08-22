@@ -131,4 +131,10 @@ export default defineNuxtConfig({
       escapeHtml: false,
     },
   },
+
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.API_URL,
+    },
+  },
 })
