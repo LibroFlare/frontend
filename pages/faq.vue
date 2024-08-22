@@ -18,8 +18,8 @@
         ></div>
 
         <button
-          @click="toggle(index)"
           class="w-full flex justify-between items-center text-left focus:outline-none"
+          @click="toggle(index)"
         >
           <h2
             class="text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center"

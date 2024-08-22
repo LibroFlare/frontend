@@ -19,8 +19,8 @@
 
 <script lang="ts" setup>
 import { searchMedia } from '~/providers/openlibrary'
-import { useSearchStore } from '~/stores/search'
 import { useMediaStore } from '~/stores/media'
+import { useSearchStore } from '~/stores/search'
 
 const { search, typing } = toRefs(useSearchStore())
 const { media } = toRefs(useMediaStore())
