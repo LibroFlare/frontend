@@ -126,7 +126,7 @@ const { handleSubmit, defineField } = useForm({
   validationSchema: toTypedSchema(
     object({
       email: string().email().required(),
-      password: string().required(),
+      password: string().min(4).required(),
     }),
   ),
 })

@@ -14,7 +14,11 @@
         <slot />
       </label>
     </div>
-    <span role="alert">{{ state.errors[0] }}</span>
+    <ul>
+      <li v-for="(error, key) in state.errors" :key>
+        <span role="alert">{{ error }}</span>
+      </li>
+    </ul>
   </div>
 </template>
 
