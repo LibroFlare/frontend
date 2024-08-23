@@ -19,16 +19,16 @@
             {{ t('account.pageTitle') }}
           </h1>
           <p class="text-lg mb-2 border-b border-gray-600 pb-2">
-            {{ t('account.username') }}:
-            <span class="font-semibold">{{ buttons.username }}</span>
-          </p>
-          <p class="text-lg mb-2 border-b border-gray-600 pb-2">
             {{ t('account.email') }}:
             <span class="font-semibold">{{ buttons.email }}</span>
           </p>
-          <p class="text-lg mb-2">
+          <p class="text-lg mb-2 border-b border-gray-600 pb-2">
             {{ t('account.password') }}:
             <span class="font-semibold">●●●●●●●●</span>
+          </p>
+          <p class="text-lg mb-2">
+            {{ t('account.username') }}:
+            <span class="font-semibold">{{ buttons.username }}</span>
           </p>
         </div>
       </div>
