@@ -1,18 +1,25 @@
 import { defineStore } from 'pinia'
+import type { MediaMeta } from '~/types'
 
 type Role = 'ROLE_USER' | 'ROLE_ADMIN'
 
-// interface UserPreferences {
-//   language: string
-//   theme: string
-// }
+interface UserPreferences {
+  language: string
+  theme: string
+}
+
+interface UserLibrary {
+  bookmarks: MediaMeta[]
+  readings: MediaMeta[]
+}
 
 interface UserData {
   id: number
-  // username: string
+  username: string
   email: string
   roles: Role[]
-  // preferences: UserPreferences
+  preferences: UserPreferences
+  library: UserLibrary
 }
 
 export const useUserStore = defineStore(
