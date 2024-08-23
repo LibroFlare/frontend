@@ -9,7 +9,8 @@
 <script lang="ts" setup>
 import type { OptionItem } from '~/types'
 
-const { locales, locale, setLocale } = useI18n()
+const { locales } = useI18n()
+const prefs = usePreferencesStore()
 
 const items: OptionItem[] = locales.value.map(({ code, name, icon }) => {
   return {
@@ -20,10 +21,10 @@ const items: OptionItem[] = locales.value.map(({ code, name, icon }) => {
 })
 
 const selectedItem = ref<OptionItem>(
-  items.find(({ id }) => id === locale.value) || items[0],
+  items.find(({ id }) => id === prefs.language) || items[0],
 )
 
-watch(selectedItem, () => setLocale(selectedItem.value.id))
+watch(selectedItem, () => prefs.setLanguage(selectedItem.value.id))
 </script>
 
 <style lang="scss" scoped></style>

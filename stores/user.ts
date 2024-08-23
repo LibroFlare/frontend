@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
-import type { Media } from '~/types'
+import type { Media, Themes } from '~/types'
 
 type Role = 'ROLE_USER' | 'ROLE_ADMIN'
 
 interface UserPreferences {
-  language: string
-  theme: string
+  language?: string
+  theme?: Themes
+  provider?: ProviderSources
 }
 
 interface UserLibrary {

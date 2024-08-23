@@ -16,13 +16,17 @@
 
       <div class="flex flex-col gap-2">
         <b class="text-lg">{{ t('settings.providers') }}</b>
+        <ProviderSelector />
       </div>
     </div>
+    {{ user }}
   </VueFrag>
 </template>
 
 <script lang="ts" setup>
 const { t } = useI18n()
+
+const { user } = toRefs(useUserStore())
 
 useSeoMeta({ title: computed(() => t('global.pages.settings')) })
 </script>

@@ -7,10 +7,10 @@
 </template>
 
 <script lang="ts" setup>
-import type { OptionItem } from '~/types'
+import type { OptionItem, Themes } from '~/types'
 
-const { t, locale } = useI18n()
-const { preference } = toRefs(useColorMode())
+const { t } = useI18n()
+const prefs = usePreferencesStore()
 
 const items = computed(() => [
   { id: 'system', name: t('settings.themes.system') },
@@ -19,10 +19,10 @@ const items = computed(() => [
 ])
 
 const findItem = (): OptionItem =>
-  items.value.find(({ id }) => id === preference.value) || items.value[0]
+  items.value.find(({ id }) => id === prefs.theme) || items.value[0]
 
 const selectedItem = ref<OptionItem>(findItem())
 
-watch([preference, locale], () => (selectedItem.value = findItem()))
-watch(selectedItem, () => (preference.value = selectedItem.value.id))
+watchEffect(() => (selectedItem.value = findItem()))
+watch(selectedItem, () => prefs.setTheme(selectedItem.value.id as Themes))
 </script>

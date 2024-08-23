@@ -35,3 +35,5 @@ export interface OptionItem {
   name: string
   icon?: string
 }
+
+export type Themes = 'system' | 'dark' | 'light'
