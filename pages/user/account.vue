@@ -21,34 +21,34 @@
             </h1>
             <p class="text-lg mb-2 border-b border-gray-600 pb-2">
               {{ t('account.username') }}:
-              <span class="font-semibold">{{ buttons.username }}</span>
+              <span class="font-semibold">{{ user.username }}</span>
             </p>
             <p class="text-lg mb-2 border-b border-gray-600 pb-2">
               {{ t('account.email') }}:
-              <span class="font-semibold">{{ buttons.email }}</span>
+              <span class="font-semibold">{{ user.email }}</span>
             </p>
             <p class="text-lg mb-2">
               {{ t('account.password') }}:
-              <span class="font-semibold">●●●●●●●●</span>
+              <span class="font-semibold">{{ data.password }}</span>
             </p>
           </div>
         </div>
 
         <div class="space-y-4">
           <input
-            v-model="buttons.username"
+            v-model="user.username"
             type="text"
             class="w-full p-3 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             placeholder="Změnit uživatelské jméno"
           />
           <input
-            v-model="buttons.email"
+            v-model="user.email"
             type="email"
             class="w-full p-3 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             placeholder="Změnit email"
           />
           <input
-            v-model="buttons.password"
+            v-model="data.password"
             type="password"
             class="w-full p-3 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
             placeholder="Změnit heslo"
@@ -111,14 +111,14 @@ useSeoMeta({ title: computed(() => t('account.pageTitle')) })
 const { user } = toRefs(useUserStore())
 const { signIn, signOut } = useUserStore()
 
-const buttons = ref<AccountButtons>({
+const data = ref<AccountButtons>({
   username: 'ahoj',
   email: 'llll@example.com',
-  password: '...',
+  password: '●●●●●●●●',
 })
 
 const saveChanges = () => {
-  console.log('Změny byly uloženy:', buttons.value)
+  console.log('Změny byly uloženy:', data.value)
 }
 
 // VEE VALIDATE FORM
