@@ -1,7 +1,8 @@
 <template>
   <VueFrag>
-    <p v-if="!media">Media not found</p>
-    <MediaInfo v-else :meta="media" />
+    <MediaInfoSkeleton v-if="status === 'pending'" />
+    <MediaInfo v-else-if="data" :meta="data" />
+    <p v-else>Media not found</p>
   </VueFrag>
 </template>
 
@@ -11,9 +12,14 @@ import { searchMedia } from '~/providers/openlibrary'
 const route = useRoute()
 const { slug } = route.params as { slug: string }
 
-const media = ref()
-const data = await searchMedia(slug, 1)
-media.value = data && data.length > 0 ? data[0] : null
+const { data, status } = await useAsyncData(
+  'media',
+  () => searchMedia(slug, 1),
+  {
+    lazy: true,
+    transform: (meta) => meta[0],
+  },
+)
 </script>
 
 <style lang="scss" scoped></style>

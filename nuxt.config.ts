@@ -31,6 +31,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/google-fonts',
     '@nuxtjs/color-mode',
+    '@vee-validate/nuxt',
   ],
 
   eslint: {
@@ -129,6 +130,12 @@ export default defineNuxtConfig({
     compilation: {
       strictMessage: false,
       escapeHtml: false,
+    },
+  },
+
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.API_URL,
     },
   },
 })
