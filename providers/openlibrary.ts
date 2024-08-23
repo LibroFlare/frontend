@@ -1,4 +1,4 @@
-import type { MediaMeta } from '~/types'
+import type { Media } from '~/types'
 import { NotFoundError } from '~/utils/errors'
 
 const { id: source, url: baseURL } = ProvidersData.openlibrary
@@ -92,21 +92,23 @@ const getCoverUrl = (id: number, size: 'S' | 'M' | 'L' = 'M') => {
 
 const formatMedia = (media: Doc[]) => {
   return media.map((media) => {
-    const id = media.key.includes('/works/')
+    const key = media.key.includes('/works/')
       ? media.key.replace('/works/', '')
       : media.key
     const title = media.title
 
     return {
-      id,
-      title,
-      slug: `/media/${id}-${title}`,
-      author: media.author_name?.[0] || 'unknown',
-      type: 'book',
-      year: media.first_publish_year,
-      cover: media.cover_i ? getCoverUrl(media.cover_i) : undefined,
+      key,
       source,
-    } as MediaMeta
+      meta: {
+        title,
+        slug: `/media/${key}-${title}`,
+        author: media.author_name?.[0] || 'unknown',
+        type: MediaTypes.BOOK,
+        year: media.first_publish_year,
+        cover: media.cover_i ? getCoverUrl(media.cover_i) : undefined,
+      },
+    } as Media
   })
 }
 

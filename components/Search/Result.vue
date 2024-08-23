@@ -10,7 +10,7 @@
       {{ $t('home.search.loading') }}
     </div>
     <template v-else-if="filteredMedia && filteredMedia.length > 0">
-      <MediaGrid :media="filteredMedia" />
+      <MediaGrid :medias="filteredMedia" />
       <p>{{ $t('home.search.allResults') }}</p>
     </template>
     <p v-else>{{ $t('home.search.noResults') }}</p>
@@ -44,7 +44,9 @@ const filteredMedia = computed(() => {
   if (!selectedFilter.value) {
     return media.value
   }
-  return media.value?.filter((item) => item.type === selectedFilter.value) || []
+  return (
+    media.value?.filter(({ meta }) => meta.type === selectedFilter.value) || []
+  )
 })
 
 if (!media.value) await fetchMedia()

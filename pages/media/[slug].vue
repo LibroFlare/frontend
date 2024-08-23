@@ -1,7 +1,7 @@
 <template>
   <VueFrag>
     <MediaInfoSkeleton v-if="status === 'pending'" />
-    <MediaInfo v-else-if="data" :meta="data" />
+    <MediaInfo v-else-if="data" :media="data" />
     <p v-else>Media not found</p>
   </VueFrag>
 </template>
@@ -17,7 +17,7 @@ const { data, status } = await useAsyncData(
   () => searchMedia(slug, 1),
   {
     lazy: true,
-    transform: (meta) => meta[0],
+    transform: (media) => media[0],
   },
 )
 </script>

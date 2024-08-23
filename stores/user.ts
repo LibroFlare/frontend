@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import type { MediaMeta } from '~/types'
+import type { Media } from '~/types'
 
 type Role = 'ROLE_USER' | 'ROLE_ADMIN'
 
@@ -9,8 +9,8 @@ interface UserPreferences {
 }
 
 interface UserLibrary {
-  bookmarks: MediaMeta[]
-  readings: MediaMeta[]
+  bookmarks: Media[]
+  readings: Media[]
 }
 
 interface UserData {

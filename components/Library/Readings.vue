@@ -7,7 +7,7 @@
       <Icon name="mdi:book-open-page-variant-outline" />
       {{ t('home.reading.continue') }}
     </b>
-    <MediaGrid v-if="readings.length > 0" :media="readings" />
+    <MediaGrid v-if="readings.length > 0" :medias="readings" />
     <p v-else>{{ t('home.reading.noMedia') }}</p>
   </div>
 </template>

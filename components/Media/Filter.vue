@@ -8,17 +8,17 @@
       </h2>
       <div class="flex flex-wrap justify-center space-x-4">
         <button
-          v-for="type in mediaTypes"
-          :key="type"
+          v-for="mType in types"
+          :key="mType"
           :class="{
-            'text-white bg-amber-400 shadow-lg': selectedType === type,
+            'text-white bg-amber-400 shadow-lg': selectedType === mType,
             'text-gray-600 dark:text-gray-400 bg-gray-200 dark:bg-gray-800':
-              selectedType !== type,
+              selectedType !== mType,
           }"
-          class="px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
-          @click="setFilter(type)"
+          class="px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl capitalize"
+          @click="setFilter(mType)"
         >
-          {{ capitalize(type) }}
+          {{ mType }}
         </button>
       </div>
     </div>
@@ -26,19 +26,17 @@
 </template>
 
 <script setup lang="ts">
-const mediaTypes = ['book', 'audiobook', 'comics', 'manga'] as const
-
-const selectedType = ref<string>('')
 const { t } = useI18n()
 
-const setFilter = (type: string) => {
-  selectedType.value = selectedType.value === type ? '' : type
-  emit('filter-changed', selectedType.value)
-}
-
-const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1)
+const types = MediaTypes
+const selectedType = ref<MediaTypes | null>(null)
 
 const emit = defineEmits<{
-  (e: 'filter-changed', value: string): void
+  (e: 'filter-changed', value: MediaTypes | null): void
 }>()
+
+const setFilter = (type: MediaTypes) => {
+  selectedType.value = selectedType.value === type ? null : type
+  emit('filter-changed', selectedType.value)
+}
 </script>

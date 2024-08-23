@@ -38,11 +38,11 @@
 </template>
 
 <script setup lang="ts">
-import type { MediaMeta } from '~/types'
+import type { Media } from '~/types'
 const { t } = useI18n()
 
-const props = defineProps<{ meta: MediaMeta }>()
-const { author, cover, title, type, year, description } = props.meta
+const props = defineProps<{ media: Media }>()
+const { author, cover, title, type, year, description } = props.media.meta
 </script>
 
 <style scoped></style>

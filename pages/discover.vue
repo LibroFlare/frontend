@@ -3,7 +3,7 @@
     <h1 class="flex items-center gap-2">
       <Icon name="iconamoon:discover-bold" /> {{ t('global.pages.discover') }}
     </h1>
-    <MediaGrid :media="data" :skeleton="status === 'pending'" />
+    <MediaGrid :medias="data" :skeleton="status === 'pending'" />
   </div>
 </template>
 

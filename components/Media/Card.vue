@@ -5,7 +5,7 @@
   >
     <MediaBookmarkButton
       v-if="!hideBookmark"
-      :meta="meta"
+      :media
       class="absolute top-2 right-2 cursor-pointer z-[1]"
     />
     <div
@@ -39,10 +39,10 @@
 </template>
 
 <script setup lang="ts">
-import type { MediaMeta } from '~/types'
+import type { Media } from '~/types'
 
-const { meta } = defineProps<{ meta: MediaMeta; hideBookmark?: boolean }>()
-const { slug, author, cover, title, type, year } = meta
+const { media } = defineProps<{ media: Media; hideBookmark?: boolean }>()
+const { slug, author, cover, title, type, year } = media.meta
 </script>
 
 <style scoped></style>

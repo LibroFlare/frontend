@@ -1,25 +1,25 @@
 import { defineStore } from 'pinia'
-import type { MediaMeta } from '~/types'
+import type { Media } from '~/types'
 
 export const useLibraryStore = defineStore(
   'library',
   () => {
     // bookmarks
-    const bookmarks = ref<MediaMeta[]>([])
+    const bookmarks = ref<Media[]>([])
 
-    const isBookmarked = (id: MediaMeta['id']) =>
-      bookmarks.value.some((item) => item.id === id)
+    const isBookmarked = (key: Media['key']) =>
+      bookmarks.value.some((item) => item.key === key)
 
-    const toggleBookmark = (media: MediaMeta) => {
-      const index = bookmarks.value.findIndex((item) => item.id === media.id)
+    const toggleBookmark = (media: Media) => {
+      const index = bookmarks.value.findIndex((item) => item.key === media.key)
 
-      if (isBookmarked(media.id) && index !== -1) {
+      if (isBookmarked(media.key) && index !== -1) {
         bookmarks.value.splice(index, 1)
       } else bookmarks.value.push(media)
     }
 
     // continue reading ...
-    const readings = ref<MediaMeta[]>([])
+    const readings = ref<Media[]>([])
 
     return {
       bookmarks,

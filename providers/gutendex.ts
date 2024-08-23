@@ -1,4 +1,4 @@
-import type { MediaMeta } from '~/types'
+import type { Media, MediaMeta } from '~/types'
 import { NotFoundError } from '~/utils/errors'
 
 const { id: source, url } = ProvidersData.gutendex
@@ -44,19 +44,21 @@ const getCoverUrl = (formats: Book['formats']): MediaMeta['cover'] => {
 
 const formatMedia = (media: Book[]) => {
   return media.map(({ id: numId, title, authors, media_type, formats }) => {
-    const id: MediaMeta['id'] = numId.toString()
+    const key: Media['key'] = numId.toString()
     const type: MediaMeta['type'] =
-      media_type === 'Sound' ? 'audiobook' : 'book'
+      media_type === 'Sound' ? MediaTypes.AUDIO_BOOK : MediaTypes.BOOK
 
     return {
-      id,
-      title,
-      slug: `/media/${id}-${title}`,
-      author: authors?.[0].name || 'unknown',
-      type,
-      cover: getCoverUrl(formats),
+      key,
       source,
-    } as MediaMeta
+      meta: {
+        title,
+        slug: `/media/${key}-${title}`,
+        author: authors?.[0].name || 'unknown',
+        type,
+        cover: getCoverUrl(formats),
+      },
+    } as Media
   })
 }
 

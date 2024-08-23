@@ -1,4 +1,4 @@
-import type { ProviderSources } from '~/utils/providers'
+import type { MediaTypes, ProviderSources } from '~/utils/providers'
 
 export interface MenuLink {
   name: string
@@ -14,16 +14,20 @@ export interface AccountButtons {
 }
 
 export interface MediaMeta {
-  source: ProviderSources
-  id: string
   slug: string
   title: string
   author: string
-  type: 'book' | 'audiobook' | 'comics' | 'manga'
+  type: MediaTypes
   year?: number
   cover?: string
   images?: string
   description?: string
+}
+
+export interface Media {
+  key: string
+  source: ProviderSources
+  meta: MediaMeta
 }
 
 export interface OptionItem {

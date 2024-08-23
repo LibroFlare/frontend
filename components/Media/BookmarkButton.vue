@@ -16,17 +16,17 @@
 </template>
 
 <script lang="ts" setup>
-import type { MediaMeta } from '~/types'
+import type { Media } from '~/types'
 
-const { meta } = defineProps<{ meta: MediaMeta }>()
+const { media } = defineProps<{ media: Media }>()
 const emits = defineEmits<{ isBookmarked: [boolean] }>()
 
 const { isBookmarked, toggleBookmark } = useLibraryStore()
 
-const isMarked = computed(() => isBookmarked(meta.id))
+const isMarked = computed(() => isBookmarked(media.key))
 watchEffect(() => emits('isBookmarked', isMarked.value))
 
-const toggle = () => toggleBookmark(meta)
+const toggle = () => toggleBookmark(media)
 </script>
 
 <style lang="scss"></style>

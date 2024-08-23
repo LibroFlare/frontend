@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
-import type { MediaMeta } from '~/types'
+import type { Media } from '~/types'
 
 export const useMediaStore = defineStore('media', () => {
-  const media = ref<MediaMeta[]>()
+  const media = ref<Media[]>()
 
   return { media }
 })

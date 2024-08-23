@@ -6,7 +6,7 @@
     <b class="text-2xl flex items-center justify-center gap-2">
       <Icon name="mdi:book-heart-outline" /> {{ t('home.reading.bookmarks') }}
     </b>
-    <MediaGrid v-if="bookmarks.length > 0" :media="bookmarks" />
+    <MediaGrid v-if="bookmarks.length > 0" :medias="bookmarks" />
     <p v-else>{{ t('home.reading.noMedia') }}</p>
   </div>
 </template>
