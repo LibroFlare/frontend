@@ -1,5 +1,6 @@
 <template>
   <VueFrag>
+    {{ pending }}
     <MediaFilter @filter-changed="updateFilter" />
     <div v-if="!search && !typing" class="w-full flex flex-col gap-16 mt-8">
       <LibraryReadings />
@@ -18,37 +19,39 @@
 </template>
 
 <script lang="ts" setup>
-import { searchMedia } from '~/providers/openlibrary'
 import { useMediaStore } from '~/stores/media'
 import { useSearchStore } from '~/stores/search'
 
 const { search, typing } = toRefs(useSearchStore())
 const { media } = toRefs(useMediaStore())
+const { searchMedia } = useMediaStore()
 
 const pending = ref<boolean>(false)
+
+const fetchMedia = async () => {
+  if (typing.value || !search.value?.length) return (media.value = [])
+  pending.value = true
+
+  const { data } = await useLazyAsyncData(() => searchMedia(search.value))
+
+  media.value = data.value
+  pending.value = false
+}
+
 const selectedFilter = ref<string>('')
 
 const updateFilter = (newFilter: string) => {
   selectedFilter.value = newFilter
 }
 
-const fetchMedia = async () => {
-  if (typing.value || !search.value?.length) return (media.value = [])
-
-  pending.value = true
-  media.value = (await searchMedia(search.value)) || []
-  pending.value = false
-}
-
 const filteredMedia = computed(() => {
-  if (!selectedFilter.value) {
-    return media.value
-  }
+  if (!selectedFilter.value) return media.value
+
   return (
     media.value?.filter(({ meta }) => meta.type === selectedFilter.value) || []
   )
 })
 
 if (!media.value) await fetchMedia()
-watch([search, typing], async () => fetchMedia())
+watch([search, typing], async () => await fetchMedia())
 </script>

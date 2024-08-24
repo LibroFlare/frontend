@@ -11,7 +11,7 @@ import type { OptionItem } from '~/types'
 
 const prefs = usePreferencesStore()
 
-const items = Object.keys(ProviderSources).map((source) => ({
+const items = Object.values(ProviderSources).map((source) => ({
   id: source,
   name: source,
 }))
