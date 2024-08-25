@@ -75,7 +75,11 @@
     "email": "Email",
     "password": "Password",
     "username": "Username",
-    "saveChanges": "Save Changes"
+    "saveChanges": "Save Changes",
+    "signIn": "Sign In",
+    "register": "Register",
+    "confirmPassword": "Confirm Password",
+    "signOut": "Sign Out"
   },
   "library": {
     "pageTitle": "My Books",

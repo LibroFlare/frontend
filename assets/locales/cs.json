@@ -75,7 +75,11 @@
     "email": "Email",
     "password": "Heslo",
     "username": "Uživatelské jméno",
-    "saveChanges": "Uložit změny"
+    "saveChanges": "Uložit změny",
+    "signIn": "Přihlásit se",
+    "register": "Registrovat se",
+    "confirmPassword": "Potvrdit heslo",
+    "signOut": "Odhlásit se"
   },
   "library": {
     "pageTitle": "Moje knihy",

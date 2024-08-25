@@ -75,7 +75,11 @@
     "email": "Email",
     "password": "Mot de passe",
     "username": "Nom d'utilisateur",
-    "saveChanges": "Sauvegarder les modifications"
+    "saveChanges": "Sauvegarder les modifications",
+    "signIn": "Se connecter",
+    "register": "S'inscrire",
+    "confirmPassword": "Confirmer le mot de passe",
+    "signOut": "Se déconnecter"
   },
   "library": {
     "pageTitle": "Mes livres",
