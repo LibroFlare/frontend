@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       routes: ['/_ipx/_/cover_not_available.webp'],
-      ignore: ['/discover', '/browse/*', '/media/*'],
+      ignore: ['/discover', '/browse/**', '/media/**'],
     },
   },
 
