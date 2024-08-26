@@ -20,6 +20,8 @@ const { data, status } = await useAsyncData(
     transform: (media) => media[0],
   },
 )
+
+useSeoMeta({ title: computed(() => data.value?.meta?.title || 'Media') })
 </script>
 
 <style lang="scss" scoped></style>

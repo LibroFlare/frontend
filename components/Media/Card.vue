@@ -13,7 +13,7 @@
     >
       <NuxtImg
         :src="cover || '/cover_not_available.webp'"
-        alt="Book cover"
+        :alt="cover ? `Cover of ${title}` : 'Cover not found...'"
         class="min-h-full group-hover:scale-105 transition-transform"
       />
     </div>
