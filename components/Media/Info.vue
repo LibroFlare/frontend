@@ -22,12 +22,9 @@
         </div>
       </Transition>
 
-      <MediaImgCont
-        class="relative w-64 cursor-pointer"
-        @click="showFullImg = !showFullImg"
-      >
+      <MediaImgCont class="relative w-64 cursor-pointer">
         <MediaBookmarkButton :media top-right />
-        <MediaImg :media />
+        <MediaImg :media @click="showFullImg = !showFullImg" />
       </MediaImgCont>
 
       <div class="flex-1 space-y-4">
