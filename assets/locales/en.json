@@ -70,16 +70,18 @@
     "addToLibrary": "Add to library",
     "startReading": "Start reading"
   },
-  "account": {
-    "pageTitle": "My Account",
-    "email": "Email",
-    "password": "Password",
-    "username": "Username",
-    "saveChanges": "Save Changes",
+  "user": {
+    "signUp": "Sign Up",
     "signIn": "Sign In",
-    "register": "Register",
-    "confirmPassword": "Confirm Password",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "account": "Account",
+    "credentials": {
+      "username": "Username",
+      "email": "Email",
+      "password": "Password"
+    },
+    "saveChanges": "Save Changes",
+    "confirmPassword": "Confirm Password"
   },
   "library": {
     "pageTitle": "My Books",
