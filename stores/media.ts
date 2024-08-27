@@ -1,18 +1,38 @@
 import { defineStore } from 'pinia'
-import { searchMedia as searchGutendex } from '~/providers/gutendex'
-import { searchMedia as searchOpenlibrary } from '~/providers/openlibrary'
+import {
+  getMediaByKey as getGutendexMediaByKey,
+  searchMedia as searchGutendex,
+} from '~/providers/gutendex'
+import {
+  getMediaByKey as getOpenlibraryMediaByKey,
+  searchMedia as searchOpenlibrary,
+} from '~/providers/openlibrary'
 import type { Media } from '~/types'
 
 export const useMediaStore = defineStore('media', () => {
-  const { provider } = toRefs(usePreferencesStore())
+  const { provider: storedProvider } = toRefs(usePreferencesStore())
 
   const media = ref<Media[] | null>()
 
-  const searchMedia = async (search: string) => {
-    if (provider.value === ProviderSources.GUTENDEX)
+  const searchMedia = async (
+    search: string,
+    limit?: number,
+    provider?: ProviderSources,
+  ) => {
+    const prvdr = provider || storedProvider.value
+
+    if (prvdr === ProviderSources.GUTENDEX) {
       return await searchGutendex(search)
-    else return await searchOpenlibrary(search)
+    } else return await searchOpenlibrary(search, limit)
   }
 
-  return { media, searchMedia }
+  const findMedia = async (key: Media['key'], provider?: ProviderSources) => {
+    const prvdr = provider || storedProvider.value
+
+    if (prvdr === ProviderSources.GUTENDEX) {
+      return await getGutendexMediaByKey(key)
+    } else return await getOpenlibraryMediaByKey(key)
+  }
+
+  return { media, searchMedia, findMedia }
 })

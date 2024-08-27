@@ -102,7 +102,7 @@ const formatMedia = (media: Doc[]) => {
       source,
       meta: {
         title,
-        slug: `/media/${key}-${title}`,
+        slug: `/media/${source}/${key}-${title}`,
         author: media.author_name?.[0] || 'unknown',
         type: MediaTypes.BOOK,
         year: media.first_publish_year,
@@ -142,7 +142,7 @@ export const getTrendingMedia = async (limit: number = 20) => {
   return formatMedia(data.value.works)
 }
 
-export const getMediaByKey = async (key: string) => {
+export const getMediaByKey = async (key: Media['key']) => {
   const { data } = await useFetch<Work>(`/works/${key}.json`, { baseURL })
 
   if (!data.value) throw new NotFoundError('Media not found...')
@@ -162,11 +162,11 @@ export const getMediaByKey = async (key: string) => {
       first_publish_year: data.value.first_publish_date,
       cover_i: data.value.covers[0],
     },
-  ])
+  ])[0]
 }
 
 export const getAuthorByKey = async (key: string) => {
-  const { data } = await useFetch<Author>(`/authors/${key}.json`, { baseURL })
+  const { data } = await useFetch<Author>(`${key}.json`, { baseURL })
 
   if (!data.value) throw new NotFoundError('Author not found...')
 

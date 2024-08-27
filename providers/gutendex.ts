@@ -53,7 +53,7 @@ const formatMedia = (media: Book[]) => {
       source,
       meta: {
         title,
-        slug: `/media/${key}-${title}`,
+        slug: `/media/${source}/${key}-${title}`,
         author: authors?.[0].name || 'unknown',
         type,
         cover: getCoverUrl(formats),
@@ -73,4 +73,14 @@ export const searchMedia = async (search: string) => {
   if (!data.value) throw new NotFoundError('Searched media not found...')
 
   return formatMedia(data.value.results)
+}
+
+export const getMediaByKey = async (key: Media['key']) => {
+  const { data } = await useFetch<Book>(`/books/${key}`, {
+    baseURL: url,
+  })
+
+  if (!data.value) throw new NotFoundError('Searched media not found...')
+
+  return formatMedia([data.value])[0]
 }
