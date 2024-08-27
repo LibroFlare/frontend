@@ -1,6 +1,7 @@
 <template>
   <button
     class="shdw group/bookmark flex items-center justify-center p-2.5 rounded-full bg-gray-800/80 hover:bg-gray-800 shadow-lg transition-colors"
+    :class="topRight && 'absolute top-2 right-2 cursor-pointer z-[1]'"
     @click.prevent="toggle"
   >
     <Icon
@@ -18,7 +19,7 @@
 <script lang="ts" setup>
 import type { Media } from '~/types'
 
-const { media } = defineProps<{ media: Media }>()
+const { media, topRight } = defineProps<{ media: Media; topRight?: boolean }>()
 const emits = defineEmits<{ isBookmarked: [boolean] }>()
 
 const { isBookmarked, toggleBookmark } = useLibraryStore()

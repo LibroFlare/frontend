@@ -1,15 +1,31 @@
 <template>
-  <div class="cont -8 px-4">
+  <div class="cont px-4">
     <div class="flex flex-col lg:flex-row items-start gap-8">
-      <div
-        class="w-64 aspect-[2/3] flex items-center justify-center rounded-lg shadow-lg overflow-hidden"
+      <Transition name="fade">
+        <div
+          v-if="showFullImg"
+          class="fixed inset-0 flex items-center justify-center bg-black/70 z-[30]"
+          @click="showFullImg = false"
+        >
+          <MediaImgCont class="relative group/fullImg" @click.stop>
+            <div
+              class="absolute top-2 right-2 flex items-center justify-center p-1 rounded-full cursor-pointer group-hover/fullImg:opacity-100 opacity-0 backdrop-blur-sm hover:bg-gray-700/60 z-[1] transition-all shdw"
+              @click="showFullImg = false"
+            >
+              <Icon name="radix-icons:cross-2" class="size-8" />
+            </div>
+            <MediaImg :media class="max-w-[60vw] h-[60vh] object-contain" />
+          </MediaImgCont>
+        </div>
+      </Transition>
+
+      <MediaImgCont
+        class="relative w-64 cursor-pointer"
+        @click="showFullImg = !showFullImg"
       >
-        <NuxtImg
-          :src="cover || '/cover_not_available.webp'"
-          :alt="cover ? `Cover of ${title}` : 'Cover not found...'"
-          class="min-h-full group-hover:scale-105 transition-transform"
-        />
-      </div>
+        <MediaBookmarkButton :media top-right />
+        <MediaImg :media />
+      </MediaImgCont>
 
       <div class="flex-1 space-y-4">
         <h1 class="text-3xl font-bold">{{ title }}</h1>
@@ -42,7 +58,23 @@ import type { Media } from '~/types'
 const { t } = useI18n()
 
 const props = defineProps<{ media: Media }>()
-const { author, cover, title, type, year, description } = props.media.meta
+const { author, title, type, year, description } = props.media.meta
+
+const showFullImg = ref<boolean>(false)
 </script>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  @apply transition-opacity;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  @apply opacity-0;
+}
+
+.fade-enter-to {
+  @apply opacity-100;
+}
+</style>

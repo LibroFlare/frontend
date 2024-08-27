@@ -3,20 +3,10 @@
     :href="slug"
     class="group relative h-fit flex flex-col gap-2 rounded-lg hover:shdw p-2 sm:p-4 hover:bg-gray-700/40 transition-all duration-300"
   >
-    <MediaBookmarkButton
-      v-if="!hideBookmark"
-      :media
-      class="absolute top-2 right-2 cursor-pointer z-[1]"
-    />
-    <div
-      class="w-full flex items-center justify-center aspect-[2/3] rounded-md overflow-hidden"
-    >
-      <NuxtImg
-        :src="cover || '/cover_not_available.webp'"
-        :alt="cover ? `Cover of ${title}` : 'Cover not found...'"
-        class="min-h-full group-hover:scale-105 transition-transform"
-      />
-    </div>
+    <MediaBookmarkButton v-if="!hideBookmark" :media top-right />
+    <MediaImgCont>
+      <MediaImg :media class="group-hover:scale-105 transition-transform" />
+    </MediaImgCont>
 
     <div class="flex flex-col items-start text-start gap-1">
       <h3
@@ -42,7 +32,7 @@
 import type { Media } from '~/types'
 
 const { media } = defineProps<{ media: Media; hideBookmark?: boolean }>()
-const { slug, author, cover, title, type, year } = media.meta
+const { slug, author, title, type, year } = media.meta
 </script>
 
 <style scoped></style>
