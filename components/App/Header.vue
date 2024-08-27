@@ -67,7 +67,7 @@ const headerLinks = computed<MenuLink[]>(() => [
   },
   {
     name: t('global.pages.account'),
-    href: '/user/account',
+    href: '/account',
     icon: 'material-symbols:account-circle-full',
   },
   {

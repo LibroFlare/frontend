@@ -70,11 +70,11 @@
     "addToLibrary": "Add to library",
     "startReading": "Start reading"
   },
-  "user": {
+  "account": {
+    "pageTitle": "Account",
     "signUp": "Sign Up",
     "signIn": "Sign In",
     "signOut": "Sign Out",
-    "account": "Account",
     "credentials": {
       "username": "Username",
       "email": "Email",

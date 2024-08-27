@@ -1,7 +1,7 @@
 <template>
   <form class="cont-inner form flex flex-col gap-4" @submit.prevent="onSubmit">
     <h1 class="text-2xl font-bold text-center mb-4">
-      {{ $t('user.signUp') }}
+      {{ t('account.signUp') }}
     </h1>
     <FormField
       v-model="username"
@@ -9,7 +9,7 @@
       type="text"
       autocomplete="username"
     >
-      <span class="text-white">{{ $t('user.credentials.username') }}</span>
+      <span class="text-white">{{ t('account.credentials.username') }}</span>
     </FormField>
     <FormField
       v-model="email"
@@ -17,7 +17,7 @@
       type="email"
       autocomplete="email"
     >
-      <span class="text-white">{{ $t('user.credentials.email') }}</span>
+      <span class="text-white">{{ t('account.credentials.email') }}</span>
     </FormField>
     <FormField
       v-model="password"
@@ -25,12 +25,12 @@
       type="password"
       autocomplete="password"
     >
-      <span class="text-white">{{ $t('user.credentials.password') }}</span>
+      <span class="text-white">{{ t('account.credentials.password') }}</span>
     </FormField>
     <button
       class="w-full py-2 bg-gray-600 hover:bg-gray-500 text-white font-bold rounded-lg transition"
     >
-      {{ $t('user.signUp') }}
+      {{ t('account.signUp') }}
     </button>
   </form>
 </template>
@@ -38,6 +38,9 @@
 <script lang="ts" setup>
 import { toTypedSchema } from '@vee-validate/yup'
 import { object, string } from 'yup'
+
+const { t } = useI18n()
+useSeoMeta({ title: computed(() => t('account.signUp')) })
 
 const { user } = toRefs(useUserStore())
 const { signIn } = useUserStore()
@@ -65,7 +68,7 @@ const [password, passwordProps] = defineField('password', {
 const onSubmit = handleSubmit(async (values) => await signIn(values))
 
 watchEffect(() => {
-  if (user.value) navigateTo('/user/signin')
+  if (user.value) navigateTo('/account')
 })
 </script>
 
