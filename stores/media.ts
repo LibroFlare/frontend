@@ -17,19 +17,19 @@ export const useMediaStore = defineStore('media', () => {
   const searchMedia = async (
     search: string,
     limit?: number,
-    provider?: ProviderSources,
+    provider?: Providers,
   ) => {
     const prvdr = provider || storedProvider.value
 
-    if (prvdr === ProviderSources.GUTENDEX) {
+    if (prvdr === Providers.GUTENDEX) {
       return await searchGutendex(search)
     } else return await searchOpenlibrary(search, limit)
   }
 
-  const findMedia = async (key: Media['key'], provider?: ProviderSources) => {
+  const findMedia = async (key: Media['key'], provider?: Providers) => {
     const prvdr = provider || storedProvider.value
 
-    if (prvdr === ProviderSources.GUTENDEX) {
+    if (prvdr === Providers.GUTENDEX) {
       return await getGutendexMediaByKey(key)
     } else return await getOpenlibraryMediaByKey(key)
   }

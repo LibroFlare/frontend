@@ -1,4 +1,4 @@
-export enum ProviderSources {
+export enum Providers {
   OPENLIBRARY = 'openlibrary',
   GUTENDEX = 'gutendex',
 }
@@ -12,15 +12,15 @@ export enum MediaTypes {
 }
 
 interface Provider {
-  id: ProviderSources
+  id: Providers
   url: string
   mediaTypes: MediaTypes[]
 }
 
-const { GUTENDEX, OPENLIBRARY } = ProviderSources
+const { GUTENDEX, OPENLIBRARY } = Providers
 const { BOOK, AUDIO_BOOK } = MediaTypes
 
-export const ProvidersData: Record<ProviderSources, Provider> = {
+export const ProvidersData: Record<Providers, Provider> = {
   gutendex: {
     id: GUTENDEX,
     url: 'https://gutendex.com',

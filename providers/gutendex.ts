@@ -1,7 +1,7 @@
 import type { Media, MediaMeta } from '~/types'
 import { NotFoundError } from '~/utils/errors'
 
-const { id: source, url } = ProvidersData.gutendex
+const { id: provider, url } = ProvidersData.gutendex
 
 type MIMEType = string
 
@@ -50,10 +50,10 @@ const formatMedia = (media: Book[]) => {
 
     return {
       key,
-      source,
+      provider,
       meta: {
         title,
-        slug: `/media/${source}/${key}-${title}`,
+        slug: `/media/${provider}/${key}-${title}`,
         author: authors?.[0].name || 'unknown',
         type,
         cover: getCoverUrl(formats),

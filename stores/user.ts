@@ -6,7 +6,7 @@ type Role = 'ROLE_USER' | 'ROLE_ADMIN'
 interface UserPreferences {
   language?: string
   theme?: Themes
-  provider?: ProviderSources
+  provider?: Providers
 }
 
 interface UserLibrary {

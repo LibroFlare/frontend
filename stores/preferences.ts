@@ -10,7 +10,7 @@ export const usePreferencesStore = defineStore(
 
     const language = ref<string | undefined>()
     const theme = ref<Themes | undefined>()
-    const provider = ref<ProviderSources | undefined>()
+    const provider = ref<Providers | undefined>()
 
     const setLanguage = (value?: string) => {
       language.value = value
@@ -28,14 +28,14 @@ export const usePreferencesStore = defineStore(
       colorMode.preference = theme.value
     }
 
-    const setProvider = (value?: ProviderSources) => {
+    const setProvider = (value?: Providers) => {
       provider.value = value
     }
 
     // set all prefs on init
     setLanguage(user.value?.preferences.language || i18n.locale.value)
     setTheme(user.value?.preferences.theme || (colorMode.preference as Themes))
-    setProvider(user.value?.preferences.provider || ProviderSources.OPENLIBRARY)
+    setProvider(user.value?.preferences.provider || Providers.OPENLIBRARY)
 
     // watch prefs and update them on user if possible
     watchEffect(() => {

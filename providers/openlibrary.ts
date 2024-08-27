@@ -1,7 +1,7 @@
 import type { Media } from '~/types'
 import { NotFoundError } from '~/utils/errors'
 
-const { id: source, url: baseURL } = ProvidersData.openlibrary
+const { id: provider, url: baseURL } = ProvidersData.openlibrary
 
 interface Doc {
   key: string
@@ -99,10 +99,10 @@ const formatMedia = (media: Doc[]) => {
 
     return {
       key,
-      source,
+      provider,
       meta: {
         title,
-        slug: `/media/${source}/${key}-${title}`,
+        slug: `/media/${provider}/${key}-${title}`,
         author: media.author_name?.[0] || 'unknown',
         type: MediaTypes.BOOK,
         year: media.first_publish_year,

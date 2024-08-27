@@ -11,16 +11,14 @@ import type { OptionItem } from '~/types'
 
 const prefs = usePreferencesStore()
 
-const items = Object.values(ProviderSources).map((source) => ({
-  id: source,
-  name: source,
+const items = Object.values(Providers).map((provider) => ({
+  id: provider,
+  name: provider,
 }))
 
 const selectedItem = ref<OptionItem>(
-  items.find((source) => source.id === prefs.provider) || items[0],
+  items.find((provider) => provider.id === prefs.provider) || items[0],
 )
 
-watch(selectedItem, () =>
-  prefs.setProvider(selectedItem.value.id as ProviderSources),
-)
+watch(selectedItem, () => prefs.setProvider(selectedItem.value.id as Providers))
 </script>

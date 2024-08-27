@@ -13,7 +13,7 @@ const { findMedia } = useMediaStore()
 
 const route = useRoute()
 const { provider, key, title } = route.params as {
-  provider: ProviderSources
+  provider: Providers
   key: Media['key']
   title?: Media['meta']['title']
 }

@@ -1,4 +1,4 @@
-import type { MediaTypes, ProviderSources } from '~/utils/providers'
+import type { MediaTypes, Providers } from '~/utils/providers'
 
 export interface MenuLink {
   name: string
@@ -22,11 +22,12 @@ export interface MediaMeta {
   cover?: string
   images?: string
   description?: string
+  sources?: Map<string, string>
 }
 
 export interface Media {
   key: string
-  source: ProviderSources
+  provider: Providers
   meta: MediaMeta
 }
 
