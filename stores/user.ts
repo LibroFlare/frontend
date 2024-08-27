@@ -69,15 +69,17 @@ export const useUserStore = defineStore(
         if (!data.value) throw new Error('Unvalid Token...')
 
         setUser(data.value)
+        await navigateTo('/account')
       } catch (error) {
         console.error(error)
         setUser()
       }
     }
 
-    const signOut = () => {
+    const signOut = async () => {
       setToken()
       setUser()
+      await navigateTo('/account/signin')
     }
 
     return {

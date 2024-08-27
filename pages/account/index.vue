@@ -58,8 +58,4 @@ const { signOut } = useUserStore()
 .tab-active {
   @apply bg-gray-800 text-white;
 }
-
-.shdw {
-  @apply shadow-lg;
-}
 </style>

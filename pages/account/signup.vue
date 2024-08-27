@@ -48,7 +48,6 @@ import { object, string } from 'yup'
 const { t } = useI18n()
 useSeoMeta({ title: computed(() => t('account.signUp')) })
 
-const { user } = toRefs(useUserStore())
 const { signIn } = useUserStore()
 
 const { handleSubmit, defineField } = useForm({
@@ -72,10 +71,6 @@ const [password, passwordProps] = defineField('password', {
 })
 
 const onSubmit = handleSubmit(async (values) => await signIn(values))
-
-watchEffect(() => {
-  if (user.value) navigateTo('/account')
-})
 </script>
 
 <style lang="scss"></style>
