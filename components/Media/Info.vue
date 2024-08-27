@@ -14,7 +14,10 @@
             >
               <Icon name="radix-icons:cross-2" class="size-8" />
             </div>
-            <MediaImg :media class="max-w-[60vw] h-[60vh] object-contain" />
+            <MediaImg
+              :media
+              class="max-w-[90vw] sm:max-w-[70vw] h-[70vh] object-contain"
+            />
           </MediaImgCont>
         </div>
       </Transition>
