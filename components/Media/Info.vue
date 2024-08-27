@@ -35,21 +35,29 @@
         <p class="text-sm text-gray-300 leading-relaxed">{{ description }}</p>
 
         <div class="flex gap-4 mt-6">
-          <button
-            class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-lg transition-all"
-          >
-            {{ t('book.addToLibrary') }}
-            <Icon name="mdi:book-plus-outline" />
-          </button>
-          <button
-            class="bg-neutral-300 hover:bg-stone-500 hover:text-white text-black py-2 px-4 rounded-lg transition-all"
-          >
+          <ButtonLink href="#sources">
             {{ t('book.startReading') }}
             <Icon name="mdi:book-open-variant" />
-          </button>
+          </ButtonLink>
         </div>
       </div>
     </div>
+    <section id="sources" class="h-auto">
+      <div class="w-full flex flex-col gap-2 p-4 rounded-xl shdw">
+        <b>Sources</b>
+        <ul class="flex flex-col gap-2">
+          <li
+            v-for="source in sources"
+            :key="source.href"
+            class="rounded-lg hover:bg-gray-600/20 shdw transition-colors"
+          >
+            <NuxtLink :href="source.href" class="flex px-4 py-2">
+              {{ source.type || source.href }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -58,7 +66,7 @@ import type { Media } from '~/types'
 const { t } = useI18n()
 
 const props = defineProps<{ media: Media }>()
-const { author, title, type, year, description } = props.media.meta
+const { author, title, type, year, description, sources } = props.media.meta
 
 const showFullImg = ref<boolean>(false)
 </script>

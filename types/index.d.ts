@@ -13,6 +13,11 @@ export interface AccountButtons {
   image?: string
 }
 
+export interface MediaMetaSource {
+  type?: string
+  href: string
+}
+
 export interface MediaMeta {
   slug: string
   title: string
@@ -22,7 +27,7 @@ export interface MediaMeta {
   cover?: string
   images?: string
   description?: string
-  sources?: Map<string, string>
+  sources?: MediaMetaSource[]
 }
 
 export interface Media {

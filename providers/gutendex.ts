@@ -1,4 +1,4 @@
-import type { Media, MediaMeta } from '~/types'
+import type { Media, MediaMeta, MediaMetaSource } from '~/types'
 import { NotFoundError } from '~/utils/errors'
 
 const { id: provider, url } = ProvidersData.gutendex
@@ -36,6 +36,12 @@ interface Search {
   results: Book[]
 }
 
+const getSources = (formats: Book['formats']): MediaMetaSource[] =>
+  Object.entries(formats).map(([key, value]) => ({
+    type: key,
+    href: value,
+  }))
+
 const getCoverUrl = (formats: Book['formats']): MediaMeta['cover'] => {
   return Object.entries(formats).find(
     ([key, value]) => key.includes('image/') && value,
@@ -57,6 +63,7 @@ const formatMedia = (media: Book[]) => {
         author: authors?.[0].name || 'unknown',
         type,
         cover: getCoverUrl(formats),
+        sources: getSources(formats),
       },
     } as Media
   })
