@@ -1,5 +1,6 @@
 <template>
   <VueFrag>
+    {{ user }}
     <div v-if="user" class="cont-inner flex flex-col items-center py-12">
       <div
         class="shdw w-full max-w-4xl rounded-lg p-8 bg-opacity-80 backdrop-blur-md"
