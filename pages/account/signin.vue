@@ -1,30 +1,36 @@
 <template>
-  <form class="cont-inner form flex flex-col gap-4" @submit.prevent="onSubmit">
-    <h1 class="text-2xl font-bold text-center mb-4">
-      {{ t('account.signIn') }}
-    </h1>
-    <FormField
-      v-model="email"
-      v-bind="emailProps"
-      type="email"
-      autocomplete="email"
+  <VueFrag>
+    <AccountSignSwitcher sign="in" />
+    <form
+      class="cont-inner form flex flex-col gap-4"
+      @submit.prevent="onSubmit"
     >
-      <span class="text-white">{{ t('account.credentials.email') }}</span>
-    </FormField>
-    <FormField
-      v-model="password"
-      v-bind="passwordProps"
-      type="password"
-      autocomplete="password"
-    >
-      <span class="text-white">{{ t('account.credentials.password') }}</span>
-    </FormField>
-    <button
-      class="w-full py-2 bg-gray-600 hover:bg-gray-500 text-white font-bold rounded-lg transition"
-    >
-      {{ t('account.signIn') }}
-    </button>
-  </form>
+      <h1 class="text-2xl font-bold text-center mb-4">
+        {{ t('account.signIn') }}
+      </h1>
+      <FormField
+        v-model="email"
+        v-bind="emailProps"
+        type="email"
+        autocomplete="email"
+      >
+        <span class="text-white">{{ t('account.credentials.email') }}</span>
+      </FormField>
+      <FormField
+        v-model="password"
+        v-bind="passwordProps"
+        type="password"
+        autocomplete="password"
+      >
+        <span class="text-white">{{ t('account.credentials.password') }}</span>
+      </FormField>
+      <button
+        class="w-full py-2 bg-gray-600 hover:bg-gray-500 text-white font-bold rounded-lg transition"
+      >
+        {{ t('account.signIn') }}
+      </button>
+    </form>
+  </VueFrag>
 </template>
 
 <script lang="ts" setup>
