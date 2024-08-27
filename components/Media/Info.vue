@@ -36,8 +36,8 @@
 
         <div class="flex gap-4 mt-6">
           <ButtonLink href="#sources">
+            <Icon name="mdi:book-open-variant" class="size-6" />
             {{ t('book.startReading') }}
-            <Icon name="mdi:book-open-variant" />
           </ButtonLink>
         </div>
       </div>
@@ -45,7 +45,7 @@
     <section id="sources" class="h-auto">
       <div class="w-full flex flex-col gap-2 p-4 rounded-xl shdw">
         <b>Sources</b>
-        <ul class="flex flex-col gap-2">
+        <ul v-if="sources" class="flex flex-col gap-2">
           <li
             v-for="source in sources"
             :key="source.href"
@@ -56,6 +56,7 @@
             </NuxtLink>
           </li>
         </ul>
+        <p v-else>No Sources Found...</p>
       </div>
     </section>
   </div>
