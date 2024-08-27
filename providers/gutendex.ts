@@ -63,7 +63,7 @@ const formatMedia = (media: Book[]) => {
 }
 
 export const searchMedia = async (search: string) => {
-  const { data } = await useFetch<Search>('/books', {
+  const { data } = await useFetch<Search>('/books/', {
     baseURL: url,
     query: {
       search,
@@ -76,7 +76,7 @@ export const searchMedia = async (search: string) => {
 }
 
 export const getMediaByKey = async (key: Media['key']) => {
-  const { data } = await useFetch<Book>(`/books/${key}`, {
+  const { data } = await useFetch<Book>(`/books/${key}/`, {
     baseURL: url,
   })
 

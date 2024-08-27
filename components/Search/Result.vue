@@ -28,7 +28,8 @@ const { searchMedia } = useMediaStore()
 const { data, status, execute } = await useAsyncData(
   'media',
   async () => {
-    if (typing.value || !search.value?.length) return (media.value = [])
+    if (typing.value || !search.value || search.value.length < 1)
+      return (media.value = [])
 
     return searchMedia(search.value)
   },
@@ -36,8 +37,7 @@ const { data, status, execute } = await useAsyncData(
 )
 
 if (!media.value) await execute()
-watch([search, typing], async () => await execute())
-
+watchEffect(() => (!typing.value || search.value.length > 0) && execute())
 watchEffect(() => (media.value = data.value))
 
 // filter

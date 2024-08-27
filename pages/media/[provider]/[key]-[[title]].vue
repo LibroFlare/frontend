@@ -1,6 +1,5 @@
 <template>
   <VueFrag>
-    {{ route.params }}
     <MediaInfoSkeleton v-if="status === 'pending'" />
     <MediaInfo v-else-if="data" :media="data" />
     <p v-else>Media not found</p>

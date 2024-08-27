@@ -3,7 +3,6 @@
     <div class="relative w-full">
       <input
         id="search"
-        ref="searchInput"
         v-model="search"
         name="search"
         type="text"
@@ -11,7 +10,6 @@
         required
         autocomplete="off"
         class="shdw w-full py-3 pl-10 pr-4 bg-gray-800 text-white rounded-full hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 duration-300 placeholder-gray-400"
-        @input="setTyping(true)"
       />
       <label
         for="search"
@@ -28,42 +26,27 @@
 
 <script setup lang="ts">
 const { setSearch, setTyping } = useSearchStore()
-const { search: storedSearch } = toRefs(useSearchStore())
+const { search } = toRefs(useSearchStore())
 const route = useRoute()
 const router = useRouter()
 
-const slug = ref<string>((route.params.slug as string) || '')
+// keep synced search w slug
+watchEffect(() => setSearch((route.params.slug as string) || ''))
 
-const searchInput = ref<HTMLInputElement>()
-const search = ref<string>(slug.value)
-if (search.value) setSearch(search.value)
+// set typing based on search
+watch(search, () => setTyping(search.value.length > 0), { immediate: false })
 
-// watch typing
-watch(
-  search,
-  () => {
-    if (search.value.length > 0) return
-
-    setSearch('')
-    setTyping(false)
-  },
-  { immediate: true },
-)
-
-// set search to store
+// set route by search
 debouncedWatch(
   search,
-  () => {
-    if (search.value !== storedSearch.value) setSearch(search.value)
+  async () => {
     setTyping(false)
 
-    if (search.value.length === 0)
-      return router.replace({
-        path: `/`,
-      })
-
-    router.replace({
-      path: `/browse/${encodeURIComponent(search.value)}`,
+    await router.replace({
+      path:
+        search.value.length === 0
+          ? `/`
+          : `/browse/${encodeURIComponent(search.value)}`,
     })
   },
   { debounce: 1000 },
