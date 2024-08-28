@@ -84,6 +84,151 @@ interface Author {
   revision?: number
 }
 
+interface Entry {
+  key: string
+  title: string
+  publish_date: string
+  oclc_numbers?: string[]
+  lccn?: string[]
+  isbn_13?: string[]
+  isbn_10?: string[]
+  covers?: string[]
+  number_of_pages?: number
+  pagination?: string
+  weight?: number
+  publishers?: string[]
+  languages?: { key: string }[]
+}
+
+interface Editions {
+  links: {
+    self: string
+    work: string
+    next: string
+  }
+  size: number
+  entries: Entry[]
+}
+
+interface VolumeRecord {
+  isbns: string[]
+  issns: string[]
+  lccns: string[]
+  oclcs: string[]
+  olids: string[]
+  publishDates: number[]
+  recordURL: string
+  data: {
+    url: string
+    key: string
+    title: string
+    subtitle?: string
+    authors?: {
+      url: string
+      name: string
+    }[]
+    number_of_pages?: number
+    identifiers?: { [key: string]: string[] }
+    publishers?: { name: string }[]
+    publish_date: number
+    subjects?: {
+      name: string
+      url: string
+    }[]
+    subject_places?: {
+      name: string
+      url: string
+    }[]
+    subject_people?: {
+      name: string
+      url: string
+    }[]
+    subject_times?: {
+      name: string
+      url: string
+    }[]
+    excerpts?: {
+      text: string
+      comment: string
+    }[]
+    links?: {
+      title: string
+      url: string
+    }[]
+    ebooks?: {
+      preview_url: string
+      availability: 'restricted' | 'full' | string
+      formats: { [key: 'pdf' | 'epub' | 'text' | string]: { url: string } }
+      read_url: string
+    }[]
+    cover: {
+      small: string
+      medium: string
+      large: string
+    }
+  }
+  details: {
+    bib_key: string
+    info_url: string
+    preview: string
+    preview_url: string
+    thumbnail_url: string
+    details: {
+      works: {
+        key: '/works/OL468431W'
+      }[]
+      title: string
+      publishers: string[]
+      publish_date: number
+      key: string
+      type: { key: string }
+      identifiers?: { [key: string]: string }
+      covers: number[]
+      isbn_13: string[]
+      classifications?: { [key: string]: string }
+      languages?: { key: string }[]
+      number_of_pages: number
+      copyright_date: string
+      physical_format: string
+      subtitle: string
+      latest_revision: number
+      revision: number
+      created?: {
+        type: string
+        value: string
+      }
+      last_modified?: {
+        type: string
+        value: string
+      }
+    }
+  }
+}
+
+interface VolumeItem {
+  enumcron: string
+  match: 'similar' | string
+  status: 'full access' | string
+  fromRecord?: string
+  'ol-edition-id'?: string
+  'ol-work-id'?: string
+  publishDate: number
+  contributor?: string
+  itemURL: string
+  cover: {
+    small: string
+    medium: string
+    large: string
+  }
+}
+
+interface Volumes {
+  records: {
+    [key: string]: VolumeRecord
+  }
+  items: VolumeItem[]
+}
+
 const fields = 'key,title,author_name,first_publish_year,cover_i'
 
 const getCoverUrl = (id: number, size: 'S' | 'M' | 'L' = 'M') => {
@@ -171,4 +316,30 @@ export const getAuthorByKey = async (key: string) => {
   if (!data.value) throw new NotFoundError('Author not found...')
 
   return data.value
+}
+
+export const getSources = async (key: Media['key']) => {
+  // editions
+  const editions = await useFetch<Editions>(`/works/${key}/editions.json`, {
+    baseURL,
+  })
+
+  if (!editions.data.value) throw new NotFoundError('Editions not found...')
+
+  const type = 'oclc'
+  const value = '0596156715'
+
+  // volumes
+  const volumes = await useFetch<Volumes>(
+    `/api/volumes/brief/${type}/${value}.json`,
+    {
+      baseURL,
+    },
+  )
+  if (!volumes.data.value) throw new NotFoundError('Volumes not found...')
+
+  // id-type = oclc || lccn || isbn || olid (= the openLibrary key?)
+  // http://openlibrary.org/api/volumes/brief/<id-type>/<id-value>.json
+  // here find ebooks (and preview_url or read_url or ...?) or items (and itemURL)
+  // can do foreach of items cuz they all have own covers and publish dates
 }
