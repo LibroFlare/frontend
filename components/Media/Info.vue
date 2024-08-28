@@ -53,7 +53,11 @@
             :key="source.href"
             class="rounded-lg hover:bg-gray-600/20 shdw transition-colors"
           >
-            <NuxtLink :href="source.href" class="flex px-4 py-2">
+            <NuxtLink
+              :href="source.href"
+              target="_blank"
+              class="flex px-4 py-2"
+            >
               {{ source.type || source.href }}
             </NuxtLink>
           </li>
