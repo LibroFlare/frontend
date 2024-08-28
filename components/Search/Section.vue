@@ -1,6 +1,6 @@
 <template>
   <section
-    id="welcome"
+    id="home"
     class="cont-inner flex flex-col items-center gap-8 text-center leading-tight"
   >
     <h1 class="w-3/5">{{ $t('home.titles.day.default') }}</h1>

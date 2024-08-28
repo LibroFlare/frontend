@@ -33,6 +33,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
+  scroll-padding-top: 7vmax;
   color-scheme: dark;
 }
 
@@ -132,11 +133,10 @@ img {
 }
 
 section {
-  @apply relative w-full py-24 flex items-center;
+  @apply relative w-full flex items-center;
 
-  &:not([class*='h-']) {
-    @apply min-h-screen;
-  }
+  // @apply py-24;
+  // &:not([class*='h-']) { @apply min-h-screen; }
 }
 
 /* --- Additional styles --- */

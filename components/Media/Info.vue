@@ -1,5 +1,5 @@
 <template>
-  <div class="cont px-4">
+  <div class="cont px-4 flex flex-col gap-12">
     <div class="flex flex-col lg:flex-row items-start gap-8">
       <Transition name="fade">
         <div
@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <section id="sources" class="h-auto">
+    <section id="sources">
       <div class="w-full flex flex-col gap-2 p-4 rounded-xl shdw">
         <b>Sources</b>
         <ul v-if="media.meta.sources" class="flex flex-col gap-2">
