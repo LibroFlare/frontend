@@ -88,15 +88,20 @@ interface Entry {
   key: string
   title: string
   publish_date: string
+  ocaid?: string
+  local_id?: string[]
   oclc_numbers?: string[]
   lccn?: string[]
   isbn_13?: string[]
   isbn_10?: string[]
   covers?: string[]
+  identifiers?: { [key: string]: string }[]
+  physical_format?: string
   number_of_pages?: number
   pagination?: string
   weight?: number
   publishers?: string[]
+  publish_places?: string[]
   languages?: { key: string }[]
 }
 
@@ -299,7 +304,7 @@ export const getMediaByKey = async (key: Media['key']) => {
 
   if (!author) throw new NotFoundError('Media not found...')
 
-  return formatMedia([
+  const media = formatMedia([
     {
       key: data.value.key,
       title: data.value.title,
@@ -308,6 +313,11 @@ export const getMediaByKey = async (key: Media['key']) => {
       cover_i: data.value.covers[0],
     },
   ])[0]
+
+  // add sources
+  media.meta.sources = await getSources(key)
+
+  return media
 }
 
 export const getAuthorByKey = async (key: string) => {
@@ -318,77 +328,102 @@ export const getAuthorByKey = async (key: string) => {
   return data.value
 }
 
-export const getSources = async (key: Media['key']) => {
-  // id-type = oclc || lccn || isbn || olid (= the openLibrary key?)
-  // http://openlibrary.org/api/volumes/brief/<id-type>/<id-value>.json
-  // here find ebooks (and preview_url or read_url or ...?) or items (and itemURL)
-  // can do foreach of items cuz they all have own covers and publish dates
-
-  // editions
+export const getArchiveSources = async (key: Media['key']) => {
   const editions = await $fetch<Editions>(`/works/${key}/editions.json`, {
     baseURL,
   })
 
   if (!editions) throw new NotFoundError('Editions not found...')
 
-  let type
-  let value
-
-  for (const { oclc_numbers, lccn, isbn_13, isbn_10 } of editions.entries) {
-    if (oclc_numbers?.[0]) {
-      type = 'oclc'
-      value = oclc_numbers[0]
-      break
-    } else if (lccn?.[0]) {
-      type = 'lccn'
-      value = lccn[0]
-      break
-    } else if (isbn_13?.[0]) {
-      type = 'isbn'
-      value = isbn_13[0]
-      break
-    } else if (isbn_10?.[0]) {
-      type = 'isbn'
-      value = isbn_10[0]
-      break
-    }
-  }
-
-  if (!type || !value)
-    throw new NotFoundError('Edition identifiers not found...')
-
-  // volumes
-  const volumes = await $fetch<Volumes>(
-    `/api/volumes/full/${type}/${value}.json`,
-    { baseURL, mode: 'no-cors' },
-  )
-  if (!volumes) throw new NotFoundError('Volumes not found...')
-
   const sources: MediaMeta['sources'] = []
 
-  // records -> sources
-  Object.entries(volumes.records).forEach(
-    ([
-      _,
-      {
-        data: { ebooks },
-      },
-    ]) => {
-      if (ebooks && ebooks.length > 1)
-        ebooks.forEach(({ preview_url, formats }) => {
-          if (preview_url) sources.push({ type: 'preview', href: preview_url })
-          if (formats)
-            Object.entries(formats).forEach(([type, { url: href }]) => {
-              sources.push({ type, href })
-            })
-        })
-    },
-  )
-
-  // items -> sources
-  volumes.items.forEach(({ status, publishDate, itemURL: href }) =>
-    sources.push({ type: `${status} (${publishDate})`, href }),
-  )
+  editions.entries.forEach(({ title, publish_date, ocaid }) => {
+    if (ocaid && ocaid.trim() !== '')
+      sources.push({
+        type: `${title} (${publish_date})`,
+        href: `https://archive.org/details/${ocaid}/mode/2up?ref=ol&view=theater`,
+      })
+  })
 
   return sources
+}
+
+export const getSources = async (key: Media['key']) => {
+  const archiveSources = await getArchiveSources(key)
+
+  return archiveSources
+
+  // // TODO: FIX or BYPASS CORS!
+  // // id-type = oclc || lccn || isbn || olid (= the openLibrary key?)
+  // // http://openlibrary.org/api/volumes/brief/<id-type>/<id-value>.json
+  // // here find ebooks (and preview_url or read_url or ...?) or items (and itemURL)
+  // // can do foreach of items cuz they all have own covers and publish dates
+
+  // // editions
+  // const editions = await $fetch<Editions>(`/works/${key}/editions.json`, {
+  //   baseURL,
+  // })
+
+  // if (!editions) throw new NotFoundError('Editions not found...')
+
+  // let type
+  // let value
+
+  // for (const { oclc_numbers, lccn, isbn_13, isbn_10 } of editions.entries) {
+  //   if (oclc_numbers?.[0]) {
+  //     type = 'oclc'
+  //     value = oclc_numbers[0]
+  //     break
+  //   } else if (lccn?.[0]) {
+  //     type = 'lccn'
+  //     value = lccn[0]
+  //     break
+  //   } else if (isbn_13?.[0]) {
+  //     type = 'isbn'
+  //     value = isbn_13[0]
+  //     break
+  //   } else if (isbn_10?.[0]) {
+  //     type = 'isbn'
+  //     value = isbn_10[0]
+  //     break
+  //   }
+  // }
+
+  // if (!type || !value)
+  //   throw new NotFoundError('Edition identifiers not found...')
+
+  // // volumes
+  // const volumes = await $fetch<Volumes>(
+  //   `/api/volumes/full/${type}/${value}.json`,
+  //   { baseURL, mode: 'no-cors' },
+  // )
+  // if (!volumes) throw new NotFoundError('Volumes not found...')
+
+  // const sources: MediaMeta['sources'] = []
+
+  // // records -> sources
+  // Object.entries(volumes.records).forEach(
+  //   ([
+  //     _,
+  //     {
+  //       data: { ebooks },
+  //     },
+  //   ]) => {
+  //     if (ebooks && ebooks.length > 1)
+  //       ebooks.forEach(({ preview_url, formats }) => {
+  //         if (preview_url) sources.push({ type: 'preview', href: preview_url })
+  //         if (formats)
+  //           Object.entries(formats).forEach(([type, { url: href }]) => {
+  //             sources.push({ type, href })
+  //           })
+  //       })
+  //   },
+  // )
+
+  // // items -> sources
+  // volumes.items.forEach(({ status, publishDate, itemURL: href }) =>
+  //   sources.push({ type: `${status} (${publishDate})`, href }),
+  // )
+
+  // return sources
 }
