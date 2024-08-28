@@ -19,7 +19,10 @@
 <script lang="ts" setup>
 import type { Media } from '~/types'
 
-const { media, topRight } = defineProps<{ media: Media; topRight?: boolean }>()
+const { media, topRight = false } = defineProps<{
+  media: Media
+  topRight?: boolean
+}>()
 const emits = defineEmits<{ isBookmarked: [boolean] }>()
 
 const { isBookmarked, toggleBookmark } = useLibraryStore()

@@ -17,14 +17,15 @@
 </template>
 
 <script lang="ts" setup>
-const { href, type } = withDefaults(
-  defineProps<{
-    href: string
-    type?: 'main' | 'shadow'
-    size?: 'sm' | 'md' | 'lg' | 'xl'
-  }>(),
-  { type: 'main', size: 'md' },
-)
+const {
+  href,
+  type = 'main',
+  size = 'md',
+} = defineProps<{
+  href: string
+  type?: 'main' | 'shadow'
+  size?: 'sm' | 'md' | 'lg' | 'xl'
+}>()
 </script>
 
 <style lang="scss"></style>

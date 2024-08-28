@@ -36,7 +36,7 @@ interface FieldState {
   value?: string
 }
 
-const props = defineProps<{
+const { state, modelValue } = defineProps<{
   state: FieldState
   modelValue?: string
 }>()
@@ -46,7 +46,7 @@ const attrs = useAttrs()
 const emit = defineEmits(['update:modelValue', 'blur'])
 
 const inputValue = computed({
-  get: () => props.modelValue,
+  get: () => modelValue,
   set: (value?: string) => emit('update:modelValue', value),
 })
 </script>

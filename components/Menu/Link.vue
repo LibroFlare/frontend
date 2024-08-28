@@ -12,7 +12,10 @@
 <script lang="ts" setup>
 import type { MenuLink } from '~/types'
 
-const { link } = defineProps<{ link: MenuLink; scale?: boolean }>()
+const { link, scale = false } = defineProps<{
+  link: MenuLink
+  scale?: boolean
+}>()
 </script>
 
 <style lang="scss"></style>

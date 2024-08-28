@@ -28,11 +28,13 @@
       </MediaImgCont>
 
       <div class="flex-1 space-y-4">
-        <h1 class="text-3xl font-bold">{{ title }}</h1>
-        <p class="text-lg text-gray-400">By: {{ author }}</p>
-        <p class="text-md text-gray-500">{{ year }}</p>
-        <p class="text-md text-gray-500 capitalize">{{ type }}</p>
-        <p class="text-sm text-gray-300 leading-relaxed">{{ description }}</p>
+        <h1 class="text-3xl font-bold">{{ media.meta.title }}</h1>
+        <p class="text-lg text-gray-400">By: {{ media.meta.author }}</p>
+        <p class="text-md text-gray-500">{{ media.meta.year }}</p>
+        <p class="text-md text-gray-500 capitalize">{{ media.meta.type }}</p>
+        <p class="text-sm text-gray-300 leading-relaxed">
+          {{ media.meta.description }}
+        </p>
 
         <div class="flex gap-4 mt-6">
           <ButtonLink href="#sources">
@@ -45,9 +47,9 @@
     <section id="sources" class="h-auto">
       <div class="w-full flex flex-col gap-2 p-4 rounded-xl shdw">
         <b>Sources</b>
-        <ul v-if="sources" class="flex flex-col gap-2">
+        <ul v-if="media.meta.sources" class="flex flex-col gap-2">
           <li
-            v-for="source in sources"
+            v-for="source in media.meta.sources"
             :key="source.href"
             class="rounded-lg hover:bg-gray-600/20 shdw transition-colors"
           >
@@ -66,8 +68,7 @@
 import type { Media } from '~/types'
 const { t } = useI18n()
 
-const props = defineProps<{ media: Media }>()
-const { author, title, type, year, description, sources } = props.media.meta
+const { media } = defineProps<{ media: Media }>()
 
 const showFullImg = ref<boolean>(false)
 </script>

@@ -9,7 +9,7 @@
       :media
     />
     <MediaCardSkeleton
-      v-for="key in skeletonLength || 4"
+      v-for="key in skeletonLength"
       v-else-if="skeleton"
       :key
     />
@@ -20,7 +20,11 @@
 <script lang="ts" setup>
 import type { Media } from '~/types'
 
-const { medias, skeleton, skeletonLength } = defineProps<{
+const {
+  medias,
+  skeleton = false,
+  skeletonLength = 4,
+} = defineProps<{
   medias?: Media[] | null
   skeleton?: boolean
   skeletonLength?: number

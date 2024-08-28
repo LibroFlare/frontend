@@ -3,6 +3,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
 
+  vue: {
+    propsDestructure: true,
+  },
+
   nitro: {
     prerender: {
       routes: ['/_ipx/_/cover_not_available.webp'],

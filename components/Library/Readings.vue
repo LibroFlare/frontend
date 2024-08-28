@@ -17,7 +17,7 @@ const { t } = useI18n()
 const { readings } = toRefs(useLibraryStore())
 
 // show even if no media is there
-const { show } = defineProps<{ show?: boolean }>()
+const { show = false } = defineProps<{ show?: boolean }>()
 </script>
 
 <style lang="scss"></style>

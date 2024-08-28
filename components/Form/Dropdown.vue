@@ -42,7 +42,7 @@
 <script lang="ts" setup>
 import type { OptionItem } from '~/types'
 
-const props = defineProps<{
+const { selectedItem, options } = defineProps<{
   selectedItem: OptionItem
   options: OptionItem[]
 }>()
@@ -62,7 +62,7 @@ const selectOption = (option: OptionItem) => {
   isOpen.value = false
 }
 
-const isActive = (option: OptionItem) => option.id === props.selectedItem.id
+const isActive = (option: OptionItem) => option.id === selectedItem.id
 
 const dropdown = ref<HTMLElement>()
 onClickOutside(dropdown, () => (isOpen.value = false))

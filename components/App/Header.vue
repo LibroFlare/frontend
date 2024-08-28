@@ -7,7 +7,7 @@
           :key="key"
           class="hidden sm:flex items-center"
         >
-          <MenuLink :link="link" :scale="true" />
+          <MenuLink :link="link" scale />
         </li>
         <li class="relative flex justify-center items-center">
           <NuxtLink
@@ -26,7 +26,7 @@
           :key="key"
           class="hidden sm:flex items-center"
         >
-          <MenuLink :link="link" :scale="true" />
+          <MenuLink :link="link" scale />
         </li>
       </ul>
       <button
