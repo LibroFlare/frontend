@@ -44,27 +44,7 @@
         </div>
       </div>
     </div>
-    <section id="sources">
-      <div class="w-full flex flex-col gap-2 p-4 rounded-xl shdw">
-        <b>Sources</b>
-        <ul v-if="media.meta.sources" class="flex flex-col gap-2">
-          <li
-            v-for="source in media.meta.sources"
-            :key="source.href"
-            class="rounded-lg hover:bg-gray-600/20 shdw transition-colors"
-          >
-            <NuxtLink
-              :href="source.href"
-              target="_blank"
-              class="flex px-4 py-2"
-            >
-              {{ source.type || source.href }}
-            </NuxtLink>
-          </li>
-        </ul>
-        <p v-else>No Sources Found...</p>
-      </div>
-    </section>
+    <MediaSources :media />
   </div>
 </template>
 

@@ -14,8 +14,9 @@ export interface AccountButtons {
 }
 
 export interface MediaMetaSource {
-  type?: string
   href: string
+  type?: string
+  sources?: MediaMetaSource[]
 }
 
 export interface MediaMeta {
