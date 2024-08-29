@@ -356,13 +356,19 @@ export const getArchiveSources = async (key: Media['key']) => {
 
   const sources: MediaMeta['sources'] = []
 
-  editions.entries.forEach(({ title, publish_date, ocaid }) => {
-    if (ocaid && ocaid.trim() !== '')
+  for (const { title, publish_date, ocaid } of editions.entries) {
+    if (ocaid && ocaid.trim() !== '') {
+      const sourceFormats = await getArchiveSourceFormats(ocaid)
+
       sources.push({
-        type: `${title} (${publish_date})`,
+        type:
+          `${title} (${publish_date})` +
+          (sourceFormats.restricted ? ' - PREVIEW ONLY' : ''),
         href: `https://archive.org/details/${ocaid}/mode/2up?ref=ol&view=theater`,
+        sources: sourceFormats.sources,
       })
-  })
+    }
+  }
 
   return sources
 }
