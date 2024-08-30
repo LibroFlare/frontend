@@ -1,6 +1,7 @@
 export enum Providers {
   OPENLIBRARY = 'openlibrary',
   GUTENDEX = 'gutendex',
+  STANDARD_EBOOKS = 'standard_ebooks',
 }
 
 export enum MediaTypes {
@@ -18,7 +19,7 @@ interface Provider {
   mediaTypes: MediaTypes[]
 }
 
-const { GUTENDEX, OPENLIBRARY } = Providers
+const { GUTENDEX, OPENLIBRARY, STANDARD_EBOOKS } = Providers
 const { BOOK, AUDIO_BOOK } = MediaTypes
 
 export const ProvidersData: Record<Providers, Provider> = {
@@ -32,6 +33,12 @@ export const ProvidersData: Record<Providers, Provider> = {
     id: OPENLIBRARY,
     name: 'Open Library',
     url: 'https://openlibrary.org',
+    mediaTypes: [BOOK],
+  },
+  standard_ebooks: {
+    id: STANDARD_EBOOKS,
+    name: 'Standard Ebooks',
+    url: 'https://standardebooks.org',
     mediaTypes: [BOOK],
   },
 }
