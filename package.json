@@ -33,6 +33,7 @@
     "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
     "@vee-validate/nuxt": "^4.13.2",
     "@vee-validate/yup": "^4.13.2",
+    "cheerio": "^1.0.0",
     "eslint": "^9.9.0",
     "prettier": "^3.3.3",
     "sass": "^1.77.8",
