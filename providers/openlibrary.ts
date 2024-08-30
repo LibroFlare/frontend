@@ -126,124 +126,124 @@ interface Editions {
   entries: Entry[]
 }
 
-// interface VolumeRecord {
-//   isbns: string[]
-//   issns: string[]
-//   lccns: string[]
-//   oclcs: string[]
-//   olids: string[]
-//   publishDates: number[]
-//   recordURL: string
-//   data: {
-//     url: string
-//     key: string
-//     title: string
-//     subtitle?: string
-//     authors?: {
-//       url: string
-//       name: string
-//     }[]
-//     number_of_pages?: number
-//     identifiers?: { [key: string]: string[] }
-//     publishers?: { name: string }[]
-//     publish_date: number
-//     subjects?: {
-//       name: string
-//       url: string
-//     }[]
-//     subject_places?: {
-//       name: string
-//       url: string
-//     }[]
-//     subject_people?: {
-//       name: string
-//       url: string
-//     }[]
-//     subject_times?: {
-//       name: string
-//       url: string
-//     }[]
-//     excerpts?: {
-//       text: string
-//       comment: string
-//     }[]
-//     links?: {
-//       title: string
-//       url: string
-//     }[]
-//     ebooks?: {
-//       preview_url?: string
-//       availability: 'full' | 'restricted' | 'borrow' | string
-//       formats?: { [key: 'pdf' | 'epub' | 'text' | string]: { url: string } }
-//       borrow_url?: string
-//     }[]
-//     cover: {
-//       small: string
-//       medium: string
-//       large: string
-//     }
-//   }
-//   details: {
-//     bib_key: string
-//     info_url: string
-//     preview: string
-//     preview_url: string
-//     thumbnail_url: string
-//     details: {
-//       works: {
-//         key: '/works/OL468431W'
-//       }[]
-//       title: string
-//       publishers: string[]
-//       publish_date: number
-//       key: string
-//       type: { key: string }
-//       identifiers?: { [key: string]: string }
-//       covers: number[]
-//       isbn_13: string[]
-//       classifications?: { [key: string]: string }
-//       languages?: { key: string }[]
-//       number_of_pages: number
-//       copyright_date: string
-//       physical_format: string
-//       subtitle: string
-//       latest_revision: number
-//       revision: number
-//       created?: {
-//         type: string
-//         value: string
-//       }
-//       last_modified?: {
-//         type: string
-//         value: string
-//       }
-//     }
-//   }
-// }
+interface VolumeRecord {
+  isbns: string[]
+  issns: string[]
+  lccns: string[]
+  oclcs: string[]
+  olids: string[]
+  publishDates: number[]
+  recordURL: string
+  data: {
+    url: string
+    key: string
+    title: string
+    subtitle?: string
+    authors?: {
+      url: string
+      name: string
+    }[]
+    number_of_pages?: number
+    identifiers?: { [key: string]: string[] }
+    publishers?: { name: string }[]
+    publish_date: number
+    subjects?: {
+      name: string
+      url: string
+    }[]
+    subject_places?: {
+      name: string
+      url: string
+    }[]
+    subject_people?: {
+      name: string
+      url: string
+    }[]
+    subject_times?: {
+      name: string
+      url: string
+    }[]
+    excerpts?: {
+      text: string
+      comment: string
+    }[]
+    links?: {
+      title: string
+      url: string
+    }[]
+    ebooks?: {
+      preview_url?: string
+      availability: 'full' | 'restricted' | 'borrow' | string
+      formats?: { [key: 'pdf' | 'epub' | 'text' | string]: { url: string } }
+      borrow_url?: string
+    }[]
+    cover: {
+      small: string
+      medium: string
+      large: string
+    }
+  }
+  details: {
+    bib_key: string
+    info_url: string
+    preview: string
+    preview_url: string
+    thumbnail_url: string
+    details: {
+      works: {
+        key: '/works/OL468431W'
+      }[]
+      title: string
+      publishers: string[]
+      publish_date: number
+      key: string
+      type: { key: string }
+      identifiers?: { [key: string]: string }
+      covers: number[]
+      isbn_13: string[]
+      classifications?: { [key: string]: string }
+      languages?: { key: string }[]
+      number_of_pages: number
+      copyright_date: string
+      physical_format: string
+      subtitle: string
+      latest_revision: number
+      revision: number
+      created?: {
+        type: string
+        value: string
+      }
+      last_modified?: {
+        type: string
+        value: string
+      }
+    }
+  }
+}
 
-// interface VolumeItem {
-//   enumcron: string
-//   match: 'exact' | 'similar'
-//   status: 'full access' | 'lendable' | 'checked out' | 'restricted'
-//   fromRecord?: string
-//   'ol-edition-id'?: string
-//   'ol-work-id'?: string
-//   publishDate: number
-//   contributor?: string
-//   itemURL: string
-//   cover: {
-//     small: string
-//     medium: string
-//     large: string
-//   }
-// }
+interface VolumeItem {
+  enumcron: string
+  match: 'exact' | 'similar'
+  status: 'full access' | 'lendable' | 'checked out' | 'restricted'
+  fromRecord?: string
+  'ol-edition-id'?: string
+  'ol-work-id'?: string
+  publishDate: number
+  contributor?: string
+  itemURL: string
+  cover: {
+    small: string
+    medium: string
+    large: string
+  }
+}
 
-// interface Volumes {
-//   records: {
-//     [key: string]: VolumeRecord
-//   }
-//   items: VolumeItem[]
-// }
+interface Volumes {
+  records: {
+    [key: string]: VolumeRecord
+  }
+  items: VolumeItem[]
+}
 
 const fields = 'key,title,author_name,first_publish_year,cover_i'
 
@@ -402,79 +402,77 @@ export const getSources = async (key: Media['key']) => {
       }
   }
 
+  let type
+  let value
+
+  for (const { oclc_numbers, lccn, isbn_13, isbn_10 } of editions.entries) {
+    if (oclc_numbers?.[0]) {
+      type = 'oclc'
+      value = oclc_numbers[0]
+      break
+    } else if (lccn?.[0]) {
+      type = 'lccn'
+      value = lccn[0]
+      break
+    } else if (isbn_13?.[0]) {
+      type = 'isbn'
+      value = isbn_13[0]
+      break
+    } else if (isbn_10?.[0]) {
+      type = 'isbn'
+      value = isbn_10[0]
+      break
+    }
+  }
+
+  if (!type || !value)
+    throw new NotFoundError('Edition identifiers not found...')
+
+  // volumes
+  const volumes = await $fetch<Volumes>(
+    `/api/volumes/full/${type}/${value}.json`,
+    {
+      // temp proxy
+      baseURL: `https://cors-anywhere.herokuapp.com/${baseURL}`,
+    },
+  )
+  if (!volumes) throw new NotFoundError('Volumes not found...')
+
+  // records -> sources
+  Object.entries(volumes.records).forEach(
+    ([
+      _,
+      {
+        data: { ebooks },
+      },
+    ]) => {
+      if (ebooks && ebooks.length > 1)
+        ebooks.forEach(({ preview_url, formats }) => {
+          if (preview_url) sources.push({ type: 'preview', href: preview_url })
+          if (formats)
+            Object.entries(formats).forEach(([type, { url: href }]) => {
+              sources.push({ type, href })
+            })
+        })
+    },
+  )
+
+  // items -> sources
+  for (const { publishDate, itemURL: href } of volumes.items) {
+    const ocaid = new URL(href).pathname.replace('/stream/', '')
+    const isDuplicate = sources.some(({ href: existingHref }) =>
+      existingHref.includes(ocaid),
+    )
+
+    if (!isDuplicate) {
+      const volumeItemArchiveSources = await getArchiveSourceFiles(ocaid)
+      sources.push({
+        type: `Title (${publishDate})`,
+        href,
+        sources: volumeItemArchiveSources.sources,
+      })
+    }
+  }
+
   return sources
-
-  // // TODO: FIX or BYPASS CORS!
-  // // id-type = oclc || lccn || isbn || olid (= the openLibrary key?)
-  // // http://openlibrary.org/api/volumes/brief/<id-type>/<id-value>.json
-  // // here find ebooks (and preview_url or read_url or ...?) or items (and itemURL)
-  // // can do foreach of items cuz they all have own covers and publish dates
-
-  // // editions
-  // const editions = await $fetch<Editions>(`/works/${key}/editions.json`, {
-  //   baseURL,
-  // })
-
-  // if (!editions) throw new NotFoundError('Editions not found...')
-
-  // let type
-  // let value
-
-  // for (const { oclc_numbers, lccn, isbn_13, isbn_10 } of editions.entries) {
-  //   if (oclc_numbers?.[0]) {
-  //     type = 'oclc'
-  //     value = oclc_numbers[0]
-  //     break
-  //   } else if (lccn?.[0]) {
-  //     type = 'lccn'
-  //     value = lccn[0]
-  //     break
-  //   } else if (isbn_13?.[0]) {
-  //     type = 'isbn'
-  //     value = isbn_13[0]
-  //     break
-  //   } else if (isbn_10?.[0]) {
-  //     type = 'isbn'
-  //     value = isbn_10[0]
-  //     break
-  //   }
-  // }
-
-  // if (!type || !value)
-  //   throw new NotFoundError('Edition identifiers not found...')
-
-  // // volumes
-  // const volumes = await $fetch<Volumes>(
-  //   `/api/volumes/full/${type}/${value}.json`,
-  //   { baseURL, mode: 'no-cors' },
-  // )
-  // if (!volumes) throw new NotFoundError('Volumes not found...')
-
-  // const sources: MediaMeta['sources'] = []
-
-  // // records -> sources
-  // Object.entries(volumes.records).forEach(
-  //   ([
-  //     _,
-  //     {
-  //       data: { ebooks },
-  //     },
-  //   ]) => {
-  //     if (ebooks && ebooks.length > 1)
-  //       ebooks.forEach(({ preview_url, formats }) => {
-  //         if (preview_url) sources.push({ type: 'preview', href: preview_url })
-  //         if (formats)
-  //           Object.entries(formats).forEach(([type, { url: href }]) => {
-  //             sources.push({ type, href })
-  //           })
-  //       })
-  //   },
-  // )
-
-  // // items -> sources
-  // volumes.items.forEach(({ status, publishDate, itemURL: href }) =>
-  //   sources.push({ type: `${status} (${publishDate})`, href }),
-  // )
-
-  // return sources
 }
