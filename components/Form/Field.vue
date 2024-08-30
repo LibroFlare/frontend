@@ -8,6 +8,7 @@
         :name="attrs.name?.toString() || state.path"
         :placeholder="attrs.placeholder?.toString() || ''"
         :required="state.required"
+        :class="[inputClass, 'bg-primary-800']"
         @blur="emit('blur')"
       />
       <label :for="attrs.id?.toString() || state.path">
@@ -39,6 +40,7 @@ interface FieldState {
 const { state, modelValue } = defineProps<{
   state: FieldState
   modelValue?: string
+  inputClass?: unknown
 }>()
 
 const attrs = useAttrs()
