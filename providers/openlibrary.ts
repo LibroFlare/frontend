@@ -467,7 +467,10 @@ export const getSources = async (key: Media['key']) => {
     if (!isDuplicate) {
       const volumeItemArchiveSources = await getArchiveSourceFiles(ocaid)
       sources.push({
-        type: `Title (${publishDate})`,
+        type:
+          volumeItemArchiveSources.metadata.title +
+          (publishDate ? ` (${publishDate})` : '') +
+          (volumeItemArchiveSources.restricted ? ' - PREVIEW ONLY' : ''),
         href,
         sources: volumeItemArchiveSources.sources,
       })

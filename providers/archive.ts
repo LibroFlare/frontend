@@ -1,6 +1,6 @@
 import type { Media } from '~/types'
 
-interface ArchiveFile {
+interface File {
   name: string
   source: 'original' | 'derivative' | 'metadata'
   original?: string
@@ -13,10 +13,57 @@ interface ArchiveFile {
   format: string
 }
 
+interface Metadata {
+  'access-restricted-item'?: boolean
+  title: string
+  creator?: string[]
+  description?: string[]
+  publisher?: string
+  date?: string
+  language?: string[]
+  'page-progression'?: 'lr' | string
+  sponsor?: string
+  contributor?: string
+  scanningcenter?: string
+  mediatype?: 'texts' | string
+  call_number?: string
+  updatedate?: string
+  updater?: string
+  identifier?: string
+  uploader?: string
+  addeddate?: string
+  publicdate?: string
+  ppi?: number
+  camera?: string
+  operator?: string
+  scanner?: string
+  scandate?: string
+  imagecount?: string
+  foldoutcount?: string
+  'identifier-access'?: string
+  'identifier-ark'?: string
+  bookplateleaf?: string
+  repub_state?: string
+  notes?: string
+  curation?: string
+  sponsordate?: string
+  collection?: string[]
+  backup_location?: string
+  openlibrary_edition?: string
+  openlibrary_work?: string
+  'external-identifier'?: string
+  filesxml?: string
+  'associated-names'?: string
+  ocr_module_version?: string
+  ocr_converted?: string
+  page_number_confidence?: string
+  page_number_module_version?: string
+}
+
 interface ArchiveMetadata {
   // ... a lot of types I didn't specify
-  files: ArchiveFile[]
-  metadata: { 'access-restricted-item'?: boolean }
+  files: File[]
+  metadata: Metadata
 }
 
 export const getArchiveSourceFiles = async (ocaid: string) => {
@@ -56,6 +103,7 @@ export const getArchiveSourceFiles = async (ocaid: string) => {
 
   return {
     restricted: archive.metadata['access-restricted-item'] || false,
+    metadata: archive.metadata,
     sources,
   }
 }
