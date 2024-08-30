@@ -439,23 +439,20 @@ export const getSources = async (key: Media['key']) => {
   if (!volumes) throw new NotFoundError('Volumes not found...')
 
   // records -> sources
-  Object.entries(volumes.records).forEach(
-    ([
-      _,
-      {
-        data: { ebooks },
-      },
-    ]) => {
-      if (ebooks && ebooks.length > 1)
-        ebooks.forEach(({ preview_url, formats }) => {
-          if (preview_url) sources.push({ type: 'preview', href: preview_url })
-          if (formats)
-            Object.entries(formats).forEach(([type, { url: href }]) => {
-              sources.push({ type, href })
-            })
-        })
+  for (const [
+    _,
+    {
+      data: { ebooks },
     },
-  )
+  ] of Object.entries(volumes.records)) {
+    if (ebooks && ebooks.length > 1)
+      for (const { preview_url, formats } of ebooks) {
+        if (preview_url) sources.push({ type: 'preview', href: preview_url })
+        if (formats)
+          for (const [type, { url: href }] of Object.entries(formats))
+            sources.push({ type, href })
+      }
+  }
 
   // items -> sources
   for (const { publishDate, itemURL: href } of volumes.items) {
