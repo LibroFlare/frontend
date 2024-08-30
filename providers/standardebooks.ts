@@ -52,10 +52,13 @@ export const searchMedia = async ({
     .map((element) => {
       const el = $(element)
 
-      let key = el.find('p:not([class]) a[href]').first().attr('href')
-      key = key?.startsWith('https://') ? key : baseURL + key
-      const title = el.find('p:not([class]) a[href] span').first().text().trim()
-      const author = el.find('p.author a[href] span').first().text().trim()
+      const title = el.find('p:not([class]) a span').first().text().trim()
+      const author = el.find('p.author a span').first().text().trim()
+      let key = el.find('p:not([class]) a').first().attr('href')
+      key =
+        (key?.startsWith('/ebooks/') ? key.replace('/ebooks/', '') : key) ||
+        `${title}/${author}`
+      key = key.replace(/-/g, '%2D').replace(/\//g, '%2F')
       let cover = el
         .find('.thumbnail-container picture img')
         .first()
@@ -68,7 +71,7 @@ export const searchMedia = async ({
         meta: {
           title,
           author,
-          slug: `${author}-${title}`,
+          slug: `/media/${provider}/${key}-${title}`,
           cover,
           type: MediaTypes.BOOK,
         },
@@ -76,4 +79,51 @@ export const searchMedia = async ({
     })
 
   return items
+}
+
+export const getMediaByKey = async (key: Media['key']): Promise<Media> => {
+  const data = await $fetch<string>(`/ebooks/${key}`, { baseURL })
+
+  if (!data) throw new NotFoundError('Media not found...')
+
+  const $ = load(data)
+
+  const title = $('header hgroup h1').first().text().trim()
+  const author = $('header hgroup h2 a span').first().text().trim()
+  let cover = $('.downloads-container figure picture img[src]')
+    .first()
+    .attr('src')
+  cover = cover?.startsWith('https://') ? cover : baseURL + cover
+  let description: string = ''
+  $('#description p')
+    .toArray()
+    .forEach((el) => (description += $(el).text().trim()))
+
+  const sources: Media['meta']['sources'] = $(
+    '#download ul li span:nth-child(1) a[href]',
+  )
+    .toArray()
+    .map((el) => {
+      let href = $(el).attr('href')
+      href = href?.startsWith('https://') ? href : baseURL + href
+
+      return {
+        href,
+        type: $(el).text().trim(),
+      }
+    })
+
+  return {
+    key,
+    provider,
+    meta: {
+      title,
+      author,
+      slug: `/media/${provider}/${key}-${title}`,
+      type: MediaTypes.BOOK,
+      cover,
+      description,
+      sources,
+    },
+  }
 }

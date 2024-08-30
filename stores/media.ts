@@ -7,7 +7,10 @@ import {
   getMediaByKey as getOpenlibraryMediaByKey,
   searchMedia as searchOpenlibrary,
 } from '~/providers/openlibrary'
-import { searchMedia as searchStandardebooks } from '~/providers/standardebooks'
+import {
+  getMediaByKey as getStandardebooksMediaByKey,
+  searchMedia as searchStandardebooks,
+} from '~/providers/standardebooks'
 import type { Media } from '~/types'
 
 export const useMediaStore = defineStore('media', () => {
@@ -34,6 +37,8 @@ export const useMediaStore = defineStore('media', () => {
 
     if (prvdr === Providers.GUTENDEX) {
       return await getGutendexMediaByKey(key)
+    } else if (prvdr === Providers.STANDARD_EBOOKS) {
+      return await getStandardebooksMediaByKey(key)
     } else return await getOpenlibraryMediaByKey(key)
   }
 
