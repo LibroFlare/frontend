@@ -23,17 +23,17 @@ const { GUTENDEX, OPENLIBRARY, STANDARD_EBOOKS } = Providers
 const { BOOK, AUDIO_BOOK } = MediaTypes
 
 export const ProvidersData: Record<Providers, Provider> = {
-  gutendex: {
-    id: GUTENDEX,
-    name: 'Projcet Gutenberg',
-    url: 'https://gutendex.com',
-    mediaTypes: [BOOK, AUDIO_BOOK],
-  },
   openlibrary: {
     id: OPENLIBRARY,
     name: 'Open Library',
     url: 'https://openlibrary.org',
     mediaTypes: [BOOK],
+  },
+  gutendex: {
+    id: GUTENDEX,
+    name: 'Projcet Gutenberg',
+    url: 'https://gutendex.com',
+    mediaTypes: [BOOK, AUDIO_BOOK],
   },
   standard_ebooks: {
     id: STANDARD_EBOOKS,
