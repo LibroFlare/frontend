@@ -3,6 +3,7 @@ import {
   getMediaByKey as getGutendexMediaByKey,
   searchMedia as searchGutendex,
 } from '~/providers/gutendex'
+import { getMediaByKey as getLibrivoxMediaByKey } from '~/providers/librivox'
 import {
   getMediaByKey as getOpenlibraryMediaByKey,
   searchMedia as searchOpenlibrary,
@@ -39,6 +40,8 @@ export const useMediaStore = defineStore('media', () => {
       return await getGutendexMediaByKey(key)
     } else if (prvdr === Providers.STANDARD_EBOOKS) {
       return await getStandardebooksMediaByKey(key)
+    } else if (prvdr === Providers.LIBRIVOX) {
+      return await getLibrivoxMediaByKey({ key })
     } else return await getOpenlibraryMediaByKey(key)
   }
 
