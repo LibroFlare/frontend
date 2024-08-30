@@ -1,4 +1,5 @@
 import { getArchiveSourceFiles } from './archive'
+import { getMediaByKey as getLibrivoxMediaByKey } from './librivox'
 import { getMediaByKey as getStandardebooksMediaByKey } from './standardebooks'
 import type { Media, MediaMeta } from '~/types'
 import { NotFoundError } from '~/utils/errors'
@@ -376,18 +377,29 @@ export const getSources = async (key: Media['key']) => {
   if (archiveSources) sources.push(...archiveSources)
 
   for (const { identifiers } of editions.entries) {
-    if (!identifiers || !identifiers.standard_ebooks) continue
+    if (identifiers && identifiers.standard_ebooks)
+      for (const identifier of identifiers.standard_ebooks) {
+        const standardebook = await getStandardebooksMediaByKey(identifier)
 
-    for (const identifier of identifiers.standard_ebooks) {
-      const standardebook = await getStandardebooksMediaByKey(identifier)
+        if (standardebook.meta.sources)
+          sources.push({
+            href: standardebook.meta.slug,
+            type: `${standardebook.meta.title} (${ProvidersData?.[standardebook.provider].name || standardebook.provider})`,
+            sources: standardebook.meta.sources,
+          })
+      }
 
-      if (standardebook.meta.sources)
-        sources.push({
-          href: standardebook.meta.slug,
-          type: `${standardebook.meta.title} (${ProvidersData?.[standardebook.provider].name || standardebook.provider})`,
-          sources: standardebook.meta.sources,
-        })
-    }
+    if (identifiers && identifiers.librivox)
+      for (const identifier of identifiers.librivox) {
+        const librivox = await getLibrivoxMediaByKey({ key: identifier })
+
+        if (librivox.meta.sources)
+          sources.push({
+            href: librivox.meta.slug,
+            type: `${librivox.meta.title} (${ProvidersData?.[librivox.provider].name || librivox.provider})`,
+            sources: librivox.meta.sources,
+          })
+      }
   }
 
   return sources
