@@ -12,17 +12,17 @@ import type { OptionItem, Themes } from '~/types'
 const { t } = useI18n()
 const prefs = usePreferencesStore()
 
-const items = computed(() => [
-  { id: 'system', name: t('settings.themes.system') },
-  { id: 'dark', name: t('settings.themes.dark') },
-  { id: 'light', name: t('settings.themes.light') },
+const items = computed<OptionItem<Themes>[]>(() => [
+  { id: 'system', name: t('settings.themes.system'), data: 'system' },
+  { id: 'dark', name: t('settings.themes.dark'), data: 'dark' },
+  { id: 'light', name: t('settings.themes.light'), data: 'light' },
 ])
 
-const findItem = (): OptionItem =>
+const findItem = (): OptionItem<Themes> =>
   items.value.find(({ id }) => id === prefs.theme) || items.value[0]
 
-const selectedItem = ref<OptionItem>(findItem())
+const selectedItem = ref<OptionItem<Themes>>(findItem())
 
 watchEffect(() => (selectedItem.value = findItem()))
-watch(selectedItem, () => prefs.setTheme(selectedItem.value.id as Themes))
+watch(selectedItem, () => prefs.setTheme(selectedItem.value.data))
 </script>

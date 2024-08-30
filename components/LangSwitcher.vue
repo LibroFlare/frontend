@@ -12,19 +12,22 @@ import type { OptionItem } from '~/types'
 const { locales } = useI18n()
 const prefs = usePreferencesStore()
 
-const items: OptionItem[] = locales.value.map(({ code, name, icon }) => {
-  return {
-    id: code,
-    name: name || code,
-    icon,
-  }
-})
+const items: OptionItem<string>[] = locales.value.map(
+  ({ code, name, icon }) => {
+    return {
+      id: code,
+      name: name || code,
+      icon,
+      data: code,
+    }
+  },
+)
 
-const selectedItem = ref<OptionItem>(
+const selectedItem = ref<OptionItem<string>>(
   items.find(({ id }) => id === prefs.language) || items[0],
 )
 
-watch(selectedItem, () => prefs.setLanguage(selectedItem.value.id))
+watch(selectedItem, () => prefs.setLanguage(selectedItem.value.data))
 </script>
 
 <style lang="scss" scoped></style>

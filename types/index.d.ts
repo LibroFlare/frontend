@@ -37,10 +37,11 @@ export interface Media {
   meta: MediaMeta
 }
 
-export interface OptionItem {
+export interface OptionItem<T> {
   id: string
   name: string
   icon?: string
+  data?: T
 }
 
 export type Themes = 'system' | 'dark' | 'light'

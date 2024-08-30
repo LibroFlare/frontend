@@ -39,33 +39,29 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup generic="T">
 import type { OptionItem } from '~/types'
 
 const { selectedItem, options } = defineProps<{
-  selectedItem: OptionItem
-  options: OptionItem[]
+  selectedItem: OptionItem<T>
+  options: OptionItem<T>[]
 }>()
 
 const emit = defineEmits<{
-  (e: 'update:selectedItem', value: OptionItem): void
+  (e: 'update:selectedItem', value: OptionItem<T>): void
 }>()
 
-const isOpen = ref(false)
+const isOpen = ref<boolean>(false)
 
-const toggleDropdown = () => {
-  isOpen.value = !isOpen.value
-}
+const toggleDropdown = () => (isOpen.value = !isOpen.value)
 
-const selectOption = (option: OptionItem) => {
+const selectOption = (option: OptionItem<T>) => {
   emit('update:selectedItem', option)
   isOpen.value = false
 }
 
-const isActive = (option: OptionItem) => option.id === selectedItem.id
+const isActive = (option: OptionItem<T>) => option.id === selectedItem.id
 
 const dropdown = ref<HTMLElement>()
 onClickOutside(dropdown, () => (isOpen.value = false))
 </script>
-
-<style lang="scss" scoped></style>
