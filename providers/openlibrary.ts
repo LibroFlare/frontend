@@ -1,3 +1,4 @@
+import { getArchiveSourceFiles } from './archive'
 import type { Media, MediaMeta } from '~/types'
 import { NotFoundError } from '~/utils/errors'
 
@@ -95,7 +96,15 @@ interface Entry {
   isbn_13?: string[]
   isbn_10?: string[]
   covers?: string[]
-  identifiers?: { [key: string]: string }[]
+  identifiers?: {
+    project_gutenberg?: string[]
+    librivox?: string[]
+    standard_ebooks?: string[]
+    amazon?: string[]
+    goodreads?: string[]
+    librarything?: string[]
+    better_world_books?: string[]
+  }
   physical_format?: string
   number_of_pages?: number
   pagination?: string
@@ -115,143 +124,124 @@ interface Editions {
   entries: Entry[]
 }
 
-interface VolumeRecord {
-  isbns: string[]
-  issns: string[]
-  lccns: string[]
-  oclcs: string[]
-  olids: string[]
-  publishDates: number[]
-  recordURL: string
-  data: {
-    url: string
-    key: string
-    title: string
-    subtitle?: string
-    authors?: {
-      url: string
-      name: string
-    }[]
-    number_of_pages?: number
-    identifiers?: { [key: string]: string[] }
-    publishers?: { name: string }[]
-    publish_date: number
-    subjects?: {
-      name: string
-      url: string
-    }[]
-    subject_places?: {
-      name: string
-      url: string
-    }[]
-    subject_people?: {
-      name: string
-      url: string
-    }[]
-    subject_times?: {
-      name: string
-      url: string
-    }[]
-    excerpts?: {
-      text: string
-      comment: string
-    }[]
-    links?: {
-      title: string
-      url: string
-    }[]
-    ebooks?: {
-      preview_url?: string
-      availability: 'full' | 'restricted' | 'borrow' | string
-      formats?: { [key: 'pdf' | 'epub' | 'text' | string]: { url: string } }
-      borrow_url?: string
-    }[]
-    cover: {
-      small: string
-      medium: string
-      large: string
-    }
-  }
-  details: {
-    bib_key: string
-    info_url: string
-    preview: string
-    preview_url: string
-    thumbnail_url: string
-    details: {
-      works: {
-        key: '/works/OL468431W'
-      }[]
-      title: string
-      publishers: string[]
-      publish_date: number
-      key: string
-      type: { key: string }
-      identifiers?: { [key: string]: string }
-      covers: number[]
-      isbn_13: string[]
-      classifications?: { [key: string]: string }
-      languages?: { key: string }[]
-      number_of_pages: number
-      copyright_date: string
-      physical_format: string
-      subtitle: string
-      latest_revision: number
-      revision: number
-      created?: {
-        type: string
-        value: string
-      }
-      last_modified?: {
-        type: string
-        value: string
-      }
-    }
-  }
-}
+// interface VolumeRecord {
+//   isbns: string[]
+//   issns: string[]
+//   lccns: string[]
+//   oclcs: string[]
+//   olids: string[]
+//   publishDates: number[]
+//   recordURL: string
+//   data: {
+//     url: string
+//     key: string
+//     title: string
+//     subtitle?: string
+//     authors?: {
+//       url: string
+//       name: string
+//     }[]
+//     number_of_pages?: number
+//     identifiers?: { [key: string]: string[] }
+//     publishers?: { name: string }[]
+//     publish_date: number
+//     subjects?: {
+//       name: string
+//       url: string
+//     }[]
+//     subject_places?: {
+//       name: string
+//       url: string
+//     }[]
+//     subject_people?: {
+//       name: string
+//       url: string
+//     }[]
+//     subject_times?: {
+//       name: string
+//       url: string
+//     }[]
+//     excerpts?: {
+//       text: string
+//       comment: string
+//     }[]
+//     links?: {
+//       title: string
+//       url: string
+//     }[]
+//     ebooks?: {
+//       preview_url?: string
+//       availability: 'full' | 'restricted' | 'borrow' | string
+//       formats?: { [key: 'pdf' | 'epub' | 'text' | string]: { url: string } }
+//       borrow_url?: string
+//     }[]
+//     cover: {
+//       small: string
+//       medium: string
+//       large: string
+//     }
+//   }
+//   details: {
+//     bib_key: string
+//     info_url: string
+//     preview: string
+//     preview_url: string
+//     thumbnail_url: string
+//     details: {
+//       works: {
+//         key: '/works/OL468431W'
+//       }[]
+//       title: string
+//       publishers: string[]
+//       publish_date: number
+//       key: string
+//       type: { key: string }
+//       identifiers?: { [key: string]: string }
+//       covers: number[]
+//       isbn_13: string[]
+//       classifications?: { [key: string]: string }
+//       languages?: { key: string }[]
+//       number_of_pages: number
+//       copyright_date: string
+//       physical_format: string
+//       subtitle: string
+//       latest_revision: number
+//       revision: number
+//       created?: {
+//         type: string
+//         value: string
+//       }
+//       last_modified?: {
+//         type: string
+//         value: string
+//       }
+//     }
+//   }
+// }
 
-interface VolumeItem {
-  enumcron: string
-  match: 'exact' | 'similar'
-  status: 'full access' | 'lendable' | 'checked out' | 'restricted'
-  fromRecord?: string
-  'ol-edition-id'?: string
-  'ol-work-id'?: string
-  publishDate: number
-  contributor?: string
-  itemURL: string
-  cover: {
-    small: string
-    medium: string
-    large: string
-  }
-}
+// interface VolumeItem {
+//   enumcron: string
+//   match: 'exact' | 'similar'
+//   status: 'full access' | 'lendable' | 'checked out' | 'restricted'
+//   fromRecord?: string
+//   'ol-edition-id'?: string
+//   'ol-work-id'?: string
+//   publishDate: number
+//   contributor?: string
+//   itemURL: string
+//   cover: {
+//     small: string
+//     medium: string
+//     large: string
+//   }
+// }
 
-interface Volumes {
-  records: {
-    [key: string]: VolumeRecord
-  }
-  items: VolumeItem[]
-}
-
-interface ArchiveFile {
-  name: string
-  source: 'original' | 'derivative' | 'metadata'
-  original?: string
-  mtime: string
-  size: number
-  md5?: string
-  crc32?: string
-  sha1?: string
-  rotation?: string
-  format: string
-}
-
-interface ArchiveMetadata {
-  // ... a lot of types I didn't specify
-  files: ArchiveFile[]
-  metadata: { 'access-restricted-item'?: boolean }
-}
+// interface Volumes {
+//   records: {
+//     [key: string]: VolumeRecord
+//   }
+//   items: VolumeItem[]
+// }
 
 const fields = 'key,title,author_name,first_publish_year,cover_i'
 
@@ -358,7 +348,7 @@ export const getArchiveSources = async (key: Media['key']) => {
 
   for (const { title, publish_date, ocaid } of editions.entries) {
     if (ocaid && ocaid.trim() !== '') {
-      const sourceFormats = await getArchiveSourceFormats(ocaid)
+      const sourceFormats = await getArchiveSourceFiles(ocaid)
 
       sources.push({
         type:
@@ -371,47 +361,6 @@ export const getArchiveSources = async (key: Media['key']) => {
   }
 
   return sources
-}
-
-export const getArchiveSourceFormats = async (ocaid: string) => {
-  const archive = await $fetch<ArchiveMetadata>(`/metadata/${ocaid}`, {
-    baseURL: 'https://archive.org',
-  })
-
-  if (!archive) throw new NotFoundError('Archive Metadata not found...')
-
-  const sources: MediaMeta['sources'] = archive.files
-    .filter(
-      ({ name }) =>
-        ![
-          '_page_numbers.',
-          '_metasource.',
-          '_searchtext.',
-          '_pageindex.',
-          '_scandata.',
-          '__ia_thumb',
-          '_reviews.',
-          '.torrent',
-          '_events.',
-          '_loans.',
-          '_files.',
-          '_meta.',
-          '_marc.',
-          '_meta',
-          '.log',
-          '.gif',
-          '_dc.',
-        ].some((keyword) => name.includes(keyword)),
-    )
-    .map(({ name, format, size }) => ({
-      type: `${format} (${formatSize(size)})`,
-      href: `https://archive.org/download/${ocaid}/${name}`,
-    }))
-
-  return {
-    restricted: archive.metadata['access-restricted-item'] || false,
-    sources,
-  }
 }
 
 export const getSources = async (key: Media['key']) => {
