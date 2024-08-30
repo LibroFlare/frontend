@@ -79,18 +79,6 @@ interface AdvancedSearch {
   search_page: number
 }
 
-function formatTime(seconds: number) {
-  const hours = Math.floor(seconds / 3600)
-  const minutes = Math.floor((seconds % 3600) / 60)
-  const secs = seconds % 60
-
-  const hoursStr = hours.toString().padStart(2, '0')
-  const minutesStr = minutes.toString().padStart(2, '0')
-  const secsStr = secs.toString().padStart(2, '0')
-
-  return `${hoursStr}:${minutesStr}:${secsStr}`
-}
-
 export const searchMedia = async ({
   title,
   author,
@@ -186,7 +174,8 @@ export const getMediaByKey = async ({
     // temp proxy
     baseURL: `https://cors-anywhere.herokuapp.com/${baseURL}`,
     query: {
-      id: key,
+      id: isNumeric(key) ? Number(key) : undefined,
+      title: !isNumeric(key) ? key : undefined,
       format,
       extended,
       fields: fields ? `{${fields.join(',')}}` : undefined,
