@@ -1,4 +1,5 @@
 import { getArchiveSourceFiles } from './archive'
+import { getMediaByKey as getStandardebooksMediaByKey } from './standardebooks'
 import type { Media, MediaMeta } from '~/types'
 import { NotFoundError } from '~/utils/errors'
 
@@ -337,13 +338,17 @@ export const getAuthorByKey = async (key: string) => {
   return data
 }
 
-export const getArchiveSources = async (key: Media['key']) => {
+export const getEditions = async (key: Media['key']) => {
   const editions = await $fetch<Editions>(`/works/${key}/editions.json`, {
     baseURL,
   })
 
   if (!editions) throw new NotFoundError('Editions not found...')
 
+  return editions
+}
+
+export const getArchiveSources = async (editions: Editions) => {
   const sources: MediaMeta['sources'] = []
 
   for (const { title, publish_date, ocaid } of editions.entries) {
@@ -364,9 +369,28 @@ export const getArchiveSources = async (key: Media['key']) => {
 }
 
 export const getSources = async (key: Media['key']) => {
-  const archiveSources = await getArchiveSources(key)
+  const sources: Media['meta']['sources'] = []
 
-  return archiveSources
+  const editions = await getEditions(key)
+  const archiveSources = await getArchiveSources(editions)
+  if (archiveSources) sources.push(...archiveSources)
+
+  for (const { identifiers } of editions.entries) {
+    if (!identifiers || !identifiers.standard_ebooks) continue
+
+    for (const identifier of identifiers.standard_ebooks) {
+      const standardebook = await getStandardebooksMediaByKey(identifier)
+
+      if (standardebook.meta.sources)
+        sources.push({
+          href: standardebook.meta.slug,
+          type: `${standardebook.meta.title} (${ProvidersData?.[standardebook.provider].name || standardebook.provider})`,
+          sources: standardebook.meta.sources,
+        })
+    }
+  }
+
+  return sources
 
   // // TODO: FIX or BYPASS CORS!
   // // id-type = oclc || lccn || isbn || olid (= the openLibrary key?)

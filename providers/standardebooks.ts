@@ -25,6 +25,9 @@ export type standardebooksTags =
   | 'spirituality'
   | 'travel'
 
+const encodeKey = (key: Media['key']) =>
+  key.replace(/-/g, '%2D').replace(/\//g, '%2F')
+
 export const searchMedia = async ({
   query,
   sort = 'newest',
@@ -58,7 +61,7 @@ export const searchMedia = async ({
       key =
         (key?.startsWith('/ebooks/') ? key.replace('/ebooks/', '') : key) ||
         `${title}/${author}`
-      key = key.replace(/-/g, '%2D').replace(/\//g, '%2F')
+      key = encodeKey(key)
       let cover = el
         .find('.thumbnail-container picture img')
         .first()
@@ -119,7 +122,7 @@ export const getMediaByKey = async (key: Media['key']): Promise<Media> => {
     meta: {
       title,
       author,
-      slug: `/media/${provider}/${key}-${title}`,
+      slug: `/media/${provider}/${encodeKey(key)}-${title}`,
       type: MediaTypes.BOOK,
       cover,
       description,
