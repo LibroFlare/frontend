@@ -70,24 +70,24 @@ const formatMedia = (media: Book[]) => {
 }
 
 export const searchMedia = async (search: string) => {
-  const { data } = await useFetch<Search>('/books/', {
+  const data = await $fetch<Search>('/books/', {
     baseURL: url,
     query: {
       search,
     },
   })
 
-  if (!data.value) throw new NotFoundError('Searched media not found...')
+  if (!data) throw new NotFoundError('Searched media not found...')
 
-  return formatMedia(data.value.results)
+  return formatMedia(data.results)
 }
 
 export const getMediaByKey = async (key: Media['key']) => {
-  const { data } = await useFetch<Book>(`/books/${key}/`, {
+  const data = await $fetch<Book>(`/books/${key}/`, {
     baseURL: url,
   })
 
-  if (!data.value) throw new NotFoundError('Searched media not found...')
+  if (!data) throw new NotFoundError('Searched media not found...')
 
-  return formatMedia([data.value])[0]
+  return formatMedia([data])[0]
 }

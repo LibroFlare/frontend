@@ -272,7 +272,7 @@ const formatMedia = (media: Doc[]) => {
 }
 
 export const searchMedia = async (query: string, limit: number = 20) => {
-  const { data } = await useFetch<Search>('/search.json', {
+  const data = await $fetch<Search>('/search.json', {
     baseURL,
     query: {
       q: query,
@@ -281,13 +281,13 @@ export const searchMedia = async (query: string, limit: number = 20) => {
     },
   })
 
-  if (!data.value) throw new NotFoundError('Searched media not found...')
+  if (!data) throw new NotFoundError('Searched media not found...')
 
-  return formatMedia(data.value.docs)
+  return formatMedia(data.docs)
 }
 
 export const getTrendingMedia = async (limit: number = 20) => {
-  const { data } = await useFetch<Trending>('/trending.json', {
+  const data = await $fetch<Trending>('/trending.json', {
     baseURL,
     query: {
       fields,
@@ -296,30 +296,30 @@ export const getTrendingMedia = async (limit: number = 20) => {
     },
   })
 
-  if (!data.value) throw new NotFoundError('Trending media not found...')
+  if (!data) throw new NotFoundError('Trending media not found...')
 
-  return formatMedia(data.value.works)
+  return formatMedia(data.works)
 }
 
 export const getMediaByKey = async (key: Media['key']) => {
-  const { data } = await useFetch<Work>(`/works/${key}.json`, { baseURL })
+  const data = await $fetch<Work>(`/works/${key}.json`, { baseURL })
 
-  if (!data.value) throw new NotFoundError('Media not found...')
+  if (!data) throw new NotFoundError('Media not found...')
 
   const author = ref<Author>()
-  if (data.value.authors?.[0].author.key) {
-    author.value = await getAuthorByKey(data.value.authors[0].author.key)
+  if (data.authors?.[0].author.key) {
+    author.value = await getAuthorByKey(data.authors[0].author.key)
   }
 
   if (!author) throw new NotFoundError('Media not found...')
 
   const media = formatMedia([
     {
-      key: data.value.key,
-      title: data.value.title,
+      key: data.key,
+      title: data.title,
       author_name: [author.value?.name || 'unknown'],
-      first_publish_year: data.value.first_publish_date,
-      cover_i: data.value.covers[0],
+      first_publish_year: data.first_publish_date,
+      cover_i: data.covers[0],
     },
   ])[0]
 
@@ -330,11 +330,11 @@ export const getMediaByKey = async (key: Media['key']) => {
 }
 
 export const getAuthorByKey = async (key: string) => {
-  const { data } = await useFetch<Author>(`${key}.json`, { baseURL })
+  const data = await $fetch<Author>(`${key}.json`, { baseURL })
 
-  if (!data.value) throw new NotFoundError('Author not found...')
+  if (!data) throw new NotFoundError('Author not found...')
 
-  return data.value
+  return data
 }
 
 export const getArchiveSources = async (key: Media['key']) => {
