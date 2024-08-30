@@ -1,7 +1,7 @@
 import type { Media, MediaMeta, MediaMetaSource } from '~/types'
 import { NotFoundError } from '~/utils/errors'
 
-const { id: provider, url } = ProvidersData.gutendex
+const { id: provider, url: baseURL } = ProvidersData.gutendex
 
 type MIMEType = string
 
@@ -71,7 +71,7 @@ const formatMedia = (media: Book[]) => {
 
 export const searchMedia = async (search: string) => {
   const data = await $fetch<Search>('/books/', {
-    baseURL: url,
+    baseURL,
     query: {
       search,
     },
@@ -84,10 +84,10 @@ export const searchMedia = async (search: string) => {
 
 export const getMediaByKey = async (key: Media['key']) => {
   const data = await $fetch<Book>(`/books/${key}/`, {
-    baseURL: url,
+    baseURL,
   })
 
-  if (!data) throw new NotFoundError('Searched media not found...')
+  if (!data) throw new NotFoundError('Media not found...')
 
   return formatMedia([data])[0]
 }
