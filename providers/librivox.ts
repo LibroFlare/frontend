@@ -1,3 +1,4 @@
+import { load } from 'cheerio'
 import type { Media } from '~/types'
 import { NotFoundError } from '~/utils/errors'
 
@@ -71,6 +72,13 @@ interface Section {
   }[]
 }
 
+interface AdvancedSearch {
+  status: 'SUCCESS' | string
+  results: string
+  pagination: string
+  search_page: number
+}
+
 function formatTime(seconds: number) {
   const hours = Math.floor(seconds / 3600)
   const minutes = Math.floor((seconds % 3600) / 60)
@@ -83,19 +91,84 @@ function formatTime(seconds: number) {
   return `${hoursStr}:${minutesStr}:${secsStr}`
 }
 
-// Example usage
-const timeInSeconds = 1851
-console.log(formatTime(timeInSeconds)) // Output: "00:30:51"
-
-export const searchMedia = async (search: string) => {
-  const data = await $fetch('/books/', {
-    baseURL,
+export const searchMedia = async ({
+  title,
+  author,
+  reader,
+  keywords,
+  genre_id = 0,
+  status = 'all',
+  project_type = 'either',
+  recorded_language,
+  sort_order = 'alpha',
+  search_page = 1,
+  q,
+}: {
+  title?: string
+  author?: string
+  reader?: string
+  keywords?: string
+  genre_id?: number
+  status?: 'all' | 'complete' | 'in_progress' | 'open'
+  project_type?: 'either' | 'solo' | 'group'
+  recorded_language?: string
+  sort_order?: 'alpha' | 'catalog_date'
+  search_page?: number
+  q?: string
+}): Promise<Media[]> => {
+  const data = await $fetch<AdvancedSearch>('/advanced_search', {
+    // temp proxy
+    baseURL: `https://cors-anywhere.herokuapp.com/${baseURL}`,
+    headers: { 'X-Requested-With': 'XMLHttpRequest' },
     query: {
-      search,
+      search_form: 'advanced',
+      title,
+      author,
+      reader,
+      keywords,
+      genre_id,
+      status,
+      project_type,
+      recorded_language,
+      sort_order,
+      search_page,
+      q,
     },
   })
 
   if (!data) throw new NotFoundError('Searched media not found...')
+
+  const $ = load(data.results)
+
+  return $('li.catalog-result')
+    .toArray()
+    .map((element) => {
+      const el = $(element)
+
+      const key = el.find('.result-data h3 a').first().text().trim()
+      const author = el
+        .find('.result-data .book-author a')
+        .first()
+        .clone()
+        .children()
+        .remove()
+        .end()
+        .text()
+        .trim()
+      const cover = el.find('a.book-cover img[src]').first().attr('src')
+
+      return {
+        key,
+        provider,
+        meta: {
+          title: key,
+          author,
+          slug: `/media/${provider}/${key}-${key}`,
+          type: MediaTypes.AUDIO_BOOK,
+          cover,
+        },
+      }
+    })
 }
 
 export const getMediaByKey = async ({
