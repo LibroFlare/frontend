@@ -1,8 +1,8 @@
 <template>
   <div
-    v-if="!isAllwd && !isDismissed"
+    v-if="isAllwd === undefined && !isDismissed && show"
     class="fixed size-full grid place-items-center bg-black/20 z-[99]"
-    @click="isDismissed = true"
+    @click="show = false"
   >
     <div class="cont">
       <div
@@ -20,4 +20,7 @@
 const { isAllowed, isDismissed } = toRefs(useProxyStore())
 
 const isAllwd = debouncedRef(isAllowed, 2000)
+
+const show = ref<boolean>(false)
+onMounted(() => (show.value = true))
 </script>

@@ -32,10 +32,10 @@
     </p>
     <p v-if="verifyTimestamp > 0">Successfully verified!</p>
     <div class="grid grid-cols-2 items-center gap-4">
-      <ButtonLink href="#" class="justify-center" @click.prevent="handleVerify">
+      <ButtonLink href="" class="justify-center" @click.prevent="handleVerify">
         Verify Proxy Access
       </ButtonLink>
-      <ButtonLink v-if="showDismiss" href="#" type="shadow" class="justify-center" @click.prevent="dismiss">
+      <ButtonLink v-if="showDismiss" href="" type="shadow" class="justify-center" @click.prevent="dismiss">
         Dismiss
       </ButtonLink>
     </div>
