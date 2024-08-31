@@ -26,6 +26,7 @@
       />
     </div>
 
+    <ProxyPopup />
     <ButtonBackToTop />
     <NetworkStatusBar />
     <AppHeader />

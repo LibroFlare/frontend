@@ -18,6 +18,10 @@
         <b class="text-lg">{{ t('settings.providers') }}</b>
         <ProviderSelector />
       </div>
+      <div class="flex flex-col gap-2">
+        <b class="text-lg">Proxy</b>
+        <ProxyTab />
+      </div>
     </div>
   </VueFrag>
 </template>
