@@ -1,0 +1,28 @@
+name: libroflare-frontend
+
+services:
+  libroflare-frontend:
+    build: .
+    env_file:
+      - .env
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.libroflare-frontend.entrypoints=http'
+      - 'traefik.http.services.libroflare-frontend.loadbalancer.server.port=80'
+      - 'traefik.http.routers.libroflare-frontend.rule=Host(`libroflare.germondai.com`)'
+      - 'traefik.http.middlewares.libroflare-frontend-https-redirect.redirectscheme.scheme=https'
+      - 'traefik.http.middlewares.sslheader.headers.customrequestheaders.X-Forwarded-Proto=https'
+      - 'traefik.http.routers.libroflare-frontend.middlewares=libroflare-frontend-https-redirect'
+      - 'traefik.http.routers.libroflare-frontend-secure.entrypoints=https'
+      - 'traefik.http.routers.libroflare-frontend-secure.rule=Host(`libroflare.germondai.com`)'
+      - 'traefik.http.routers.libroflare-frontend-secure.tls=true'
+      - 'traefik.http.routers.libroflare-frontend-secure.tls.certresolver=cloudflare'
+      - 'traefik.http.routers.libroflare-frontend-secure.tls.domains[0].main=germondai.com'
+      - 'traefik.http.routers.libroflare-frontend-secure.tls.domains[0].sans=*.germondai.com'
+    networks:
+      - traefik
+    restart: always
+
+networks:
+  traefik:
+    external: true
