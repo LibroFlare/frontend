@@ -1,6 +1,7 @@
+# syntax=docker/dockerfile:1
 # use the official Bun image
 # see all versions at https://hub.docker.com/r/oven/bun/tags
-FROM oven/bun:1.2.2-slim AS base
+FROM oven/bun:1.4.4-slim AS base
 WORKDIR /usr/src/app
 
 # install dependencies into temp directory
@@ -8,7 +9,8 @@ WORKDIR /usr/src/app
 FROM base AS install
 RUN mkdir -p /temp
 COPY package.json bun.lock /temp/
-RUN cd /temp && bun install --frozen-lockfile
+RUN --mount=type=cache,id=libroflare-bun,target=/root/.bun/install/cache \
+    cd /temp && bun install --frozen-lockfile --ignore-scripts
 
 # copy node_modules from temp directory
 # then copy all (non-ignored) project files into the image
@@ -21,9 +23,9 @@ ENV NODE_ENV=production
 RUN bun generate
 
 # copy production dependencies and source code into final image
-FROM nginx:stable-alpine AS release
+FROM nginx:1.31.8-alpine AS release
 COPY --from=prerelease /usr/src/app/.output/public /usr/share/nginx/html
 
 # run the app
-EXPOSE 80:80
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
