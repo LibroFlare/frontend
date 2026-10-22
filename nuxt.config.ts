@@ -1,11 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: '2026-01-01',
   devtools: { enabled: true },
-
-  vue: {
-    propsDestructure: true,
-  },
 
   nitro: {
     prerender: {
@@ -40,22 +36,18 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@vueuse/nuxt',
     '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
     '@nuxt/eslint',
     '@nuxtjs/i18n',
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/google-fonts',
     '@nuxtjs/color-mode',
-    '@vee-validate/nuxt',
   ],
 
   eslint: {
     config: { typescript: true },
   },
-
-  pinia: { storesDirs: ['./stores/**'] },
-  imports: { dirs: ['./stores'] },
 
   googleFonts: {
     display: 'swap',
@@ -72,6 +64,11 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/scss/style.scss'],
+  postcss: {
+    plugins: {
+      'tailwindcss/nesting': false,
+    },
+  },
   tailwindcss: {
     exposeConfig: true,
     config: {
@@ -108,11 +105,9 @@ export default defineNuxtConfig({
     },
   },
 
-  image: { dir: 'public/img/' },
+  image: { dir: '../public/img/' },
 
   i18n: {
-    lazy: true,
-    langDir: 'assets/locales/',
     strategy: 'no_prefix',
     locales: [
       {

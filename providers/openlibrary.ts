@@ -1,8 +1,8 @@
 import { getArchiveSourceFiles } from './archive'
 import { getMediaByKey as getLibrivoxMediaByKey } from './librivox'
 import { getMediaByKey as getStandardebooksMediaByKey } from './standardebooks'
-import type { Media, MediaMeta } from '~/types'
 import { NotFoundError } from '~/utils/errors'
+import type { Media, MediaMeta } from '~~/types'
 
 const { id: provider, url: baseURL } = ProvidersData.openlibrary
 
@@ -11,7 +11,7 @@ interface Doc {
   author_name: string[]
   title: string
   first_publish_year: number
-  cover_i: number
+  cover_i?: number
 }
 
 interface Search {
@@ -309,11 +309,11 @@ export const getMediaByKey = async (key: Media['key']) => {
   if (!data) throw new NotFoundError('Media not found...')
 
   const author = ref<Author>()
-  if (data.authors?.[0].author.key) {
+  if (data.authors?.[0]?.author.key) {
     author.value = await getAuthorByKey(data.authors[0].author.key)
   }
 
-  if (!author) throw new NotFoundError('Media not found...')
+  if (!author.value) throw new NotFoundError('Media not found...')
 
   const media = formatMedia([
     {
@@ -321,9 +321,11 @@ export const getMediaByKey = async (key: Media['key']) => {
       title: data.title,
       author_name: [author.value?.name || 'unknown'],
       first_publish_year: data.first_publish_date,
-      cover_i: data.covers[0],
+      cover_i: data.covers?.[0],
     },
   ])[0]
+
+  if (!media) throw new NotFoundError('Media not found...')
 
   // add sources
   media.meta.sources = await getSources(key)

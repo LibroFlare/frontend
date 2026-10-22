@@ -1,4 +1,4 @@
-import type { Media } from '~/types'
+import type { Media } from '~~/types'
 
 interface File {
   name: string

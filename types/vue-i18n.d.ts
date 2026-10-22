@@ -1,14 +1,13 @@
 import 'vue-i18n'
-import type common from '@/assets/locales/common.json'
-import type en from '@/assets/locales/en.json'
+import type common from '../i18n/locales/common.json'
+import type en from '../i18n/locales/en.json'
 
 export type MessageSchema = typeof en
 export type CommonMessageSchema = typeof common
 
 declare module 'vue-i18n' {
   export interface DefineLocaleMessage
-    extends MessageSchema,
-      CommonMessageSchema {}
+    extends MessageSchema, CommonMessageSchema {}
 }
 
 type NestedKeys<T> = T extends object

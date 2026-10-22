@@ -1,5 +1,5 @@
 import { load } from 'cheerio'
-import type { Media } from '~/types'
+import type { Media } from '~~/types'
 
 const { id: provider, url: baseURL } = ProvidersData.standard_ebooks
 

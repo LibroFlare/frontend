@@ -1,6 +1,6 @@
 import { load } from 'cheerio'
-import type { Media } from '~/types'
 import { NotFoundError } from '~/utils/errors'
+import type { Media } from '~~/types'
 
 const { id: provider, url: baseURL } = ProvidersData.librivox
 
@@ -182,11 +182,12 @@ export const getMediaByKey = async ({
     },
   })
 
-  if (!data) throw new NotFoundError('Media not found...')
+  const book = data?.books?.[0]
+  const author = book?.authors?.[0]
+  if (!book || !author) throw new NotFoundError('Media not found...')
 
   const {
     title,
-    authors: [{ first_name, last_name, dod, dob }],
     description,
     sections,
     language,
@@ -194,7 +195,8 @@ export const getMediaByKey = async ({
     url_librivox,
     url_zip_file,
     url_iarchive,
-  } = data.books[0]
+  } = book
+  const { first_name, last_name, dod, dob } = author
 
   const customTitle = `[${formatTime(totaltimesecs)}] ${title} (${language})`
 
@@ -212,14 +214,8 @@ export const getMediaByKey = async ({
     type: `ZIP with Sections | ${customTitle}`,
     href: url_zip_file,
     sources: sections.map(
-      ({
-        title,
-        listen_url: href,
-        language,
-        playtime,
-        readers: [{ display_name }],
-      }) => ({
-        type: `${title} - ${display_name} (${language}) - [${formatTime(playtime)}]`,
+      ({ title, listen_url: href, language, playtime, readers }) => ({
+        type: `${title} - ${readers[0]?.display_name || 'unknown'} (${language}) - [${formatTime(playtime)}]`,
         href,
       }),
     ),
